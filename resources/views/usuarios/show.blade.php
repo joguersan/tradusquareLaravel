@@ -22,11 +22,6 @@
 		<i class="large material-icons mr-2">info</i>Grupos
 	</div>
 	<div class="col p-3" style="line-height:2">
-		<ul>
-			@foreach ($usuario->grupos as $grupo)
-				<li><a href="{{route('grupos.show', ['id' => $grupo->id])}}">{{$grupo->nombre}}</a></li>
-			@endforeach
-		</ul>
 	</div>
 </div>
 <div class="alert alert-warning p-0 mt-3" role="alert">
@@ -50,13 +45,6 @@
 		<i class="large material-icons mr-2">save_alt</i>Proyectos
 	</div>
 	<div class="col p-3" style="line-height:2">
-		<ul>
-			@foreach ($usuario->grupos as $grupo)
-				@foreach ($grupo->fichas as $ficha)
-					<li><a href="{{route('ficha.show', ['id' => $ficha->id])}}">{{$ficha->nombre}}</a></li>
-				@endforeach
-			@endforeach
-		</ul>
 	</div>
 </div>
 

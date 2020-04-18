@@ -17,6 +17,10 @@ class Ficha extends Model
       return $this->belongsToMany('App\Plataforma', 'ficha_plataforma')->withPivot('ficha_id', 'plataforma_id', 'estado');
     }
 
+    public function grupos(){
+      return $this->belongsToMany('App\Grupo', 'ficha_grupo')->withPivot('ficha_id', 'grupo_id');
+    }
+
     /**
     * Obtiene las Noticias
     */

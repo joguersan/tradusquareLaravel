@@ -21,6 +21,7 @@ Route::post('/noticias/{noticia}', 'NoticiaController@destroy')->name('noticia.d
 Route::post('/noticias/{noticia}', 'NoticiaController@show')->name('noticia.show');
 Route::get('/proyecto/{ficha}', 'FichaController@show')->name('ficha.show');
 Route::get('/proyectos', 'FichaController@index')->name('proyectos');
+Route::get('/proyectos/{id_plat}', 'FichaController@listaPlataforma')->name('proyectoplataforma');
 Route::resources([
   'noticias' => 'NoticiaController',
   'plataformas' => 'PlataformaController',

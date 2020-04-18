@@ -20,6 +20,11 @@
 	<div class="text-black fichaContenido pl-2 pb-2 pr-2 pt-0">
 		{!!$ficha->ficha!!}
 		<br>
+		<strong>Traducido por: </strong>
+		@foreach ($ficha->grupos as $grupo)
+			<a href="{{route('grupos.show', $grupo)}}">{{$grupo->nombre}}</a>
+		@endforeach
+		<br>
 		<strong>Plataforma: </strong>
 		@foreach ($ficha->plataformas as $plataforma)
 				<img src="{{$plataforma->imagen}}" alt="{{$plataforma->nombre}}"> {{$plataforma->nombre}} {{$plataforma->pivot->estado}}

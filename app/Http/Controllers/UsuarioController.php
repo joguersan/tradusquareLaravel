@@ -55,11 +55,12 @@ class UsuarioController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $usuario)
     {
-      $usuario = User::find($id);
 
-      return View::make('usuarios.show')->with('usuario', $usuario);
+      return view('usuarios.show', [
+          'usuario' => $usuario
+        ]);
     }
 
     /**

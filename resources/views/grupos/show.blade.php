@@ -13,7 +13,7 @@
 	<div class="col p-3" style="line-height:2">
 		<ul>
 			@foreach ($grupo->usuarios as $usuario)
-				<li><a href="{{route('usuarios.show', ['id' => $usuario->id])}}">{{$usuario->nombre}}</a></li>
+				<li><a href="{{route('usuarios.show', $usuario)}}">{{$usuario->nombre}}</a></li>
 			@endforeach
 		</ul>
 	</div>
@@ -41,11 +41,11 @@
 		<div class="list-group">
 			@foreach ($grupo->fichas as $ficha)
 				@if ($ficha->estado == "Completado")
-				<a href="{{route('ficha.show', ['id' => $ficha->id])}}"><div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{$ficha->nombre}}<span class="badge badge-success p-1">Completado</span></div></a>
+				<a href="{{route('ficha.show', $ficha)}}"><div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{$ficha->nombre}}<span class="badge badge-success p-1">Completado</span></div></a>
 				@elseif ($ficha->estado == "En proceso")
-					<a href="{{route('ficha.show', ['id' => $ficha->id])}}"><div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{$ficha->nombre}}<span class="badge badge-primary p-1">En proceso</span></div></a>
+					<a href="{{route('ficha.show', $ficha)}}"><div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{$ficha->nombre}}<span class="badge badge-primary p-1">En proceso</span></div></a>
 				@elseif ($ficha->estado == "Pausado")
-					<a href="{{route('ficha.show', ['id' => $ficha->id])}}"><div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{$ficha->nombre}}<span class="badge badge-warning p-1">Pausado</span></div></a>
+					<a href="{{route('ficha.show', $ficha)}}"><div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{$ficha->nombre}}<span class="badge badge-warning p-1">Pausado</span></div></a>
 				@endif
 			@endforeach
 		</div>
