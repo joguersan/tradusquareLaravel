@@ -17,6 +17,11 @@
 	<div class="fichaTituloTriangulo"></div>
 	<div class="text-black fichaContenido pl-2 pb-2 pr-2 pt-0">
 		{!!$ficha->ficha!!}
+		<br>
+		<strong>Plataforma: </strong>
+		@foreach ($ficha->plataformas as $plataforma)
+				<img src="{{$plataforma->imagen}}"> {{$plataforma->nombre}} {{$plataforma->pivot->estado}}
+		@endforeach
 	</div>
 </div>
 <div class="ficha p-3 mt-3">

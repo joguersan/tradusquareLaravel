@@ -29,14 +29,14 @@
 					<a href="{{route('fichas.show', $ficha)}}">{{$ficha->nombre}}</a>
 				</td>
 				<td class="row w-100 m-0">
-					@foreach ($ficha->plataformas as $key=>$value)
+					@foreach ($ficha->plataformas as $plataforma)
 					<div class="col text-center">
-						<a href="/proyectos/{{$value->id}}"><img src="{{$value->imagen}}" style="width:20px; height:20px" title="{{$value->nombre}}" /></a>
-						@if ($ficha->estado == "Completado")
+						<a href="/proyectos/{{$plataforma->id}}"><img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /></a>
+						@if ($plataforma->pivot->estado == "Completado")
 						<span class="badge badge-success p-1">Completado</span>
-						@elseif ($ficha->estado == "En proceso")
+					@elseif ($plataforma->pivot->estado == "En proceso")
 						<span class="badge badge-primary p-1">En proceso</span>
-						@elseif ($ficha->estado == "Pausado")
+					@elseif ($plataforma->pivot->estado == "Pausado")
 						<span class="badge badge-warning p-1">Pausado</span>
 						@endif
 					</div>
