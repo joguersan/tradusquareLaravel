@@ -3,7 +3,6 @@
 
 <head>
 	@include('partials.estilo')
-	@yield('metaAdicional')
 	@yield('titulo')
 	@yield('descripcion')
 </head>
