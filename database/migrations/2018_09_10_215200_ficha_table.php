@@ -18,15 +18,16 @@ class FichaTable extends Migration
             $table->string('nombre');
             $table->string('imagen');
             // Grupo
-      			$table->string('ficha');
-      			$table->string('sinopsis', 3000);
-      			$table->string('equipo', 3000);
-      			$table->string('descarga');
+      			$table->longText('ficha');
+      			$table->longText('sinopsis');
+      			$table->longText('equipo');
+      			$table->longText('descarga');
             $table->double('porcentaje_traduccion');
             $table->double('porcentaje_correccion');
             $table->double('porcentaje_edicion');
             $table->double('porcentaje_betatesting');
-            $table->string('estado');
+            $table->longtext('info_adicional');
+            $table->string('url', 255);
             $table->timestamps();
         });
     }

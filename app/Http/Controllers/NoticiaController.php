@@ -18,7 +18,7 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-      $noticias = DB::table('noticias')->orderBy('created_at', 'desc')->paginate(6);
+      $noticias = DB::table('noticias')->where('estado', '=', 'Publicada')->orderBy('created_at', 'desc')->paginate(6);
       return view('noticias.index', ['noticias' => $noticias]);
     }
 

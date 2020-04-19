@@ -12,7 +12,7 @@
 	</ul>
 </nav>
 <div style="max-height:75vh; overflow-y:auto">
-	<table class="table table-striped table-bordered table-hover" id="tablaProyectos">
+	<table class="table table-hover" id="tablaProyectos">
 		<thead>
 			<tr>
 				<th>Imagen</th>

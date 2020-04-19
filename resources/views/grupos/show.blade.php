@@ -13,7 +13,7 @@
 	<div class="col p-3" style="line-height:2">
 		<ul>
 			@foreach ($grupo->usuarios as $usuario)
-				<li><a href="{{route('usuarios.show', $usuario)}}">{{$usuario->nombre}}</a></li>
+				<li><a href="{{route('usuarios.show', $usuario)}}">{{$usuario->nick}}</a></li>
 			@endforeach
 		</ul>
 	</div>

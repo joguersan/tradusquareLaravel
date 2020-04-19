@@ -12,18 +12,18 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
 
-    $this->call([
+    /*$this->call([
       PlataformaSeeder::class
-    ]);
+    ]);*/
     $this->call([
       FichaSeeder::class
     ]);
-
-    factory(App\User::class, 10)->create();
-    factory(App\Noticia::class, 10)->create();
-    factory(App\Grupo::class, 10)->create();
-    factory(App\EntradaTablon::class, 10)->create();
-    factory(App\Comentario::class, 10)->create();
+    factory(App\Plataforma::class, 1)->create();
+    factory(App\User::class, 1)->create();
+    factory(App\Noticia::class, 1)->create();
+    factory(App\Grupo::class, 1)->create();
+    factory(App\EntradaTablon::class, 1)->create();
+    //factory(App\Comentario::class, 1)->create();
 
     // ************************* //
     // Populate the pivot tables

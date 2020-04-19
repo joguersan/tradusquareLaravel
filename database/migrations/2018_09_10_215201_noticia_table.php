@@ -19,6 +19,7 @@ class NoticiaTable extends Migration
             $table->string('imagen');
             $table->text('contenido');
             $table->text('estado');
+            $table->text('url');
             // Usuario
             $table->timestamps();
         });
