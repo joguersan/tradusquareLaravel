@@ -18,7 +18,7 @@
                 <h5 class="card-title overlayTitulo p-2 m-0">{{$noticia->titulo}}</h5>
                 <div class="overlaySombra">
                     <p id="autor<?php echo $i ?>" class="card-text textoSombra p-2 m-0 mt-4">Autor <span>{{$noticia->updated_at}}</span></p>
-                    <p id="fecha<?php echo $i ?>" class="card-text textoSombra p-2 m-0 mt-2">{{$noticia->contenido}}</p>
+                    <p id="fecha<?php echo $i ?>" class="card-text textoSombra p-2 m-0 mt-2">{{substr(strip_tags($noticia->contenido), 0, 200)}}</p>
                 </div>
             </div>
         </a>
