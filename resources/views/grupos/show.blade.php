@@ -1,14 +1,12 @@
 @extends('layouts.layout')
 @section('contenido')
 
-	<div class="col" style="height:300px; background-image:url('{{$grupo->imagen}}');
-	 background-size:cover">
+	<img src="{{$grupo->logo}}"/>
 		<h1>{{$grupo->nombre}}</h1>
-	</div>
 
 <div class="p-0 border border-primary">
-	<div class="col font-weight-bold d-flex p-2 bg-primary text-white justify-content-center">
-		<i class="large material-icons mr-2">info</i>Integrantes
+	<div class="col font-weight-bold flex p-2 bg-primary text-white text-center">
+		<i class="fas fa-user-friends"></i> Integrantes
 	</div>
 	<div class="col p-3" style="line-height:2">
 		<ul>
