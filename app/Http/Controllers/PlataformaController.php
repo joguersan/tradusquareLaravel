@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use App\Ficha;
 use App\Plataforma;
 use Illuminate\Http\Request;
 
@@ -46,11 +47,20 @@ class PlataformaController extends Controller
      * @param  int $plataforma ID
      * @return \Illuminate\Http\Response
      */
-    public function show($plataforma)
+    public function show(Plataforma $plataforma)
     {
-      $plataforma = Plataforma::find($plataforma);
-
-      return $plataforma;
+      $plata = DB::table('ficha_plataforma')
+	  ->join('fichas', 'ficha_plataforma.ficha_id', '=', 'fichas.id')
+	  ->join('plataformas', 'ficha_plataforma.plataforma_id', '=', 'plataformas.id')
+	  ->select('ficha_plataforma.id as relacionID', 'fichas.imagen as imgFicha', 'fichas.nombre as nombreFicha', 'ficha_plataforma.ficha_id as fichaID', 'plataformas.imagen as platImagen')
+	  ->where('ficha_plataforma.plataforma_id', '=', $plataforma->id)
+	  ->get();
+      $plataformas =  Plataforma::all();
+	     return view('plataformas.show', [
+         'plataforma' => $plataforma,
+         'plataformas' => $plataformas,
+         'plata' => $plata
+       ]);
     }
 
     /**
