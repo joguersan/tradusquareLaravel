@@ -1,12 +1,13 @@
 @extends('layouts.layout')
 @section ('metaAdicional')
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<title>Proyectos de traducción</title>
 @endsection
 @section('contenido')
 <nav aria-label="Navegación por plataforma">
 	<ul class="flex-wrap pagination pagination-md justify-content-left">
 		@foreach ($plataformas as $plataformaItem)
-		<li class="page-item"><a class="page-link" href="/proyectos/{{$plataformaItem->id}}"><img class="img-fluid mr-2" src="{{$plataformaItem->imagen}}" style="width:20px; height:20px">{{$plataformaItem->nombre}}</a></li>
+		<li class="page-item"><a class="page-link" href="{{route('plataformas.show', $plataformaItem)}}"><img class="img-fluid mr-2" src="{{$plataformaItem->imagen}}" style="width:20px; height:20px" alt="Imagen {{$plataformaItem->imagen}}">{{$plataformaItem->nombre}}</a></li>
 		@endforeach
 		<li class="page-item"><a class="page-link" href="/proyectos">Todas</a></li>
 	</ul>

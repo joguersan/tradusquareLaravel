@@ -312,11 +312,12 @@ border-color: transparent dimgray transparent transparent;
 
 .ficha a
 {
-	color:gray;
+	color:#FF5277!important;
+
 }
 .ficha a:hover
 {
-	color:dimgray;
+	color: #FFC51F!important;
 }
 
 .badge

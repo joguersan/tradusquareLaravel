@@ -52,7 +52,7 @@ class PlataformaController extends Controller
       $plata = DB::table('ficha_plataforma')
 	  ->join('fichas', 'ficha_plataforma.ficha_id', '=', 'fichas.id')
 	  ->join('plataformas', 'ficha_plataforma.plataforma_id', '=', 'plataformas.id')
-	  ->select('ficha_plataforma.id as relacionID', 'fichas.imagen as imgFicha', 'fichas.nombre as nombreFicha', 'ficha_plataforma.ficha_id as fichaID', 'plataformas.imagen as platImagen')
+	  ->select('ficha_plataforma.id as relacionID', 'fichas.imagen as imgFicha', 'fichas.nombre as nombreFicha', 'fichas.url as urlFicha', 'ficha_plataforma.ficha_id as fichaID', 'plataformas.imagen as platImagen')
 	  ->where('ficha_plataforma.plataforma_id', '=', $plataforma->id)
 	  ->get();
       $plataformas =  Plataforma::all();

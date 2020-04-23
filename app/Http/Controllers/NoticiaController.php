@@ -115,7 +115,7 @@ class NoticiaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Noticia $noticia )
+    public function update(Noticia $noticia)
     {
       request()->validate([
         'titulo' => 'required|min:10',

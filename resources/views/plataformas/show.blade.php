@@ -15,7 +15,7 @@
 			<tr>
 				<td class="w-25" style="background-image:url({{$plat->imgFicha}}); background-size:cover; background-position:center">
 				<td class="w-25">
-					<a href="}}">
+					<a href="{{route('fichas.show', $plat->urlFicha)}}">
 						{{$plat->nombreFicha}}
 					</a>
 				</td>

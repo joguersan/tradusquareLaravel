@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 @section('metaAdicional')
   <link rel="stylesheet" href="css/amala.css">
+  <title>Proyecto Amala</title>
+  <meta name="description" content="  El Proyecto Amala es una iniciativa que nace en TraduSquare en 2017, cuando varios equipos de fantraducciones de videojuegos al español decidieron colaborar por un fin común: la traducción de la mayor cantidad posible de los juegos de la saga
+    «Megami Tensei».">
 @endsection
 @section('contenido')
 <h1>Megami Tensei</h1>
@@ -11,7 +14,7 @@
 <h1>El Proyecto Amala</h1>
 <p>
     El Proyecto Amala es una iniciativa que nace en TraduSquare en 2017, cuando varios equipos de fantraducciones de videojuegos al español decidieron colaborar por un fin común: la traducción de la mayor cantidad posible de los juegos de la saga
-    “Megami Tensei”. Estamos ante un proyecto que nació con bastante ambición y que, con el tiempo, ha ido creciendo en popularidad y actividad, hasta resultar en la tabla que actualmente mostramos más abajo.<br>
+    «Megami Tensei». Estamos ante un proyecto que nació con bastante ambición y que, con el tiempo, ha ido creciendo en popularidad y actividad, hasta resultar en la tabla que actualmente mostramos más abajo.<br>
     ¿En qué nos hemos basado para llegar al listado que tenemos hoy? Para entenderlo, es necesario desglosar Megami Tensei en varias series principales, que son las siguientes:<br>
 <ul>
     <li>Shin Megami Tensei</li>
@@ -21,18 +24,18 @@
     <li>Shin Megami Tensei: Digital Devil Saga</li>
     <li>Megami Tensei Gaiden: Last Bible</li>
 </ul>
+<p>
 Consideramos que estas son las series principales que componen esta saga tan icónica, aunque no es un listado exhaustivo por los recursos de los que disponemos actualmente (faltarían, por ejemplo, las series Devil Children, Majin Tensei o spinoffs
 como Tokyo Mirage Sessions). Aun así, esperamos ir completando estos proyectos con los años y pavimentando el camino para futuras generaciones de fantraductores, con recursos como herramientas o glosarios.
-<p>
+</p>
 <p>
     A continuación mostramos una lista de los proyectos en proceso, completados y planeados para futuro. Las imágenes a color son los proyectos en proceso, y si los pulsáis, os llevará a la ficha del proyecto con todos sus avances. De momento, el
-    estado actual es el siguiente, con 22 proyectos en la lista:<br>
+    estado actual es el siguiente, con 22 proyectos en la lista:</p>
 <ul>
     <li>Completados: 5 (23%)</li>
     <li>En proceso: 5 (23%)</li>
     <li>Planeados: 12 (54%)</li>
 </ul>
-</p>
 <hr>
 <div class="row p-3 mt-1">
     <a href="fichas.php?shin-megami-tensei" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)), url('images/amala/SMT1.jpg')">
