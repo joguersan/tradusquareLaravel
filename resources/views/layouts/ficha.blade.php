@@ -16,8 +16,9 @@
 						<div class="overlayTitulo overlayFicha w-100 p-3 m-0">
 							<h1 class="tituloHeader">@yield('titulo')</h1>
 						</div>
-						<div class="overlaySombra sombraFicha"></div>
-						<div class="col m-0 w-100 bg-image headerFicha" style="background-image:url('{{$ficha->imagen}}')"></div>
+						<div class="col m-0 w-100 bg-image headerFicha" style="background-image:url('{{$ficha->imagen}}')">
+							<div class="overlaySombra sombraFicha"></div>
+						</div>
 							@yield('contenido')
 					</div>
 					@include('partials/barraLateral')

@@ -222,7 +222,7 @@ margin-bottom: auto;
   h5 {font-size:1.2rem} /*1rem = 16px*/
   .tituloHeader{font-size:2.5rem;line-height:40px;}
   .fichaTitulo{font-size:2rem}
-  .headerFicha {height:350px}
+  .headerFicha {height:400px}
 }
 .ficha
 {
@@ -488,13 +488,13 @@ border-color: transparent dimgray transparent transparent;
 }
 .sombraFicha
 {
-	bottom:75px;
-	height:80px;
+	top:-80px;
+	height:100px;
 }
 .sombraEntrada
 {
 	position:absolute;
-	bottom:40px;
+	top:-90px;
 	height:120px;
 	transform: rotate(1deg);
 }

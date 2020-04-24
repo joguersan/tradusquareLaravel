@@ -7,12 +7,7 @@
 <style>
     #apartado-derecho{
         text-align:center;
-    }
-    ul{
-        text-decoration: none !important;
-        list-style: none;
-        color: black;
-        font-weight: bold;
+        margin:auto;
     }
 </style>
 <div id="apartado-derecho" class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
