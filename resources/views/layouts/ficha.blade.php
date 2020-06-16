@@ -11,8 +11,7 @@
 			@include('partials/nav')
 			<div class="container-fluid bg-white p-0">
 				@yield('headerEntrada')
-				<div class="row m-0 p-3">
-					<div class="col-md-9 pb-4 pt-0 pr-4">
+					<div class="col p-5">
 						<div class="overlayTitulo overlayFicha w-100 p-3 m-0">
 							<h1 class="tituloHeader">@yield('titulo')</h1>
 						</div>
@@ -20,9 +19,12 @@
 							<div class="overlaySombra sombraFicha"></div>
 						</div>
 							@yield('contenido')
+							<div class="text-center p-3 bordeAzul mt-1">
+								<div class="col-md-4"></div>
+								<div class="seccionNoticia tituloHeader overlayTitulo p-1 col-md-6" style="font-size:1.5rem">¡Comparte esta traducción!</div>
+								@include('partials/share')
+							</div>
 					</div>
-					@include('partials/barraLateral')
-				</div>
 			</div>
 		</div>
 		@include('partials/footer')

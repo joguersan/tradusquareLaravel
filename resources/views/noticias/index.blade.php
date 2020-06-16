@@ -12,7 +12,7 @@
 <div class="row">
     <?php $i = 0 ?>
     @forelse ($noticias as $noticia)
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
         <a href="{{ route('noticia.show', $noticia->url) }}" class="overflow-y-hidden card bg-dark text-white cartaNoticia" onmouseover="acordeon(<?php echo $i ?>)" onmouseout="acordeonOut(<?php echo $i ?>)">
             <img style="height:250px" class="card-img lazy" src="{{$noticia->imagen}}" alt="Imagen destacada: {{$noticia->titulo}}" />
             <div class="card-img-overlay tituloNoticia p-0 w-90" id="div<?php echo $i ?>">
