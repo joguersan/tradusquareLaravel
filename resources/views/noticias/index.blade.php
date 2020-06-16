@@ -13,13 +13,13 @@
     <?php $i = 0 ?>
     @forelse ($noticias as $noticia)
     <div class="col-md-4 mb-3">
-        <a href="{{ route('noticia.show', $noticia->url) }}" class="overflow-y-hidden card bg-dark text-white cartaNoticia" onmouseover="acordeon(<?php echo $i ?>)" onmouseout="acordeonOut(<?php echo $i ?>)">
+        <a href="{{ route('noticia.show', $noticia->url) }}" class="overflow-y-hidden card bg-dark text-white cartaNoticia">
             <img style="height:250px" class="card-img lazy" src="{{$noticia->imagen}}" alt="Imagen destacada: {{$noticia->titulo}}" />
             <div class="card-img-overlay tituloNoticia p-0 w-90" id="div<?php echo $i ?>">
                 <h5 class="card-title overlayTitulo p-2 m-0">{{$noticia->titulo}}</h5>
                 <div class="overlaySombra">
-                    <p id="autor<?php echo $i ?>" class="card-text textoSombra p-2 m-0 mt-4">Autor <span>{{$noticia->updated_at}}</span></p>
-                    <p id="fecha<?php echo $i ?>" class="card-text textoSombra p-2 m-0 mt-2">{{substr(strip_tags($noticia->contenido), 0, 200)}}</p>
+                    <p class="card-text textoSombra p-2 m-0 mt-4">Autor <span>{{$noticia->updated_at}}</span></p>
+                    <p class="card-text textoSombra p-2 m-0 mt-2">{{substr(strip_tags($noticia->contenido), 0, 200)}}</p>
                 </div>
             </div>
         </a>
