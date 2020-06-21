@@ -122,7 +122,6 @@ html,body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index:1;
 }
 .headerFicha
 {
@@ -436,13 +435,7 @@ border-color: transparent dimgray transparent transparent;
 {
 	overflow-y:hidden;
 }
-.overlayTitulo
-{
-	z-index:999;
-	position:relative;
-	background-color:#3962FF;
-	border:3px solid #073D93;
-}
+
 .w-90
 {
 	width:90%!important;
@@ -450,7 +443,6 @@ border-color: transparent dimgray transparent transparent;
 .overlaySombra
 {
 	position:absolute;
-	z-index:100;
 	min-height:30px;
 	max-height:200px;
 	width:100%;
@@ -518,8 +510,10 @@ border-color: transparent dimgray transparent transparent;
 {
 	animation:moverSombra 0.5s forwards;
 }
-.overlayFicha
+.overlayTitulo
 {
+	position:relative;
+	border:3px solid #073D93;
 	background:
     radial-gradient(circle, transparent 20%,  #007bff 20%,  #007bff 80%, transparent 80%, transparent),
     radial-gradient(circle, transparent 20%,  #007bff 20%,  #007bff 80%, transparent 80%, transparent) 50px 50px,
@@ -527,6 +521,23 @@ border-color: transparent dimgray transparent transparent;
     linear-gradient(90deg, #073D93 8px, transparent 8px) -4px 0;
   background-color: #007bff;
   background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+}
+.overlayTitulo::before
+{
+	position:absolute;
+	z-index:-1;
+	height:100%;
+	content:'';
+	width:100%;
+	top:-10px;
+	right:-10px;
+	background-image: radial-gradient(#DD4868 20%, transparent 10%),
+      radial-gradient(#DD4868 20%, transparent 10%);
+  background-color: #FF5277;
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  border:3px solid #C8425F;
+	transform:rotate(2.2deg);
 }
 .sombraFicha
 {
