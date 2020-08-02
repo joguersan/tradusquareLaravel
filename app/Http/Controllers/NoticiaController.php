@@ -77,7 +77,6 @@ class NoticiaController extends Controller
      */
     public function show(Noticia $noticia)
     {
-      $fichas = Ficha::all();
       return view('noticias.show', [
         'noticia' => $noticia
       ]);

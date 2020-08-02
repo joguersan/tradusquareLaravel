@@ -90,8 +90,8 @@
 	</div>
 	@endif
 </div>
-@foreach($ficha->noticias as $key=>$value)
-	{{$value->titulo}}<br>
+@foreach($ficha->noticias as $noticia)
+	<a href="{{route('noticias.show', $noticia)}}">{{$noticia->titulo}}</a><br>
 	@endforeach
 	<a class="btn btn-primary" href="{{route('fichas.edit', $ficha)}}">Editar ficha</a>
 	<form method="POST" action="{{route('fichas.destroy', $ficha)}}">

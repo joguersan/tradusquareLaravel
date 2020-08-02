@@ -26,7 +26,7 @@
 								<div class="text-center seccionNoticia tituloHeader overlayTitulo p-1" style="font-size:1.5rem">Proyectos relacionados</div>
 									<div class="col">
 										@foreach($noticia->fichas as $ficha)
-											{{$ficha->nombre}}
+											<a href="{{route('fichas.show', $ficha)}}">{{$ficha->nombre}}</a>
 											@endforeach
 									</div>
 							</div>
@@ -36,7 +36,7 @@
 								<div class="text-center seccionNoticia tituloHeader overlayTitulo p-1" style="font-size:1.5rem">Grupos relacionados</div>
 									<div class="col">
 										@foreach($noticia->fichas as $ficha)
-											{{$ficha->nombre}}
+											<a href="{{route('fichas.show', $ficha)}}">{{$ficha->nombre}}</a>
 											@endforeach
 									</div>
 							</div>
