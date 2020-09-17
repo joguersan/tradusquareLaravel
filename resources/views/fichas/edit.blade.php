@@ -37,9 +37,15 @@
   @endforeach
 
 @endsection
+@section('campoGrupos')
+  @foreach($grupos as $grupo)
+  <option value="{{$grupo->id}}" {{ in_array($grupo->id, $selected_groups ) == 1 ? 'selected' : '' }}>{{$grupo->nombre}}</option>
+  @endforeach
+
+@endsection
 
 @section('campoLinks')
-  {{$ficha->links}}
+  {{$ficha->descarga}}
 @endsection
 @section('campoEstado')
   <option {{{$ficha->estado == 'Completado' ? 'selected': '' }}}>Completado</option>

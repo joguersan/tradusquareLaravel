@@ -46,6 +46,13 @@
 			</tr>
 			@endforeach
 		</tbody>
+		<tfoot>
+					<tr>
+						<th>Imagen</th>
+						<th>Juego</th>
+						<th>Plataformas</th>
+					</tr>
+				</tfoot>
 	</table>
 </div>
 @endsection
@@ -54,7 +61,8 @@
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready( function () {
-	    $('#tablaProyectos').DataTable();
+	    $('#tablaProyectos').DataTable(
+		);
 	} );
 </script>
 @endsection

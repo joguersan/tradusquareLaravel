@@ -2,18 +2,8 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!--<script src="{{asset('js/lazyload.js')}}"></script>-->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/langs/es.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/trumbowyg.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/ui/trumbowyg.min.css" rel="stylesheet" />
-
+    @include('partials.estilo')
+    @include('partials.estiloEditor')
 </head>
 
 <body>
@@ -41,7 +31,7 @@
                                     <div class="input-group-prepend">
                                         <label for="contenido" class="btn btn-dark m-0">Ficha</label>
                                     </div>
-                                    <textarea rows="10" class="m-0" name="ficha" value="{{old('ficha')}}" id="contenido" placeholder="Contenido de la entrada">@yield('campoFicha')</textarea>
+                                    <textarea class="summernote m-0" name="ficha" value="{{old('ficha')}}" id="contenido" placeholder="Datos del proyecto">@yield('campoFicha')</textarea>
                                 </div>
                                 {{$errors->first('ficha')}}
 
@@ -49,7 +39,7 @@
                                     <div class="input-group-prepend">
                                         <label for="contenido" class="btn btn-dark m-0">Información adicional</label>
                                     </div>
-                                    <textarea rows="10" class="m-0" name="info" value="{{old('info')}}" id="contenido" placeholder="Información adicional">@yield('campoInfo')</textarea>
+                                    <textarea rows="10" class="summernote m-0" name="info" value="{{old('info')}}" id="contenido" placeholder="Información adicional">@yield('campoInfo')</textarea>
                                 </div>
                                 {{$errors->first('info')}}
 
@@ -57,7 +47,7 @@
                                     <div class="input-group-prepend">
                                         <label for="contenido" class="btn btn-dark m-0">Equipo</label>
                                     </div>
-                                    <textarea rows="10" class="m-0" name="equipo" value="{{old('equipo')}}" id="equipo" placeholder="Equipo">@yield('campoEquipo')</textarea>
+                                    <textarea rows="10" class="summernote m-0" name="equipo" value="{{old('equipo')}}" id="equipo" placeholder="Equipo">@yield('campoEquipo')</textarea>
                                 </div>
                                 {{$errors->first('equipo')}}
 
@@ -65,7 +55,7 @@
                                     <div class="input-group-prepend">
                                         <label for="contenido" class="btn btn-dark m-0">Sinopsis</label>
                                     </div>
-                                    <textarea rows="10" class="m-0" name="sinopsis" value="{{old('sinopsis')}}" id="sinopsis" placeholder="Sinopsis">@yield('campoSinopsis')</textarea>
+                                    <textarea class="m-0 summernote" name="sinopsis" value="{{old('sinopsis')}}" id="sinopsis" placeholder="Sinopsis">@yield('campoSinopsis')</textarea>
                                 </div>
                                 {{$errors->first('equipo')}}
 
@@ -73,7 +63,7 @@
                                     <div class="input-group-prepend">
                                         <label for="contenido" class="btn btn-dark m-0">Enlaces del parche</label>
                                     </div>
-                                    <textarea rows="10" class="m-0" name="links" value="{{old('links')}}" id="links" placeholder="Links">@yield('campoLinks')</textarea>
+                                    <textarea class="summernote m-0" name="links" value="{{old('links')}}" id="links" placeholder="Links">@yield('campoLinks')</textarea>
                                 </div>
                                 {{$errors->first('equipo')}}
 
@@ -89,7 +79,15 @@
                                         <label class="btn btn-dark">Plataformas</label>
                                     </div>
                                     <select class="juegos w-75" name="plataformas[]" class="form-control" multiple>
-                                      @yield('campoPlataforma')
+                                        @yield('campoPlataforma')
+                                    </select>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend">
+                                        <label class="btn btn-dark">Grupos</label>
+                                    </div>
+                                    <select class="juegos w-75" name="grupos[]" class="form-control" multiple>
+                                        @yield('campoGrupos')
                                     </select>
                                 </div>
                                 <div class="input-group mt-3 w-25">
@@ -110,13 +108,17 @@
         </div>
     </div>
     <script>
+        $('.summernote').summernote({
+            height: 300,
+            focus: true
+        });
+    </script>
+    <script>
         $(document).ready(function() {
             $('.juegos').select2();
         });
     </script>
-    <script>
-        $('textarea').trumbowyg();
-    </script>
+
 </body>
 
 </html>

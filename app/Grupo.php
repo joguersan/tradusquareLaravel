@@ -20,4 +20,5 @@ class Grupo extends Model
   public function usuarios(){
     return $this->belongsToMany('App\User', 'user_grupo')->withPivot('user_id', 'grupo_id');
   }
+  protected $fillable = ['id', 'nombre', 'logo', 'descripcion', 'web', 'correo', 'twitter', 'facebook', 'youtube', 'discord', 'url'];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Grupo;
 use Illuminate\Http\Request;
+use App\Ficha;
 use View;
 class GrupoController extends Controller
 {
@@ -25,7 +26,10 @@ class GrupoController extends Controller
      */
     public function create()
     {
-        //
+      $fichas = Ficha::all();
+      return view('grupos.create', [
+        'fichas' => $fichas
+      ]);
     }
 
     /**
@@ -34,9 +38,27 @@ class GrupoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Grupo $grupo)
     {
-        //
+      $char_raros=array("\"","+","*","'","#","?","¿","!","¡","/", "[","]","(",")","[",":",",",".",";","%");
+      $a=['á','é','í','ó','ú','ñ'];
+      $b=['a','e','i','o','u','n'];
+      $url=str_replace(" ", "-", request('nombre'));
+      $url=str_replace($a, $b, $url);
+      $grupo->create([
+        'nombre'=> request('nombre'),
+        'url'=> $url,
+        'descripcion' => request('descripcion'),
+        'logo' => request('logo'),
+        'web' => request('web'),
+        'correo' => request('correo'),
+        'twitter' => request('twitter'),
+        'facebook' => request('facebook'),
+        'youtube' => request('youtube'),
+        'discord' => request('discord')
+      ]);
+      $grupo -> fichas() -> sync(request('fichas'));
+      return redirect()->route('grupos.index');
     }
 
     /**
@@ -60,7 +82,16 @@ class GrupoController extends Controller
      */
     public function edit(Grupo $grupo)
     {
-        //
+      $selected_categories = [];
+      foreach($grupo->fichas as $ficha){
+          array_push($selected_categories, $ficha->id);
+      }
+      $fichas = Ficha::all();
+      return view('grupos.edit', [
+        'grupo' => $grupo,
+        'fichas' => $fichas,
+        'selected_categories' => $selected_categories
+      ]);
     }
 
     /**
@@ -72,7 +103,27 @@ class GrupoController extends Controller
      */
     public function update(Request $request, Grupo $grupo)
     {
-        //
+      $char_raros=array("\"","+","*","'","#","?","¿","!","¡","/", "[","]","(",")","[",":",",",".",";","%");
+      $a=['á','é','í','ó','ú','ñ'];
+      $b=['a','e','i','o','u','n'];
+      $url=str_replace(" ", "-", request('nombre'));
+      $url=str_replace($char_raros, "", $url);
+      $url=str_replace($a, $b, $url);
+      $url=strtolower($url);
+      $grupo->update([
+        'nombre'=> request('nombre'),
+        'url'=> $url,
+        'descripcion' => request('descripcion'),
+        'logo' => request('logo'),
+        'correo' => request('correo'),
+        'web' => request('web'),
+        'facebook' => request('facebook'),
+        'twitter' => request('twitter'),
+        'youtube' => request('youtube'),
+        'discord' => request('discord')
+      ]);
+      $grupo -> fichas() -> sync(request('fichas'));
+      return redirect()->route('grupos.show', $grupo);
     }
 
     /**

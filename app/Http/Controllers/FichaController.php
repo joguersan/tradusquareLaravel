@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Ficha;
+use App\Grupo;
 use App\Plataforma;
 use Illuminate\Http\Request;
 use View;
@@ -30,7 +31,12 @@ class FichaController extends Controller
      */
     public function create()
     {
-      return view('fichas.create');
+      $plataformas = Plataforma::all();
+      $grupos = Grupo::all();
+      return view('fichas.create', [
+        'plataformas' => $plataformas,
+        'grupos' => $grupos
+      ]);
     }
 
     /**
@@ -56,6 +62,8 @@ class FichaController extends Controller
         'descarga' => request('links'),
         'estado' => request('estado')
       ]);
+      $ficha -> plataformas() -> attach(request('plataformas'));
+      $ficha -> grupos() -> attach(request('grupos'));
       return redirect()->route('fichas.index');
     }
 
@@ -82,14 +90,21 @@ class FichaController extends Controller
     public function edit(Ficha $ficha)
     {
       $selected_categories = [];
+      $selected_groups = [];
       foreach($ficha->plataformas as $plataforma){
           array_push($selected_categories, $plataforma->id);
       }
+      foreach($ficha->grupos as $grupo){
+          array_push($selected_groups, $grupo->id);
+      }
       $plataformas = Plataforma::all();
+      $grupos = Grupo::all();
       return view('fichas.edit', [
         'ficha' => $ficha,
         'plataformas' => $plataformas,
-        'selected_categories' => $selected_categories
+        'grupos' => $grupos,
+        'selected_categories' => $selected_categories,
+        'selected_groups' => $selected_groups,
       ]);
     }
 
@@ -120,6 +135,7 @@ class FichaController extends Controller
         'estado' => request('estado')
       ]);
       $ficha -> plataformas() -> sync(request('plataformas'));
+      $ficha -> grupos() -> sync(request('grupos'));
       return redirect()->route('ficha.show', $ficha);
     }
 
