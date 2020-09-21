@@ -43,13 +43,14 @@
 					</div>
 				</div>
 				<div class="row m-0 p-3 bg-secondary">
-					@foreach($noticia->comentarios as $comentario)
+					@foreach($comentarios as $comentario)
 						<div class="col-md-6">
 						<div class="row tarjeta mb-3 bg-white">
 							<div class="col-md-12">
 								<div class="row overlayTitulo text-white p-1">
 									<div class="col-md-6">
-										<b>{{ $comentario -> usuario }}</b>
+										<img class="imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}"/>
+										<b>{{ $comentario -> users -> nick }}</b>
 									</div>
 									<div class="col-md-6">
 										<b>{{ $comentario -> created_at->format('d-m-Y')}}</b>

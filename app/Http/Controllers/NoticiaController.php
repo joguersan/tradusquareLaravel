@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Noticia;
+use App\Comentario;
 use App\Ficha;
 use App\User;
 use Illuminate\Http\Request;
@@ -77,8 +78,10 @@ class NoticiaController extends Controller
      */
     public function show(Noticia $noticia)
     {
+      $comentarios = $noticia->comentarios;
       return view('noticias.show', [
-        'noticia' => $noticia
+        'noticia' => $noticia,
+        'comentarios' => $comentarios
       ]);
     }
 
