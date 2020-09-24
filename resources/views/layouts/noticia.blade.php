@@ -9,8 +9,6 @@
 
 <body>
 	<div class="container-fluid p-0">
-		<div class="col text-center p-0 cabecera">
-		</div>
 		@include('partials/nav')
 		<div class="container-fluid bg-white p-0">
 			@yield('headerEntrada')
@@ -42,14 +40,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="row m-0 p-3 bg-secondary">
+				<div class="row m-0 p-3 bg-light border">
 					@foreach($comentarios as $comentario)
 						<div class="col-md-6">
 						<div class="row tarjeta mb-3 bg-white">
 							<div class="col-md-12">
 								<div class="row overlayTitulo text-white p-1">
 									<div class="col-md-6">
-										<img class="imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}"/>
+										<img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}"/>
 										<b>{{ $comentario -> users -> nick }}</b>
 									</div>
 									<div class="col-md-6">
@@ -58,11 +56,25 @@
 								</div>
 							</div>
 							<div class="col-md-12 p-3">
-								{{ $comentario -> mensaje }}
+								{!! $comentario -> mensaje !!}
+							</div>
+							<div class="row p-0 m-2">
+								<a class="btn btn-primary mr-2" href="{{route('comentarios.edit', $comentario)}}">Editar</a>
+								<form method="POST" action="{{route('comentarios.destroy', $comentario)}}">
+									@csrf
+									@method('DELETE')
+								<button class="btn btn-primary">Eliminar</button>
+							</form>
 							</div>
 						</div>
 					</div>
 						@endforeach
+				</div>
+				<div class="row border m-0 mt-2 mb-2 bg-light">
+					<form method="POST" action="{{route('comentarios.store')}}">
+						<textarea class="form-control m-2" cols="100" rows="5" placeholder="Escribe tu comentario. Recuerda ser respetuoso y escribir sin faltas de ortografía." id="mensaje" name="mensaje"></textarea>
+						<button class="btn btn-primary ml-2 mb-2">Enviar comentario</button>
+					</form>
 				</div>
 				<a class="btn btn-primary" href="{{route('noticias.edit', $noticia)}}">Editar noticia</a>
 				<form method="POST" action="{{route('noticias.destroy', $noticia)}}">

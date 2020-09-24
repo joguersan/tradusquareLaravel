@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Comentario;
 use App\Noticia;
+use App\Ficha;
+use App\EntradaTablon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class ComentarioController extends Controller
+class InicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +18,15 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-      $comentarios = Comentario::all();
-
-      return $comentarios;
+      $noticias = new Noticia();
+      $comentarios = new Comentario();
+      $fichas = new Ficha();
+      $tablon = new EntradaTablon();
+      $noticias = DB::table('noticias')->orderBy('updated_at', 'desc')->take(6)->get();
+      $comentarios = DB::table('comentarios')->orderBy('updated_at', 'desc')->take(5)->get();
+      $fichas = DB::table('fichas')->orderBy('updated_at', 'desc')->take(3)->get();
+      $tablon = DB::table('entrada_tablons')->orderBy('updated_at', 'desc')->take(3)->get();
+      return view('inicio.index', ['noticias'=> $noticias, 'comentarios' => $comentarios, 'fichas' => $fichas, 'tablon' => $tablon]);
     }
 
     /**
@@ -36,7 +45,7 @@ class ComentarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
     }
@@ -47,7 +56,7 @@ class ComentarioController extends Controller
      * @param  int $comentario ID
      * @return \Illuminate\Http\Response
      */
-    public function show(Comentario $comentario)
+    public function show()
     {
       return $comentario;
     }
@@ -58,11 +67,9 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-      public function edit(Comentario $comentario)
+      public function edit()
     {
-      return view('comentarios.edit', [
-          'comentario' => $comentario,
-        ]);
+
     }
 
     /**
@@ -72,12 +79,8 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function update(Comentario $comentario)
+    public function update()
     {
-      $comentario->update([
-        'mensaje' => request('mensaje'),
-      ]);
-      return redirect()->route('inicio');
     }
 
     /**
@@ -86,14 +89,11 @@ class ComentarioController extends Controller
      * @param  \App\Comentario  $comentario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comentario $comentario)
+    public function destroy()
     {
-      $comentario -> delete();
-      return redirect()->route('inicio');
     }
 
     public function back()
     {
-      return redirect()->back()->with('error', 'Something went wrong.');
     }
 }

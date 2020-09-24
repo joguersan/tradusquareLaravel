@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\EntradaTablon;
 use Illuminate\Http\Request;
+use View;
 
 class EntradaTablonController extends Controller
 {
@@ -16,7 +17,7 @@ class EntradaTablonController extends Controller
     {
       $entradas = EntradaTablon::all();
 
-      return $entradas;
+      return view('tablon.index', ['entradas'=> $entradas]);
     }
 
     /**
@@ -84,6 +85,7 @@ class EntradaTablonController extends Controller
      */
     public function destroy(EntradaTablon $entrada_Tablon)
     {
-        //
+      $entrada_Tablon -> delete();
+      return redirect()->route('tablon-de-misiones.index');
     }
 }

@@ -8,8 +8,6 @@
 
 <body>
 	<div class="container-fluid p-0">
-		<div class="col text-center p-0 cabecera">
-		</div>
 		@include('partials/nav')
 		<div class="container-fluid bg-white p-0">
 			@yield('headerEntrada')

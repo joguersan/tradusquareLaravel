@@ -1,6 +1,6 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-light navbar-primary border pb-0 m-0">
     <a class="navbar-brand imagenCabecera" href="{{route('inicio')}}">
-      <img src="/images/logo.webp" />
+      <img src="/images/logo.webp" alt="Logo de TraduSquare"/>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
                 <a class="nav-link {{ setActive('amala') }}" href="{{route('amala')}}"><i class="fas fa-dungeon" aria-hidden="true"></i> Proyecto Amala</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://tradusquare.es/tablon-de-misiones.php"><i class="fas fa-chalkboard" aria-hidden="true"></i> Tablón de misiones</a>
+                <a class="nav-link {{ setActive('amala') }}" href="{{route('tablon-de-misiones.index')}}"><i class="fas fa-chalkboard" aria-hidden="true"></i> Tablón de misiones</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

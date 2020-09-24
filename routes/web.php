@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'NoticiaController@index')->name('inicio');
+Route::get('/', 'InicioController@index')->name('inicio');
 Route::post('/noticias/store', 'NoticiaController@store')->name('noticia.store');
 Route::patch('/noticias/{noticia}/update', 'NoticiaController@update')->name('noticia.update');
+Route::patch('/comentarios/{comentario}/update', 'ComentarioController@update')->name('comentario.update');
 Route::patch('/fichas/{ficha}/update', 'FichaController@update')->name('ficha.update');
 Route::post('/noticias/{noticia}', 'NoticiaController@destroy')->name('noticia.destroy');
 Route::post('/noticias/{noticia}', 'NoticiaController@show')->name('noticia.show');
@@ -29,8 +30,8 @@ Route::resources([
   'grupos' => 'GrupoController',
   'comentarios' => 'ComentarioController',
   'entradas' => 'EntradaTablonController',
-  'usuarios' => 'UsuarioController'
+  'usuarios' => 'UsuarioController',
+  'tablon-de-misiones' => 'EntradaTablonController'
 ]);
 Route::view('/informacion', 'informacion')->name('informacion');
 Route::view('/amala', 'amala')->name('amala');
-Route::view('/tablon-de-misiones', 'tablon')->name('tablon');
