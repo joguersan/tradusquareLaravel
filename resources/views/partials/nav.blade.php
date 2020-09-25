@@ -1,6 +1,6 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-light navbar-primary border pb-0 m-0">
     <a class="navbar-brand imagenCabecera" href="{{route('inicio')}}">
-      <img src="/images/logo.webp" alt="Logo de TraduSquare"/>
+      <img src="/images/logoMini.webp" alt="Logo de TraduSquare"/>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -1,6 +1,7 @@
 @extends('layouts.ficha')
 @section('metaAdicional')
-<title>{{$ficha->nombre}}</title>
+<title>Traducción {{$ficha->nombre}}</title>
+<meta name="description" content="Parche de traducción para el juego {{$ficha->nombre}} por el equipo @foreach($ficha->grupos as $grupo){{$grupo-> nombre}} @endforeach"
 @endsection
 
 @section('titulo')

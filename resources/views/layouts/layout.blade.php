@@ -17,7 +17,6 @@
 			</div>
 		</div>
 		@include('partials/footer')
-		@include('partials/javascript')
 		@yield(@'JSextra')
 	</body>
 </html>

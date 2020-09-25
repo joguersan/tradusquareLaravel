@@ -71,7 +71,10 @@
         });
     </script>
     <script>
-        $('#contenido').trumbowyg();
+        $('#contenido').summernote({
+            height: 500,
+            focus: true
+        });
     </script>
 </body>
 
