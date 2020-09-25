@@ -18,14 +18,10 @@ class InicioController extends Controller
      */
     public function index()
     {
-      $noticias = new Noticia();
-      $comentarios = new Comentario();
-      $fichas = new Ficha();
-      $tablon = new EntradaTablon();
-      $noticias = DB::table('noticias')->orderBy('updated_at', 'desc')->take(6)->get();
-      $comentarios = DB::table('comentarios')->orderBy('updated_at', 'desc')->take(5)->get();
-      $fichas = DB::table('fichas')->orderBy('updated_at', 'desc')->take(3)->get();
-      $tablon = DB::table('entrada_tablons')->orderBy('updated_at', 'desc')->take(3)->get();
+      $noticias = Noticia::where('estado', '=', 'Publicada')->orderBy('updated_at', 'desc')->take(6)->get();
+      $comentarios = Comentario::orderBy('updated_at', 'desc')->take(5)->get();
+      $fichas = Ficha::orderBy('updated_at', 'desc')->take(3)->get();
+      $tablon = EntradaTablon::orderBy('updated_at', 'desc')->take(3)->get();
       return view('inicio.index', ['noticias'=> $noticias, 'comentarios' => $comentarios, 'fichas' => $fichas, 'tablon' => $tablon]);
     }
 

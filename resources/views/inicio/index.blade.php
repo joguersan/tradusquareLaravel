@@ -33,7 +33,7 @@
         @foreach($tablon as $entrada)
         <div class="tarjeta bg-white rounded mb-2 p-2">{{$entrada->titulo}}</div>
         @endforeach
-        <a href="{{route('comentarios.index')}}"><button class="btn btn-primary">Ver el tablón de misiones</button></a>
+        <a href="{{route('tablon-de-misiones.index')}}"><button class="btn btn-primary">Ver el tablón de misiones</button></a>
     </div>
 </div>
 @endsection

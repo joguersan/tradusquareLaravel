@@ -4,7 +4,7 @@
 <meta name="description" content="¿Quieres participar en una traducción fan de un videojuego al español y no sabes por dónde empezar? ¡Apúntate en nuestro tablón de misiones, buscamos colaboradores!"
 <script src="{{asset('js/lazyload.js')}}"></script>
 @endsection
-
+</section>
 @section('contenido')
   <div class="text-center">
       <img src="images/estilo/tablonTitle.jpg" class="titular w-50 mb-2" alt="Últimas noticias">
@@ -43,8 +43,9 @@
     @endforelse
   </div>
   <div class="row text-center">
-          <div class="col-md-3 elementoTablon">
-  				<img src="https://tradusquare.es/tablon/nueva.png">
-  			  </div>
-            </div>
+        <div class="col-md-3 elementoTablon">
+  			       <a href="{{route('tablon-de-misiones.create')}}"><img src="https://tradusquare.es/tablon/nueva.png"></a>
+        </div>
+  </div>
 @endsection
+@include('partials.javascript')
