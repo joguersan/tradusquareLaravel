@@ -3,6 +3,7 @@
 
 <head>
     @include('partials.estilo')
+    @include('partials/javascript')
     @include('partials.estiloEditor')
 </head>
 
@@ -118,7 +119,6 @@
             $('.juegos').select2();
         });
     </script>
-
 </body>
 
 </html>

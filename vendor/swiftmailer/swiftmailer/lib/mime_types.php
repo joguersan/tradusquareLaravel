@@ -17,7 +17,7 @@
 
 // You may add or take away what you like (lowercase required)
 
-$swift_mime_types = [
+$swift_mime_types = array(
     '3dml' => 'text/vnd.in3d.3dml',
     '3ds' => 'image/x-3ds',
     '3g2' => 'video/3gpp2',
@@ -564,7 +564,7 @@ $swift_mime_types = [
     'osf' => 'application/vnd.yamaha.openscoreformat',
     'osfpvg' => 'application/vnd.yamaha.openscoreformat.osfpvg+xml',
     'otc' => 'application/vnd.oasis.opendocument.chart-template',
-    'otf' => 'application/x-font-otf',
+    'otf' => 'font/otf',
     'otg' => 'application/vnd.oasis.opendocument.graphics-template',
     'oth' => 'application/vnd.oasis.opendocument.text-web',
     'oti' => 'application/vnd.oasis.opendocument.image-template',
@@ -821,8 +821,8 @@ $swift_mime_types = [
     'trm' => 'application/x-msterminal',
     'tsd' => 'application/timestamped-data',
     'tsv' => 'text/tab-separated-values',
-    'ttc' => 'application/x-font-ttf',
-    'ttf' => 'application/x-font-ttf',
+    'ttc' => 'font/collection',
+    'ttf' => 'font/ttf',
     'ttl' => 'text/turtle',
     'twd' => 'application/vnd.simtech-mindmapper',
     'twds' => 'application/vnd.simtech-mindmapper',
@@ -917,7 +917,8 @@ $swift_mime_types = [
     'wmv' => 'video/x-ms-wmv',
     'wmx' => 'video/x-ms-wmx',
     'wmz' => 'application/x-msmetafile',
-    'woff' => 'application/font-woff',
+    'woff' => 'font/woff',
+    'woff2' => 'font/woff2',
     'wpd' => 'application/vnd.wordperfect',
     'wpl' => 'application/vnd.ms-wpl',
     'wps' => 'application/vnd.ms-works',
@@ -1003,5 +1004,5 @@ $swift_mime_types = [
     'zir' => 'application/vnd.zul',
     'zirz' => 'application/vnd.zul',
     'zmm' => 'application/vnd.handheld-entertainment+xml',
-    '123' => 'application/vnd.lotus-1-2-3',
-];
+    '123' => 'application/vnd.lotus-1-2-3'
+);

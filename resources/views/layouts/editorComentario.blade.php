@@ -3,6 +3,7 @@
 
 <head>
     @include('partials.estilo')
+    @include('partials/javascript')
     @include('partials.estiloEditor')
 </head>
 
