@@ -52,7 +52,7 @@
 									</div>
 									<div class="col-md-5">
 										<b>{{ $comentario -> created_at->format('d-m-Y')}}</b>
-										<a href="{{route('noticia.show', $noticia)}}#{{ $comentario -> id }}"><b>#{{ $comentario -> id }}</b>
+										<b><a href="{{route('noticia.show', $noticia)}}#{{ $comentario -> id }}">#{{ $comentario -> id }}</a></b>
 									</div>
 								</div>
 							</div>
