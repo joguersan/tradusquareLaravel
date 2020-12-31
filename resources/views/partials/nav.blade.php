@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-lg bg-light navbar-primary border pb-0 m-0">
+<nav class="navbar navbar-expand-lg bg-light navbar-primary border pb-0 m-0">
     <a class="navbar-brand imagenCabecera" href="{{route('inicio')}}">
       <img src="/images/logoMini.webp" alt="Logo de TraduSquare"/>
     </a>

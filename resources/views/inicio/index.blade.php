@@ -24,7 +24,7 @@
     <div class="col-md-6">
       <img src="images/estilo/commentTitleMini.webp" alt="Últimos comentarios" class="w-75 mb-2">
         @foreach($comentarios as $comentario)
-        <a href="{{route('comentarios.show', $comentario->id)}}"><div class="tarjeta bg-white rounded mb-2 p-2">{!!$comentario->mensaje!!}</div></a>
+        <a href="{{route('noticia.show', $comentario->noticias->url . '#' . $comentario->id)}}"><div class="tarjeta bg-white rounded mb-2 p-2">{!!$comentario->mensaje!!}</div></a>
         @endforeach
         <a href="{{route('comentarios.index')}}"><button class="btn btn-primary">Ver todos los comentarios</button></a>
     </div>

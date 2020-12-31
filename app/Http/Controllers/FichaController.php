@@ -132,7 +132,8 @@ class FichaController extends Controller
         'equipo' => request('equipo'),
         'imagen' => request('imagen'),
         'descarga' => request('links'),
-        'estado' => request('estado')
+        'estado' => request('estado'),
+        'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
       ]);
       $ficha -> plataformas() -> sync(request('plataformas'));
       $ficha -> grupos() -> sync(request('grupos'));

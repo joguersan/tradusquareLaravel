@@ -10,7 +10,7 @@ class Comentario extends Model
     * Obtiene la noticia a la que pertenece el comentario
     */
     public function noticias(){
-      return $this->belongsTo('App\Noticia');
+      return $this->belongsTo('App\Noticia', 'noticia_id');
     }
     public function users(){
       return $this->belongsTo('App\User');
