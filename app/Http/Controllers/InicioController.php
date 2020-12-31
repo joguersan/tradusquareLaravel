@@ -20,7 +20,7 @@ class InicioController extends Controller
     {
       $noticias = Noticia::where('estado', '=', 'Publicada')->orderBy('updated_at', 'desc')->take(6)->get();
       $comentarios = Comentario::orderBy('updated_at', 'desc')->take(5)->get();
-      $fichas = Ficha::orderBy('updated_at', 'desc')->take(3)->get();
+      $fichas = Ficha::orderBy('updated_at', 'desc')->take(5)->get();
       $tablon = EntradaTablon::orderBy('updated_at', 'desc')->take(3)->get();
       return view('inicio.index', ['noticias'=> $noticias, 'comentarios' => $comentarios, 'fichas' => $fichas, 'tablon' => $tablon]);
     }

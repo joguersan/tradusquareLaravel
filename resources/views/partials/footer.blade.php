@@ -1,5 +1,5 @@
 <div class="container-fluid bg-dark text-muted p-3 text-center row m-0">
-  <div class="col-md-9">
+  <div class="col-md-9 text-left align-self-center">
     Todos los proyectos alojados en esta página son realizados por fans para fans sin ánimo de lucro.<br>
     En esta página únicamente aparecerá contenido sin Copyright y parches para aplicar a copias de juego originales.<br>
     TraduSquare 2017-2020

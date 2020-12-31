@@ -31,3 +31,14 @@ function hideBars($valor)
   }
   return $color;
 }
+
+function getDescription($valor)
+{
+  $texto = strip_tags($valor);
+  if (mb_strlen($texto, "UTF-8") >200){
+    $texto = wordwrap($texto, 200, "$", false);
+    $texto = explode("$", $texto)[0];
+    $texto = $texto."...";
+  }
+  return $texto;
+}
