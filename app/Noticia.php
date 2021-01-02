@@ -24,6 +24,10 @@ class Noticia extends Model
       return $this->hasMany('App\Comentario');
     }
 
+    public function autor(){
+      return $this->BelongsTo('App\Noticia', 'autor');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

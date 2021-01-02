@@ -77,21 +77,21 @@
 		</div>
 		<div class="fichaTituloTriangulo"></div>
 		<div class="pl-2 pb-2 pr-2 pt-0 fichaContenido">
-			<div class="progress position-relative {{hideBars($ficha->traduccion)}}">
+			<div class="progress position-relative mb-1 {{hideBars($ficha->traduccion)}}">
 			  <div class="progress-bar {{ratingColor($ficha->traduccion)}}" role="progressbar" style="width:{{$ficha->traduccion}}%" aria-valuenow="{{$ficha->traduccion}}" aria-valuemin="0" aria-valuemax="100"></div>
-				<small class="justify-content-center align-self-center d-flex position-absolute w-100">Traducción: {{$ficha->traduccion}}%</small>
+				<small class="porcentaje justify-content-center align-self-center d-flex position-absolute w-100">Traducción: {{$ficha->traduccion}}%</small>
 			</div>
-			<div class="progress position-relative {{hideBars($ficha->traduccion)}}">
+			<div class="progress position-relative mb-1 {{hideBars($ficha->traduccion)}}">
 			  <div class="progress-bar {{ratingColor($ficha->correccion)}}" role="progressbar" style="width: {{$ficha->correccion}}%" aria-valuenow="{{$ficha->correccion}}" aria-valuemin="0" aria-valuemax="100"></div>
-				<small class="justify-content-center align-self-center d-flex position-absolute w-100">Corrección: {{$ficha->correccion}}%</small>
+				<small class="porcentaje justify-content-center align-self-center d-flex position-absolute w-100">Corrección: {{$ficha->correccion}}%</small>
 			</div>
-			<div class="progress position-relative {{hideBars($ficha->traduccion)}}">
+			<div class="progress position-relative mb-1 {{hideBars($ficha->traduccion)}}">
 			  <div class="progress-bar {{ratingColor($ficha->edicion)}}" role="progressbar" style="width: {{$ficha->edicion}}%" aria-valuenow="{{$ficha->edicion}}" aria-valuemin="0" aria-valuemax="100"></div>
-				<small class="justify-content-center align-self-center d-flex position-absolute w-100">Edición gráfica: {{$ficha->edicion}}%</small>
+				<small class="porcentaje justify-content-center align-self-center d-flex position-absolute w-100">Edición gráfica: {{$ficha->edicion}}%</small>
 			</div>
 			<div class="progress position-relative {{hideBars($ficha->traduccion)}}">
 			  <div class="progress-bar {{ratingColor($ficha->betatesting)}}" role="progressbar" style="width: {{$ficha->betatesting}}%" aria-valuenow="{{$ficha->betatesting}}" aria-valuemin="0" aria-valuemax="100"></div>
-				<small class="justify-content-center align-self-center d-flex position-absolute w-100">Betasteting: {{$ficha->betatesting	}}%</small>
+				<small class="porcentaje justify-content-center align-self-center d-flex position-absolute w-100">Betasteting: {{$ficha->betatesting	}}%</small>
 			</div>
 		</div>
 	</div>

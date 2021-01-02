@@ -7,7 +7,7 @@ function setActive($ruta)
 function ratingColor($valor)
 {
   $color = "white";
-    if ($valor < 20)
+    if ($valor <= 20)
     {
       $color = "bg-danger";
     }
@@ -17,7 +17,11 @@ function ratingColor($valor)
     }
     elseif ($valor > 50 && $valor < 80)
     {
-      $color = "bg-info";
+      $color = "bg-primary";
+    }
+    elseif ($valor >= 80)
+    {
+      $color = "bg-success";
     }
   return $color;
 }
@@ -41,4 +45,9 @@ function getDescription($valor)
     $texto = $texto."...";
   }
   return $texto;
+}
+
+function getUpdatedAtAttribute($date)
+{
+    return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y');
 }
