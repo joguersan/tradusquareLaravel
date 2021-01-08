@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.inicio')
 @section('metaAdicional')
   <title>TraduSquare</title>
   <meta name="description" content="Comunidad hispana de fantraducción de videojuegos que aúna a decenas de equipos de la scene hispana para ofrecer parches de traducción de calidad en español y otros idiomas peninsulares como el catalán."/>

@@ -6,8 +6,8 @@
 @endsection
 </section>
 @section('contenido')
-  <div class="text-center">
-      <img src="images/estilo/tablonTitle.jpg" class="titular w-50 mb-2" alt="Últimas noticias">
+  <div class="text-center  mb-2">
+      <img src="images/estilo/tablonTitle.jpg" class="w-md-50" title="Tablón de misiones" alt="Tablón de misiones">
   </div>
   <div class="row m-3 p-0">
     @forelse($entradas as $entrada)
@@ -39,7 +39,7 @@
         </div>
       @endif
       @empty
-      <div class="col text-center">No necesitamos ayuda en ningún proyecto. ¡Prueba dentro de un tiempo!</div>
+      <div class="col text-center">No necesitamos ayuda en ningún proyecto. ¡Prueba de nuevo en unos días!</div>
     @endforelse
   </div>
   <div class="row text-center">
