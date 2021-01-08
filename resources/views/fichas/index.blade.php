@@ -1,23 +1,15 @@
 @extends('layouts.layout')
 @section ('metaAdicional')
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/b-1.6.5/r-2.2.7/sp-1.2.2/sl-1.3.1/datatables.min.css"/>
 <title>Proyectos de traducción</title>
 @endsection
 @section('contenido')
 <nav aria-label="Navegación por plataforma">
-	<ul class="flex-wrap pagination pagination-md justify-content-left">
-		@foreach ($plataformas as $plataformaItem)
-		<li class="page-item"><a class="page-link" href="{{route('plataformas.show', $plataformaItem)}}"><img class="img-fluid mr-2" src="{{$plataformaItem->imagen}}" style="width:20px; height:20px"
-				  alt="Imagen {{$plataformaItem->imagen}}">{{$plataformaItem->nombre}}</a></li>
-		@endforeach
-		<li class="page-item"><a class="page-link" href="/proyectos">Todas</a></li>
-	</ul>
 </nav>
 <div>
 	<table class="table table-striped table-bordered w-100" id="tablaProyectos">
 		<thead>
 			<tr>
-				<th>Imagen</th>
 				<th>Juego</th>
 				<th>Plataforma</th>
 				<th>Estado</th>
@@ -25,33 +17,32 @@
 		</thead>
 		<tbody>
 			@foreach ($fichas as $ficha)
-			@foreach ($ficha->plataformas as $plataforma)
-			<tr>
-				<td style="background-image:url({{$ficha->imagen}}); background-size:cover"></td>
-				<td class="align-middle">
-					<a href="{{route('fichas.show', $ficha)}}">{{$ficha->nombre}}</a>
-				</td>
-				<td>
-					<a href="/proyectos/{{$plataforma->id}}"><img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}</a>
-				</td>
-				<td class="text-center">
-					@if ($plataforma->pivot->estado == "Completado")
-					<span class="badge badge-success p-1">Completado</span>
-					@elseif ($plataforma->pivot->estado == "En proceso")
-					<span class="badge badge-primary p-1">En proceso</span>
-					@elseif ($plataforma->pivot->estado == "Pausado")
-					<span class="badge badge-warning p-1">Pausado</span>
-				@elseif ($plataforma->pivot->estado == "Cancelado")
-					<span class="badge badge-danger p-1">Cancelado</span>
-					@endif
-				</td>
-			</tr>
-			@endforeach
+				@foreach ($ficha->plataformas as $plataforma)
+				<tr>
+					<td class="align-middle">
+						<a href="{{route('fichas.show', $ficha)}}">{{$ficha->nombre}}</a>
+					</td>
+
+					<td>
+						<img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
+					</td>
+					<td class="text-center">
+						@if ($plataforma->pivot->estado == "Completado")
+						<span class="badge badge-success p-1">Completado</span>
+						@elseif ($plataforma->pivot->estado == "En proceso")
+						<span class="badge badge-primary p-1">En proceso</span>
+						@elseif ($plataforma->pivot->estado == "Pausado")
+						<span class="badge badge-warning p-1">Pausado</span>
+					@elseif ($plataforma->pivot->estado == "Cancelado")
+						<span class="badge badge-danger p-1">Cancelado</span>
+						@endif
+					</td>
+				</tr>
+				@endforeach
 			@endforeach
 		</tbody>
 		<tfoot>
 			<tr>
-				<th>Imagen</th>
 				<th>Juego</th>
 				<th>Plataformas</th>
 				<th>Estado</th>
@@ -62,7 +53,8 @@
 @endsection
 @include('partials.javascript')
 @section('JSextra')
-<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/b-1.6.5/r-2.2.7/sp-1.2.2/sl-1.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="{{asset('js/dataTables.rowsGroup.js')}}"></script>
 <script>
 $(document).ready(function() {
 		// Setup - add a text input to each footer cell
@@ -70,9 +62,67 @@ $(document).ready(function() {
 			var title = $(this).text();
 			$(this).html('<input type="text" placeholder="Buscar por ' + title + '" />');
 		});
-
 		// DataTable
 		var table = $('#tablaProyectos').DataTable({
+			order: [[ 0, "desc" ]],
+			dom: 'Plfrtip',
+			language: {
+					search: "Buscar:",
+					paginate: {
+            first:      "<<",
+            previous:   "<",
+            next:       ">",
+            last:       ">>"
+        },
+					searchPanes: {
+						"clearMessage": "Borrar todo",
+			"collapse": {
+					"0": "Paneles de búsqueda",
+					"_": "Paneles de búsqueda (%d)"
+			},
+			"count": "{total}",
+			"countFiltered": "{shown} ({total})",
+			"emptyPanes": "Sin paneles de búsqueda",
+			"loadMessage": "Cargando paneles de búsqueda",
+			"title": "Filtros activos - %d"
+					}
+			},
+			searchPanes: {
+					 layout: 'columns-2',
+					 cascadePanes:'true',
+					 viewTotal:'true',
+					 columns: [1,2]
+			 },
+			 columnDefs: [
+            {
+                searchPanes: {
+                    show: true
+                },
+                targets: [1,2]
+            }
+        ],
+			responsive: {
+        details: {
+            display: $.fn.dataTable.Responsive.display.modal()
+        }
+    },
+			columns: [
+        {
+            name: 'first'
+        },
+        {
+            name: 'second'
+        },
+        {
+            name: 'third'
+        }
+    ],
+			rowsGroup: [// Always the array (!) of the column-selectors in specified order to which rows groupping is applied
+                // (column-selector could be any of specified in https://datatables.net/reference/type/column-selector)
+        'first:name'
+			],
+
+    pageLength: '10',
 			initComplete: function() {
 				// Apply the search
 				this.api().columns().every(function() {
@@ -90,25 +140,6 @@ $(document).ready(function() {
 		});
 
 	});
-</script>
-<script>
-/*
-$(document).ready(function() {
-    var table = $('#tablaProyectos').DataTable();
 
-    $("#tablaProyectos tfoot th").each( function ( i ) {
-        var select = $('<select><option value=""></option></select>')
-            .appendTo( $(this).empty() )
-            .on( 'change', function () {
-                table.column( i )
-                    .search( $(this).val() )
-                    .draw();
-            } );
-
-        table.column( i ).data().unique().sort().each( function ( d, j ) {
-            select.append( '<option value="'+d+'">'+d+'</option>' )
-        } );
-    } );
-} );*/
 </script>
 @endsection
