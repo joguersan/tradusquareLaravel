@@ -4,15 +4,13 @@
 	@include('partials.estilo')
 	@yield('metaAdicional')
 </head>
-<body>
+<body class="bg-light fondo">
 		<div class="container-fluid p-0">
 			@include('partials/nav')
-			<div class="container-fluid bg-white p-0">
+			<div class="container-fluid p-0">
 				@yield('headerEntrada')
-				<div class="row m-0 p-3">
-					<div class="col pb-4 pt-0 pr-4">
+				<div class="row mb-5 m-0">
 							@yield('contenido')
-					</div>
 				</div>
 			</div>
 		</div>

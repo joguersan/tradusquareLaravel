@@ -1,8 +1,8 @@
-.preview, body {
+.preview {
     background-position: center
 }
 
-.header, .preview, body {
+.header, .preview{
     background-size: cover;
     background-repeat: no-repeat
 }
@@ -11,8 +11,11 @@
     cursor: pointer
 }
 
-body {
-    background-color: white)
+.fondo {
+  background-attachment: fixed;
+  background-position:top;
+  background-image: url(../images/estilo/Monecos.webp);
+  background-repeat: repeat;
 }
 
 .tabla {
@@ -230,6 +233,12 @@ a:hover {
   box-shadow: 7px -7px 0px #FF5277;
   margin-top:-11%
 }
+
+.bordeAzul
+{
+  border-bottom: 7px solid #3962FF;
+}
+
 .tituloEntradaIndex:hover
 {
   transform:translateY(-10px);
@@ -717,17 +726,6 @@ html, body {
 .nav-link:active {
     border-bottom: 4px solid #FF5277;
     color: #FF5277;
-}
-
-.imagenCabecera {
-    width: 10%;
-}
-
-.cabecera {
-    background-image: url('/images/banner.webp');
-    background-size: cover;
-    background-attachment: scroll;
-    min-height: 200px;
 }
 
 .tituloNoticia {
