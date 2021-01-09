@@ -85,7 +85,6 @@ class Lexer
 
         $scream = ini_set('xdebug.scream', '0');
 
-        error_clear_last();
         $this->tokens = @token_get_all($code);
         $this->postprocessTokens($errorHandler);
 
@@ -439,7 +438,7 @@ class Lexer
                         $token, $clashingToken
                     ));
                 }
-                $usedTokenIds[$token] = $tokenId;
+                $usedTokenIds[$tokenId] = $token;
             }
         }
 

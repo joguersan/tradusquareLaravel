@@ -2,6 +2,18 @@
 
 All notable changes to `Browsershot` will be documented in this file
 
+## 3.40.2 - 2020-11-11
+
+- revert changes from previous version
+
+## 3.40.1 - 2020-11-06
+
+- prevent local files from being rendered
+
+## 3.40.0 - 2020-10-07
+
+- added `base64Screenshot`
+
 ## 3.39.0 - 2020-09-24
 
 - add `usePipe` to use pipe instead of WebSocket (#423)
