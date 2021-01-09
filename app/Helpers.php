@@ -51,3 +51,25 @@ function getUpdatedAtAttribute($date)
 {
     return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y');
 }
+
+function getStatusBadge($valor)
+{
+  $estado = "";
+  if ($valor == "Completado")
+  {
+    $estado = "badge-success";
+  }
+  elseif ($valor == "En proceso")
+  {
+    $estado = "badge-primary";
+  }
+  elseif ($valor == "Pausado")
+  {
+    $estado = "badge-warning";
+  }
+  elseif ($valor == "Cancelado")
+  {
+    $estado = "badge-danger";
+  }
+  return $estado;
+}

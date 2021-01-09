@@ -231,7 +231,7 @@ a:hover {
   transition:transform 0.5s ease;
   border-bottom: 7px solid #3962FF;
   box-shadow: 7px -7px 0px #FF5277;
-  margin-top:-11%
+  margin-top:-5rem
 }
 
 .bordeAzul
@@ -453,12 +453,15 @@ html, body {
     box-shadow: none;
 }
 
-@media (min-width: 360px) {
+@media (max-width: 360px), (max-width: 540px) {
     h1 {
         font-size: 1.5rem
     }
 
     /*1rem = 16px*/
+    h4 {
+      font-size: 0.9rem;
+    }
     h5 {
         font-size: 1rem
     }
@@ -476,14 +479,26 @@ html, body {
     .headerFicha {
         height: 125px
     }
+    .contenedor
+    {
+      margin:0!important;
+    }
+    .tituloEntradaIndex
+    {
+      width:100%;
+      margin-left:0!important;
+    }
 }
 
-@media (min-width: 720px) {
+@media (max-width: 720px) {
     h1 {
         font-size: 2rem
     }
 
     /*1rem = 16px*/
+    h4 {
+      font-size: 1.2rem;
+    }
     h5 {
         font-size: 1.1rem
     }
@@ -500,6 +515,11 @@ html, body {
 
     .headerFicha {
         height: 175px
+    }
+    .tituloEntradaIndex
+    {
+      width:100%;
+      margin-left:0!important;
     }
 }
 
@@ -715,7 +735,8 @@ html, body {
 }
 
 .nav-link {
-    border-bottom: 4px solid transparent;
+    border-bottom: 0px solid transparent;
+    transition: border-bottom 0.2s linear;
 }
 
 .nav-link:hover {

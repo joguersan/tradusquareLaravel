@@ -6,7 +6,7 @@
 @endsection
 </section>
 @section('contenido')
-  <div class="text-center  mb-2">
+  <div class="text-center mb-2">
       <img src="images/estilo/tablonTitle.jpg" class="w-md-50" title="Tablón de misiones" alt="Tablón de misiones">
   </div>
   <div class="row m-3 p-0">

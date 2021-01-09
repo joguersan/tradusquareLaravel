@@ -38,11 +38,11 @@
   </ul>
   <hr>
   <div class="row p-3 mt-1">
-      <a href="fichas.php?shin-megami-tensei" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)), url('images/amala/SMT1.jpg')">
+      <a href="{{route('fichas.show', 'shin-megami-tensei')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)), url('images/amala/SMT1.jpg')">
           <span class="titulo">Shin Megami Tensei</span>
           <br /><span class="descripcion">Traducido por Orden</span>
       </a>
-      <a href="fichas.php?shin-megami-tensei-ii" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'shin-megami-tensei-ii')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/SMT2.jpg')">
           <span class="titulo">Shin Megami Tensei II</span>
           <br /><span class="descripcion">Traducido por Orden</span>
@@ -52,7 +52,7 @@
           <span class="titulo">Shin Megami Tensei Nocturne</span>
           <br /><span class="descripcion">Sin traducir</span>
       </a>
-      <a href="fichas.php?shin-megami-tensei-iv" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'shin-megami-tensei-iv')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/SMT4.jpg')">
           <span class="titulo">Shin Megami Tensei IV</span>
           <br /><span class="descripcion">En proceso por TraduSquare</span>
@@ -70,17 +70,17 @@
           <span class="titulo">Shin Megami Tensei Devil Summoner Raidou II</span>
           <br /><span class="descripcion">Sin traducir</span>
       </a>
-      <a href="fichas.php?smt-soul-hackers" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'smt-soul-hackers')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/SMT_SH.jpg')">
           <span class="titulo">Shin Megami Tensei Devil Summoner Soul Hackers</span>
           <br /><span class="descripcion">En proceso por TraduSquare</span>
       </a>
-      <a href="fichas.php?smt-devil-survivor" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'smt-devil-survivor')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/SMT_DSUR.jpg')">
           <span class="titulo">Shin Megami Tensei Devil Survivor</span>
           <br /><span class="descripcion">En proceso por Neku Translations</span>
       </a>
-      <a href="fichas.php?smt-devil-survivor-2" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'smt-devil-survivor-2')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/SMT_DSUR2.jpg')">
           <span class="titulo">Shin Megami Tensei Devil Survivor 2</span>
           <br /><span class="descripcion">Traducido por Artema Translations</span>
@@ -120,16 +120,16 @@
           <span class="titulo">Shin Megami Tensei: Persona 2 Eternal Punishment</span>
           <br /><span class="descripcion">Sin traducir</span>
       </div>
-      <a href="fichas.php?persona-3-fes" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'persona-3-fes')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/SMT_PERSONA3.jpg')">
           <span class="titulo">Shin Megami Tensei: Persona 3 FES</span>
           <br /><span class="descripcion">En proceso por Traducciones del Tío Víctor</span>
       </a>
-      <a href="fichas.php?persona-4" class="col-md-6 objeto" style="background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),url('images/amala/SMT_PERSONA4.jpg')">
+      <a href="{{route('fichas.show', 'persona-4')}}" class="col-md-6 objeto" style="background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),url('images/amala/SMT_PERSONA4.jpg')">
           <span class="titulo">Shin Megami Tensei: Persona 4</span>
           <br /><span class="descripcion">En proceso por GlowTranslations</span>
       </a>
-      <a href="fichas.php?last-bible-1" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'last-bible-1')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/MT_LB.jpg')">
           <span class="titulo">Megami Tensei Gaiden: Last Bible</span>
           <br /><span class="descripcion">Traducido por GlowTranslations</span>
@@ -139,7 +139,7 @@
           <span class="titulo">Megami Tensei Gaiden: Last Bible II</span>
           <br /><span class="descripcion">Sin traducir</span>
       </div>
-      <a href="fichas.php?last-bible-3" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
+      <a href="{{route('fichas.show', 'last-bible-3')}}" class="col-md-6 objeto" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20)),
     							 url('images/amala/MT_LB3.jpg')">
           <span class="titulo">Megami Tensei Gaiden: Last Bible III</span>
           <br /><span class="descripcion">Traducido por Semco</span>

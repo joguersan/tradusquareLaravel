@@ -4,7 +4,7 @@
   <meta name="description" content="Comunidad hispana de fantraducción de videojuegos que aúna a decenas de equipos de la scene hispana para ofrecer parches de traducción de calidad en español y otros idiomas peninsulares como el catalán."/>
 @endsection
 @section('contenido')
-    <div class="col p-4 text-center rounded border m-5 bg-white">
+    <div class="col p-4 text-center rounded border mt-2 mb-2 m-2 m-lg-5 bg-white">
       <img src="images/noticiasMini.webp" alt="Últimas noticias" class="w-md-50 mb-2">
       <div class="row">
         @foreach($noticias as $noticia)
@@ -14,7 +14,7 @@
             </div>
               <div class="d-flex justify-content-center">
                 <a href="{{route('noticia.show', $noticia->url)}}">
-                  <div class="p-3 mr-5 ml-5 bordeAmarillo text-dark bg-light tituloEntradaIndex font-weight-bold sombra">
+                  <div class="p-3 mr-lg-5 ml-lg-5 bordeAmarillo text-dark bg-light tituloEntradaIndex font-weight-bold sombra">
                     <h4>{{$noticia->titulo}}</h4>
                     <hr>
                     <div class="row">
@@ -35,8 +35,8 @@
         <a href="{{route('noticias.index')}}"><button class="btn btn-primary">Ver todas las noticias</button></a>
       </div>
     </div>
-<div class="row mx-5">
-    <div class="col-md-8 text-center rounded border bg-white">
+<div class="row mx-lg-5 mb-2 w-100 m-0">
+    <div class="col-md-8 text-center rounded border bg-white mb-2">
       <img src="images/estilo/fichaTitleMini.webp" alt="Proyectos actualizados" class="w-md-75 mb-2">
       <div class="d-flex justify-content-center align-content-center flex-wrap table-responsive w-100">
       <table class="table text-left table-hover">
@@ -54,15 +54,7 @@
               <img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
           </td>
           <td class="p-2 text-center">
-            @if ($plataforma->pivot->estado == "Completado")
-            <span class="badge badge-success p-1">Completado</span>
-            @elseif ($plataforma->pivot->estado == "En proceso")
-            <span class="badge badge-primary p-1">En proceso</span>
-            @elseif ($plataforma->pivot->estado == "Pausado")
-            <span class="badge badge-warning p-1">Pausado</span>
-          @elseif ($plataforma->pivot->estado == "Cancelado")
-            <span class="badge badge-danger p-1">Cancelado</span>
-            @endif
+            <span class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1">{{$plataforma->pivot->estado}}</span>
           </td>
           @if($loop->first)
           <td rowspan="{{count($ficha->plataformas)}}" class="p-3 text-center">
@@ -76,7 +68,7 @@
         </div>
         <a href="{{route('fichas.index')}}"><button class="btn btn-primary">Ver todos los proyectos</button></a>
       </div>
-    <div class="col-md-4 pl-5 pr-0">
+    <div class="col-md-4 pl-lg-5 p-2 p-lg-0">
         <div class="col rounded border mb-3 bg-white p-3">
           <img src="images/estilo/tablonTitleMini.webp" alt="Tablón de misiones" class="w-md-100 mb-5"/>
           <div class="d-flex justify-content-center ">
@@ -92,7 +84,7 @@
         <div class="col rounded border bg-white p-3">
           <img src="images/estilo/commentTitleMini.webp" alt="Últimos comentarios" class="w-md-100 mb-2">
             @foreach($comentarios as $comentario)
-            <a href="{{route('noticia.show', $comentario->noticias->url . '#' . $comentario->id)}}"><div class="tarjeta bg-white rounded mb-2 p-2">{!!$comentario->mensaje!!}</div></a>
+            <a href="{{route('noticia.show', $comentario->noticias->url . '#' . $comentario->id)}}"><div class="tarjeta bg-white rounded mb-2 p-2 p-lg-0">{!!$comentario->mensaje!!}</div></a>
             @endforeach
             <a href="{{route('comentarios.index')}}"><button class="btn btn-primary">Ver todos los comentarios</button></a>
         </div>

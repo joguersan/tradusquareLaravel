@@ -29,7 +29,7 @@
 			<br>
 			<strong>Plataforma: </strong>
 			@foreach ($ficha->plataformas as $plataforma)
-			<img src="{{$plataforma->imagen}}" alt="{{$plataforma->nombre}}"> {{$plataforma->nombre}} {{$plataforma->pivot->estado}}
+			<span class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1"><img src="{{$plataforma->imagen}}" title="{{$plataforma->nombre}}" alt="{{$plataforma->nombre}}"> {{$plataforma->pivot->estado}}</span>
 			@endforeach
 		</div>
 		</div>
