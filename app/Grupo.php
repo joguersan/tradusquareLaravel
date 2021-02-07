@@ -18,7 +18,12 @@ class Grupo extends Model
   * Obtiene las Usuarios
   */
   public function usuarios(){
-    return $this->belongsToMany('App\User', 'user_grupo')->withPivot('user_id', 'grupo_id');
+    return $this->belongsToMany('App\User');
   }
+
+  public function noticias(){
+      return $this->hasManyThrough('App\Noticia','App\User');
+  }
+
   protected $fillable = ['id', 'nombre', 'logo', 'descripcion', 'web', 'correo', 'twitter', 'facebook', 'youtube', 'discord', 'url'];
 }

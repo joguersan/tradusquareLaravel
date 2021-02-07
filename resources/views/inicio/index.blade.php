@@ -44,7 +44,7 @@
         @foreach($ficha->plataformas as $plataforma)
           <tr>
           @if($loop->first)
-          <td rowspan="{{count($ficha->plataformas)}}" class="p-3">
+          <td rowspan="{{count($ficha->plataformas)}}" class="align-middle p-3">
             <a href="{{route('ficha.show', $ficha->url)}}">
               {{$ficha->nombre}}
             </a>
@@ -81,10 +81,28 @@
             </div>
           </div>
         </div>
-        <div class="col rounded border bg-white p-3">
+        <div class="col rounded border bg-white p-3 ">
           <img src="images/estilo/commentTitleMini.webp" alt="Últimos comentarios" class="w-md-100 mb-2">
             @foreach($comentarios as $comentario)
-            <a href="{{route('noticia.show', $comentario->noticias->url . '#' . $comentario->id)}}"><div class="tarjeta bg-white rounded mb-2 p-2 p-lg-0">{!!$comentario->mensaje!!}</div></a>
+              <div class="tarjeta border bg-white rounded mb-3 p-1">
+                <div class="row font-weight-bold">
+                  <div class="col">
+                    <img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{$comentario->users->imagen}}" title="Avatar de {{$comentario->users->nick}}" alt="Avatar de {{$comentario->users->nick}}"/>
+                  </div>
+                  <div class="col">
+                    {{$comentario->users->nick}}
+                  </div>
+                  <div class="col">
+                    {{getUpdatedAtAttribute($comentario->created_at)}}
+                  </div>
+                </div>
+                <hr>
+                <div class="col pb-2">
+                  <a href="{{route('noticia.show', $comentario->noticias->url . '#' . $comentario->id)}}">
+                    {{$comentario->noticias->titulo}}
+                  </a>
+                </div>
+              </div>
             @endforeach
             <a href="{{route('comentarios.index')}}"><button class="btn btn-primary">Ver todos los comentarios</button></a>
         </div>

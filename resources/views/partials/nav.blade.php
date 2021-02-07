@@ -26,10 +26,10 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 @guest
-                <a class="nav-link" href=""><i class="fas fa-user-circle"></i> Acceder</a>
+                <a class="nav-link" href="/"><i class="fas fa-user-circle"></i> Acceder</a>
                 @endguest
                 @auth
-                <a class="nav-link" href=""><i class="fas fa-user-circle"></i>{{Auth::user()->nombre}}</a>
+                <a class="nav-link" href="/"><i class="fas fa-user-circle"></i>{{Auth::user()->nombre}}</a>
                 @endauth
             </li>
         </ul>

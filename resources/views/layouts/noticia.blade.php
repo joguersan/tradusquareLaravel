@@ -47,7 +47,7 @@
 							<div class="col-md-12">
 								<div class="row card-header p-1">
 									<div class="col-md-6">
-										<img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}"/>
+										<img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}" title="Avatar de {{ $comentario -> users -> nick }}" alt="Avatar de {{ $comentario -> users -> nick }}"/>
 										<b>{{ $comentario -> users -> nick }}</b>
 									</div>
 									<div class="col-md-5">

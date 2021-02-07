@@ -121,8 +121,6 @@ $(document).ready(function() {
                 // (column-selector could be any of specified in https://datatables.net/reference/type/column-selector)
         'first:name'
 			],
-
-    pageLength: '10',
 			initComplete: function() {
 				// Apply the search
 				this.api().columns().every(function() {

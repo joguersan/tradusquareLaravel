@@ -25,7 +25,7 @@ class Ficha extends Model
     * Obtiene las Noticias
     */
     public function noticias(){
-      return $this->belongsToMany('App\Noticia', 'noticia_ficha')->withPivot('ficha_id', 'noticia_id');
+      return $this->belongsToMany('App\Noticia', 'noticia_ficha')->orderBy('updated_at', 'desc');
     }
     protected $fillable = ['id', 'nombre', 'imagen', 'ficha', 'info_adicional', 'sinopsis', 'equipo', 'tag', 'url', 'descarga', 'porcentaje_traduccion', 'porcentaje_correccion', 'porcentaje_edicion', 'porcentaje_betatesting', 'estado', 'plataforma'];
 

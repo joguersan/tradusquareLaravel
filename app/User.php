@@ -40,7 +40,10 @@ class User extends Authenticatable
       return $this->hasMany('App\Comentario');
     }
 
-    public function noticias(){
-      return $this->hasMany('App\Noticia');
+    public function news(){
+      return $this->hasMany('App\Noticia', 'autor', 'nick')->orderBy('updated_at', 'desc')->limit(10);
+    }
+    public function grupos(){
+      return $this->belongsToMany('App\Grupo', 'user_grupo')->withPivot('user_id', 'grupo_id');
     }
 }

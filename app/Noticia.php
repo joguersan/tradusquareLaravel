@@ -25,7 +25,7 @@ class Noticia extends Model
     }
 
     public function autor(){
-      return $this->BelongsTo('App\Noticia', 'autor');
+      return $this->belongsTo('App\Noticia', 'autor');
     }
 
     /**
