@@ -96,8 +96,16 @@
                                         <label class="btn btn-dark">Estado</label>
                                     </div>
                                     <select name="estado" class="form-control">
-                                        @yield('campoEstado')
+                                        <option selected value="0">Borrador</option>
+                                        <option value="1">Publicada</option>
                                     </select>
+                                </div>
+                                <div class="input-group">
+                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
+                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
+                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
+                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
+                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
                                 </div>
                             </div>
                             <input class="btn btn-danger text-white" type="submit" value="Enviar"></input>
