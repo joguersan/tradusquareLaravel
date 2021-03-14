@@ -16,7 +16,7 @@ class Ficha extends Model
     * Obtiene las Plataformas
     */
     public function plataformas(){
-      return $this->belongsToMany('App\Plataforma', 'ficha_plataforma')->withPivot('ficha_id', 'plataforma_id', 'estado_id');
+      return $this->belongsToMany('App\Plataforma', 'ficha_plataforma')->withPivot('estado_id');
     }
 
     public function grupos(){

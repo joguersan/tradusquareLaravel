@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Ficha;
+use App\Estado;
 use App\Grupo;
 use App\Plataforma;
 use Illuminate\Http\Request;
@@ -32,10 +33,12 @@ class FichaController extends Controller
     public function create()
     {
       $plataformas = Plataforma::all();
+      $estados = Estado::all();
       $grupos = Grupo::all();
       return view('fichas.create', [
         'plataformas' => $plataformas,
-        'grupos' => $grupos
+        'grupos' => $grupos,
+        'estados' => $estados
       ]);
     }
 
@@ -64,7 +67,10 @@ class FichaController extends Controller
         'descarga' => request('links'),
         'estado' => request('estado')
       ]);
-      //$ficha -> plataformas() -> attach(request('plataformas'));
+      $plataformas=request('plataformas');
+      for($i=0; $i<count($plataformas); $i++){
+        $ficha -> plataformas() -> sync([$plataformas[$i] => ['estado_id' => request('estados')[$i]]]);
+      }
       $ficha -> grupos() -> sync(request('grupos'));
       return redirect()->route('fichas.index');
     }
@@ -92,21 +98,26 @@ class FichaController extends Controller
     public function edit(Ficha $ficha)
     {
       $selected_categories = [];
+      $selected_states = [];
       $selected_groups = [];
       foreach($ficha->plataformas as $plataforma){
           array_push($selected_categories, $plataforma->id);
+          array_push($selected_states, $plataforma->pivot->estado_id);
       }
       foreach($ficha->grupos as $grupo){
           array_push($selected_groups, $grupo->id);
       }
       $plataformas = Plataforma::all();
       $grupos = Grupo::all();
+      $estados = Estado::all();
       return view('fichas.edit', [
         'ficha' => $ficha,
         'plataformas' => $plataformas,
         'grupos' => $grupos,
+        'estados' => $estados,
         'selected_categories' => $selected_categories,
         'selected_groups' => $selected_groups,
+        'selected_states' => $selected_states,
       ]);
     }
 
@@ -134,11 +145,17 @@ class FichaController extends Controller
         'equipo' => request('equipo'),
         'imagen' => request('imagen'),
         'descarga' => request('links'),
-        'estado' => request('estado'),
         'info_adicional' => request('info_adicional'),
         'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
       ]);
-      //$ficha -> plataformas() -> sync(request('plataformas'));
+      $plataformas=request('plataformas');
+      $estados=request('estados');
+      $data_to_sync=[];
+      for($i=0; $i<count($plataformas); $i++){
+        $data_to_sync[$i]['plataforma_id']=$plataformas[$i];
+        $data_to_sync[$i]['estado_id'] = $estados[$i];
+      }
+      $ficha -> plataformas() -> sync($data_to_sync);
       $ficha -> grupos() -> sync(request('grupos'));
       return redirect()->route('ficha.show', $ficha);
     }

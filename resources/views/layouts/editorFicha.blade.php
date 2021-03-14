@@ -75,19 +75,12 @@
                                     <input type="text" name="imagen" class="form-control" id="links" value="@yield('campoImagen')" placeholder="O inserta URL de la imagen"></input>
                                 </div>
                                 {{$errors->first('imagen')}}
-                                <div class="input-group mt-3">
+                                @yield('campoPlataforma')
+                                <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <label class="btn btn-dark">Plataformas</label>
+                                        <label for="grupos[]" class="btn btn-dark">Grupos</label>
                                     </div>
-                                    <select class="juegos w-75" name="plataformas[]" class="form-control" multiple>
-                                        @yield('campoPlataforma')
-                                    </select>
-                                </div>
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend">
-                                        <label class="btn btn-dark">Grupos</label>
-                                    </div>
-                                    <select class="juegos w-75" name="grupos[]" class="form-control" multiple>
+                                    <select class="juegos" name="grupos[]" class="form-control" multiple>
                                         @yield('campoGrupos')
                                     </select>
                                 </div>
@@ -96,7 +89,7 @@
                                         <label class="btn btn-dark">Estado</label>
                                     </div>
                                     <select name="estado" class="form-control">
-                                          @yield('campoEstado')                    
+                                          @yield('campoEstado')
                                     </select>
                                 </div>
                                 <div class="input-group">
