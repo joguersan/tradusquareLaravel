@@ -13,7 +13,7 @@
 	</div>
 	<div class="col m-0 mt-2 w-100 bg-image headerFicha" style="background-image:url('{{$noticia->imagen}}')">
 		<div class="overlaySombra sombraEntrada">
-			<h4 class="flex tituloSubHeader"><b class="mr-5"><i class="fas fa-clock mr-2"></i>{{$noticia->updated_at->format('d-m-Y')}}</b><b>Shiryu</b></h4>
+			<h4 class="flex tituloSubHeader"><b class="mr-5"><i class="fas fa-clock mr-2"></i>{{$noticia->updated_at->format('d-m-Y')}}</b><b>{{$noticia->autor->nombre}}</b></h4>
 		</div>
 	</div>
 

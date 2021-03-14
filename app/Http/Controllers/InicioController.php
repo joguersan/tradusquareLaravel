@@ -18,7 +18,7 @@ class InicioController extends Controller
      */
     public function index()
     {
-      $noticias = Noticia::where('estado', '=', 'Publicada')->orderBy('updated_at', 'desc')->take(6)->get();
+      $noticias = Noticia::where('estado', '=', 1)->orderBy('updated_at', 'desc')->take(6)->get();
       $comentarios = Comentario::orderBy('updated_at', 'desc')->take(5)->get();
       $fichas = Ficha::orderBy('updated_at', 'desc')->take(5)->get();
       $tablon = EntradaTablon::orderBy('updated_at', 'desc')->take(3)->get();

@@ -11,6 +11,11 @@
     cursor: pointer
 }
 
+.icon-2x
+{
+  font-size:2rem;
+}
+
 .fondo {
   background-attachment: fixed;
   background-position:top;

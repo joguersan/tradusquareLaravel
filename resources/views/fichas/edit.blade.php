@@ -23,8 +23,12 @@
   {{$ficha->sinopsis}}
 @endsection
 
+@section('campoInfo')
+  {{$ficha->info_adicional}}
+@endsection
+
 @section('campoEquipo')
-  {{$ficha->equipo}}
+  {{$ficha->info_adicional}}
 @endsection
 
 @section('campoImagen')
@@ -48,7 +52,6 @@
   {{$ficha->descarga}}
 @endsection
 @section('campoEstado')
-  <option {{{$ficha->estado == 'Completado' ? 'selected': '' }}}>Completado</option>
-  <option {{{$ficha->estado == 'En proceso' ? 'selected': '' }}}>En proceso</option>
-  <option {{{$ficha->estado == 'Pausado' ? 'selected': '' }}}>Pausado</option>
+  <option {{{$ficha->estado == 1 ? 'selected': ''}}} value="1">Publicada</option>
+  <option {{{$ficha->estado == 0 ? 'selected': ''}}} value="0">Borrador</option>
 @endsection

@@ -18,8 +18,6 @@
 @endsection
 
 @section('campoEstado')
-  <option value="Completado">Completado</option>
-  <option value="En proceso">En proceso</option>
-  <option value="Pausado">Pausado</option>
-  <option value="Cancelado">Cancelado</option>
+  <option selected value="0">Borrador</option>
+  <option value="1">Publicada</option>
 @endsection

@@ -23,6 +23,9 @@ class FichaPlataformaTable extends Migration
           $table->integer('plataforma_id')->unsigned();
           $table->foreign('plataforma_id')->references('id')
                 ->on('plataformas')->onDelete('cascade');
+          $table->integer('estado_id')->unsigned();
+          $table->foreign('estado_id')->references('id')
+                ->on('estados')->onDelete('cascade');
 
           $table->timestamps();
         });
