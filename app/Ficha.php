@@ -14,7 +14,7 @@ class Ficha extends Model
     * Obtiene las Plataformas
     */
     public function plataformas(){
-      return $this->belongsToMany('App\Plataforma', 'ficha_plataforma')->withPivot('ficha_id', 'plataforma_id', 'estado');
+      return $this->belongsToMany('App\Plataforma', 'ficha_plataforma')->withPivot('ficha_id', 'plataforma_id', 'estado_id');
     }
 
     public function grupos(){
@@ -27,6 +27,13 @@ class Ficha extends Model
     public function noticias(){
       return $this->belongsToMany('App\Noticia', 'noticia_ficha')->orderBy('updated_at', 'desc');
     }
-    protected $fillable = ['id', 'nombre', 'imagen', 'ficha', 'info_adicional', 'sinopsis', 'equipo', 'tag', 'url', 'descarga', 'porcentaje_traduccion', 'porcentaje_correccion', 'porcentaje_edicion', 'porcentaje_betatesting', 'estado', 'plataforma'];
+    public function porcentajes(){
+      return $this->hasMany('App\FichaPorcentaje');
+    }
+    public function entradas_tablon(){
+      return $this->hasMany('App\EntradaTablon');
+    }
+
+    protected $fillable = ['id', 'nombre', 'imagen', 'ficha', 'info_adicional', 'sinopsis', 'equipo', 'estado', 'url', 'descarga'];
 
 }

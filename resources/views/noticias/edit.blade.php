@@ -24,6 +24,6 @@ EDITAR ENTRADA
   @endforeach
 @endsection
 @section('campoEstado')
-  <option {{{$noticia->estado == 'Borrador' ? 'selected': '' }}}>Borrador</option>
-  <option {{{$noticia->estado == 'Publicada' ? 'selected': '' }}}>Publicada</option>
+  <option {{{$noticia->estado == 0 ? 'selected': '' }}} value="0">Borrador</option>
+  <option {{{$noticia->estado == 1 ? 'selected': '' }}} value="1">Publicada</option>
 @endsection

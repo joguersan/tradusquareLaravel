@@ -17,4 +17,8 @@ class Plataforma extends Model
     return $this->belongsToMany('App\Ficha', 'ficha_plataforma')->withPivot('ficha_id', 'plataforma_id');
   }
 
+  public function estados(){
+    return $this->belongsTo('App\Estado');
+  }
+
 }

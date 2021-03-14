@@ -19,7 +19,7 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-      $noticias = Noticia::where('estado', '=', 'Publicada')->orderBy('updated_at', 'desc')->paginate(6);
+      $noticias = Noticia::where('estado', '=', 1)->orderBy('updated_at', 'desc')->paginate(6);
       return view('noticias.index', ['noticias' => $noticias]);
     }
 
@@ -68,6 +68,8 @@ class NoticiaController extends Controller
           'imagen' => request('imagen'),
           'estado' => request('estado')
         ]);
+        return redirect()->route('noticia.show', $url);
+        //return $this->edit($noticia);
     }
 
     /**

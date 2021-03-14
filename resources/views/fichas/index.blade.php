@@ -27,13 +27,13 @@
 						<img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
 					</td>
 					<td class="text-center">
-						@if ($plataforma->pivot->estado == "Completado")
+						@if ($plataforma->pivot->estado_id == 1)
 						<span class="badge badge-success p-1">Completado</span>
-						@elseif ($plataforma->pivot->estado == "En proceso")
+						@elseif ($plataforma->pivot->estado_id == 2)
 						<span class="badge badge-primary p-1">En proceso</span>
-						@elseif ($plataforma->pivot->estado == "Pausado")
+						@elseif ($plataforma->pivot->estado_id == 3)
 						<span class="badge badge-warning p-1">Pausado</span>
-					@elseif ($plataforma->pivot->estado == "Cancelado")
+						@elseif ($plataforma->pivot->estado_id == 4)
 						<span class="badge badge-danger p-1">Cancelado</span>
 						@endif
 					</td>

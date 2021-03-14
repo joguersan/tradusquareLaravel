@@ -15,14 +15,13 @@ class DatabaseSeeder extends Seeder
     /*$this->call([
       PlataformaSeeder::class
     ]);*/
-    $this->call([
-      FichaSeeder::class
-    ]);
-    factory(App\Plataforma::class, 1)->create();
-    factory(App\User::class, 1)->create();
-    factory(App\Noticia::class, 1)->create();
-    factory(App\Grupo::class, 1)->create();
-    factory(App\EntradaTablon::class, 1)->create();
+    Ficha::factory() ->count(50)->has(Post::factory()->count(3)
+            ->estado(1)->create();
+    factory(App\Plataforma::class, 10)->create();
+    factory(App\User::class, 10)->create();
+    factory(App\Noticia::class, 10)->create();
+    factory(App\Grupo::class, 10)->create();
+    factory(App\EntradaTablon::class, 10)->create();
     //factory(App\Comentario::class, 1)->create();
 
     // ************************* //

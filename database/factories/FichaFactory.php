@@ -6,9 +6,11 @@ $factory->define(App\Ficha::class, function (Faker $faker) {
     return [
         'nombre' => $faker->streetName(),
         'imagen' => $faker->imageUrl(500,300),
-        'porcentaje_traduccion' => $faker->randomFloat(2, 0, 100),
-        'porcentaje_correccion' => $faker->randomFloat(2, 0, 100),
-        'porcentaje_edicion' => $faker->randomFloat(2, 0, 100),
-        'porcentaje_betatesting' => $faker->randomFloat(2, 0, 100),
+        'ficha' => $faker->text($maxNbChars = 200),
+        'sinopsis' => $faker->text($maxNbChars = 200),
+        'equipo' => $faker->text($maxNbChars = 200),
+        'descarga' => $faker->text($maxNbChars = 200),
+        'info_adicional' => $faker->text($maxNbChars = 200),
+        'url' => $faker->randomNumber($nbDigits = NULL, $strict = false)
     ];
 });

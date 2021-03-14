@@ -11,3 +11,8 @@
   	@endforeach
 
 @endsection
+
+@section('campoEstado')
+  <option value="0">Borrador</option>
+  <option value="1">Publicada</option>
+@endsection

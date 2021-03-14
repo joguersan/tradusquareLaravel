@@ -17,7 +17,7 @@ class FichaController extends Controller
      */
     public function index()
     {
-      $fichas = Ficha::all();
+      $fichas = Ficha::all()->where('estado', '=', 1);
 	    $plataformas =  Plataforma::all();
       return view('fichas.index',[
         'fichas' => $fichas,
@@ -57,12 +57,13 @@ class FichaController extends Controller
         'url'=> $url,
         'ficha' => request('ficha'),
         'sinopsis' => request('sinopsis'),
+        'info_adicional' => request('info_adicional'),
         'equipo' => request('equipo'),
         'imagen' => request('imagen'),
         'descarga' => request('links'),
         'estado' => request('estado')
       ]);
-      $ficha -> plataformas() -> attach(request('plataformas'));
+      //$ficha -> plataformas() -> attach(request('plataformas'));
       $ficha -> grupos() -> attach(request('grupos'));
       return redirect()->route('fichas.index');
     }
@@ -133,9 +134,10 @@ class FichaController extends Controller
         'imagen' => request('imagen'),
         'descarga' => request('links'),
         'estado' => request('estado'),
+        'info_adicional' => request('info_adicional'),
         'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
       ]);
-      $ficha -> plataformas() -> sync(request('plataformas'));
+      //$ficha -> plataformas() -> sync(request('plataformas'));
       $ficha -> grupos() -> sync(request('grupos'));
       return redirect()->route('ficha.show', $ficha);
     }

@@ -32,21 +32,13 @@
                                     <div class="input-group-prepend">
                                         <label for="contenido" class="btn btn-dark m-0">Ficha</label>
                                     </div>
-                                    <textarea class="summernote m-0" name="ficha" value="{{old('ficha')}}" id="contenido" placeholder="Datos del proyecto">@yield('campoFicha')</textarea>
+                                    <textarea class="summernote m-0" name="ficha" value="{{old('ficha')}}" id="ficha" placeholder="Datos del proyecto">@yield('campoFicha')</textarea>
                                 </div>
                                 {{$errors->first('ficha')}}
 
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend">
-                                        <label for="contenido" class="btn btn-dark m-0">Información adicional</label>
-                                    </div>
-                                    <textarea rows="10" class="summernote m-0" name="info" value="{{old('info')}}" id="contenido" placeholder="Información adicional">@yield('campoInfo')</textarea>
-                                </div>
-                                {{$errors->first('info')}}
-
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend">
-                                        <label for="contenido" class="btn btn-dark m-0">Equipo</label>
+                                        <label for="equipo" class="btn btn-dark m-0">Equipo</label>
                                     </div>
                                     <textarea rows="10" class="summernote m-0" name="equipo" value="{{old('equipo')}}" id="equipo" placeholder="Equipo">@yield('campoEquipo')</textarea>
                                 </div>
@@ -54,11 +46,19 @@
 
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend">
-                                        <label for="contenido" class="btn btn-dark m-0">Sinopsis</label>
+                                        <label for="sinopsis" class="btn btn-dark m-0">Sinopsis</label>
                                     </div>
                                     <textarea class="m-0 summernote" name="sinopsis" value="{{old('sinopsis')}}" id="sinopsis" placeholder="Sinopsis">@yield('campoSinopsis')</textarea>
                                 </div>
-                                {{$errors->first('equipo')}}
+                                {{$errors->first('sinopsis')}}
+
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend">
+                                        <label for="contenido" class="btn btn-dark m-0">Información adicional</label>
+                                    </div>
+                                    <textarea rows="10" class="summernote m-0" name="info_adicional" value="{{old('info_adicional')}}" id="info_adicional" placeholder="Información adicional">@yield('campoInfo')</textarea>
+                                </div>
+                                {{$errors->first('info_adicional')}}
 
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend">
@@ -96,8 +96,7 @@
                                         <label class="btn btn-dark">Estado</label>
                                     </div>
                                     <select name="estado" class="form-control">
-                                        <option selected value="0">Borrador</option>
-                                        <option value="1">Publicada</option>
+                                          @yield('campoEstado')                    
                                     </select>
                                 </div>
                                 <div class="input-group">

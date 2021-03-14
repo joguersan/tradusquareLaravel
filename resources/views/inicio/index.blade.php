@@ -19,7 +19,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-6 text-left">
-                        {{$noticia->autor}}
+                        {{$noticia->autor->nombre}}
                       </div>
                       <div class="col-6 text-right">
                         {{getUpdatedAtAttribute($noticia->updated_at)}}

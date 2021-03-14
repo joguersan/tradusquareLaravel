@@ -15,10 +15,13 @@ class NoticiaTable extends Migration
     {
         Schema::create('noticias', function (Blueprint $table) {
             $table->increments('id')->unsigned()->unique();
-            $table->string('titulo');
+            $table->string('titulo')->unique();
             $table->string('imagen');
             $table->text('contenido');
-            $table->text('estado');
+            $table->integer('autor_id')->unsigned()->default(1);
+            $table->foreign('autor_id')->references('id')
+                  ->on('users')->onDelete('cascade');
+            $table->boolean('estado')->default(1);
             $table->text('url');
             // Usuario
             $table->timestamps();
