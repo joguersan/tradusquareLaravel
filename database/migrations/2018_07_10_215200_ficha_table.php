@@ -15,14 +15,14 @@ class FichaTable extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->increments('id')->unsigned()->unique();
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->string('imagen');
             // Grupo
       			$table->text('ficha');
-      			$table->text('sinopsis');
-      			$table->text('equipo');
-      			$table->text('descarga');
-            $table->text('info_adicional');
+      			$table->text('sinopsis')->nullable();
+      			$table->text('equipo')->nullable();
+      			$table->text('descarga')->nullable();
+            $table->text('info_adicional')->nullable();
             $table->string('url', 255)->unique();
             $table->boolean('estado')->default(0);
             $table->timestamps();

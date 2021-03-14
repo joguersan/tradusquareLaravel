@@ -16,7 +16,7 @@ class GrupoTable extends Migration
         Schema::create('grupos', function (Blueprint $table) {
             $table->increments('id')->unsigned()->unique();
             $table->string('nombre')->unique();
-            $table->string('nombre', 255)->unique();
+            $table->string('url', 255)->unique();
             $table->string('web_externa');
             //$table->string('historia');
             //$table->string('integrantes');

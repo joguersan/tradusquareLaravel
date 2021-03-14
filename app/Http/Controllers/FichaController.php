@@ -52,6 +52,7 @@ class FichaController extends Controller
       $b=['a','e','i','o','u','n'];
       $url=str_replace(" ", "-", request('nombre'));
       $url=str_replace($a, $b, $url);
+
       $ficha->create([
         'nombre'=> request('nombre'),
         'url'=> $url,
@@ -64,7 +65,7 @@ class FichaController extends Controller
         'estado' => request('estado')
       ]);
       //$ficha -> plataformas() -> attach(request('plataformas'));
-      $ficha -> grupos() -> attach(request('grupos'));
+      $ficha -> grupos() -> sync(request('grupos'));
       return redirect()->route('fichas.index');
     }
 

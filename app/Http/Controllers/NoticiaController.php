@@ -68,6 +68,7 @@ class NoticiaController extends Controller
           'imagen' => request('imagen'),
           'estado' => request('estado')
         ]);
+        $noticia -> fichas() -> sync(request('fichas'));
         return redirect()->route('noticia.show', $url);
         //return $this->edit($noticia);
     }

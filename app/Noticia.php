@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Noticia extends Model
 {
+  public $incrementing = true;
+  public $timestamps = true;
   public function getRouteKeyName()
   {
     return 'url';
@@ -14,7 +16,7 @@ class Noticia extends Model
     * Obtiene las Fichas
     */
     public function fichas(){
-      return $this->belongsToMany('App\Ficha', 'noticia_ficha')->withPivot('ficha_id', 'noticia_id');
+      return $this->belongsToMany('App\Ficha', 'noticia_ficha');
     }
 
     /*

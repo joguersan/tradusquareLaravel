@@ -11,7 +11,7 @@
 		</div>
 		<div class="col m-0 p-0">
 				@foreach($grupo->usuarios as $usr)
-					<div class="p-2 bg-light border">{{$usr->nick}}</div>
+					<div class="p-2 bg-light border">{{$usr->nombre}}</div>
 				@endforeach
 		</div>
 	</div>
