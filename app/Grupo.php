@@ -11,7 +11,7 @@ class Grupo extends Model
     return 'url';
   }
   public function fichas(){
-    return $this->belongsToMany('App\Ficha', 'ficha_grupo')->withPivot('ficha_id', 'grupo_id');
+    return $this->belongsToMany('App\Ficha', 'ficha_grupo');
   }
 
   /**

@@ -34,8 +34,10 @@
 							<div class="text-center seccionNoticia tituloHeader overlayTitulo p-1" style="font-size:1.5rem">Grupos relacionados</div>
 							<div class="col">
 								@foreach($noticia->fichas as $ficha)
-									<a href="{{route('fichas.show', $ficha)}}">{{$ficha->nombre}}</a>
+									@foreach($ficha->grupos as $grupo)
+										<a href="{{route('grupos.show', $grupo)}}">{{$grupo->nombre}}</a>
 									@endforeach
+								@endforeach
 							</div>
 						</div>
 					</div>

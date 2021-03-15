@@ -29,8 +29,8 @@
 			<i class="large material-icons mr-2">contacts</i>Últimas noticias
 		</div>
 	<div class="d-grid gap-3">
-		@foreach($grupo->usuarios as $users)
-			@foreach($users->news as $noticia)
+		@foreach($grupo->fichas as $ficha)
+			@foreach($ficha->noticias as $noticia)
 				<div class="p-2 bg-light border"><a href="{{route('noticia.show',$noticia->url)}}">{{$noticia->titulo}}</a></div>
 			@endforeach
 		@endforeach
