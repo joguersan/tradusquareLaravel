@@ -36,20 +36,22 @@
 								@foreach($noticia->fichas as $ficha)
 									@foreach($ficha->grupos as $grupo)
 										<a href="{{route('grupos.show', $grupo)}}">{{$grupo->nombre}}</a>
-									@endforeach
-								@endforeach
+										@endforeach
+										@endforeach
 							</div>
 						</div>
 					</div>
 				</div>
+				@if ($comentarios)
 				<div class="row m-0 p-3 bg-light border">
 					@foreach($comentarios as $comentario)
-						<div class="col-md-6" id={{$comentario->id}}>
+					<div class="col-md-6" id={{$comentario->id}}>
 						<div class="row card tarjeta mb-3 bg-white">
 							<div class="col-md-12">
 								<div class="row card-header p-1">
 									<div class="col-md-6">
-										<img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}" title="Avatar de {{ $comentario -> users -> nick }}" alt="Avatar de {{ $comentario -> users -> nick }}"/>
+										<img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}" title="Avatar de {{ $comentario -> users -> nick }}"
+										  alt="Avatar de {{ $comentario -> users -> nick }}" />
 										<b>{{ $comentario -> users -> nick }}</b>
 									</div>
 									<div class="col-md-5">
@@ -66,13 +68,14 @@
 								<form method="POST" action="{{route('comentarios.destroy', $comentario)}}">
 									@csrf
 									@method('DELETE')
-								<button class="btn btn-primary">Eliminar</button>
-							</form>
+									<button class="btn btn-primary">Eliminar</button>
+								</form>
 							</div>
 						</div>
 					</div>
-						@endforeach
+					@endforeach
 				</div>
+				@endif
 				<div class="row border m-0 mt-2 mb-2 bg-light">
 					<form method="POST" action="{{route('comentarios.store')}}">
 						<textarea class="form-control m-2" cols="100" rows="5" placeholder="Escribe tu comentario. Recuerda ser respetuoso y escribir sin faltas de ortografía." id="mensaje" name="mensaje"></textarea>

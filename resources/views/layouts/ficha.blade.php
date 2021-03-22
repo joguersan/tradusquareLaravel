@@ -12,9 +12,9 @@
 		<div class="container-fluid bg-white p-0">
 			@yield('headerEntrada')
 			<div class="p-5">
-					<div class="overlayTitulo p-3 m-0">
-						<h1 class="text-center tituloHeader">@yield('titulo')</h1>
-					</div>
+				<div class="overlayTitulo p-3 m-0">
+					<h1 class="text-center tituloHeader">@yield('titulo')</h1>
+				</div>
 				<div class="m-0 bg-image headerFicha" style="background-image:url('{{$ficha->imagen}}')"></div>
 				@yield('contenido')
 				<div class="text-center p-3 bordeAzul mt-1">
@@ -27,7 +27,7 @@
 	</div>
 	@include('partials/footer')
 	@include('partials/javascript')
-	@yield(@'JSextra')
+	@yield('JSextra' )
 </body>
 
 </html>

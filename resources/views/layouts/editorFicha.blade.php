@@ -89,7 +89,7 @@
                                         <label class="btn btn-dark">Estado</label>
                                     </div>
                                     <select name="estado" class="form-control">
-                                          @yield('campoEstado')
+                                        @yield('campoEstado')
                                     </select>
                                 </div>
                                 <div class="input-group">

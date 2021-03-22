@@ -150,12 +150,14 @@ class FichaController extends Controller
       ]);
       $plataformas=request('plataformas');
       $estados=request('estados');
-      $data_to_sync=[];
-      for($i=0; $i<count($plataformas); $i++){
-        $data_to_sync[$i]['plataforma_id']=$plataformas[$i];
-        $data_to_sync[$i]['estado_id'] = $estados[$i];
+      if ($plataformas){
+        $data_to_sync=[];
+        for($i=0; $i<count($plataformas); $i++){
+          $data_to_sync[$i]['plataforma_id']=$plataformas[$i];
+          $data_to_sync[$i]['estado_id'] = $estados[$i];
+        }
+        $ficha -> plataformas() -> sync($data_to_sync);
       }
-      $ficha -> plataformas() -> sync($data_to_sync);
       $ficha -> grupos() -> sync(request('grupos'));
       return redirect()->route('ficha.show', $ficha);
     }

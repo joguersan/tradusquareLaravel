@@ -2,7 +2,7 @@
     background-position: center
 }
 
-.header, .preview{
+.header, .preview {
     background-size: cover;
     background-repeat: no-repeat
 }
@@ -11,16 +11,15 @@
     cursor: pointer
 }
 
-.icon-2x
-{
-  font-size:2rem;
+.icon-2x {
+    font-size: 2rem;
 }
 
 .fondo {
-  background-attachment: fixed;
-  background-position:top;
-  background-image: url(../images/estilo/Monecos.webp);
-  background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-image: url(../images/estilo/Monecos.webp);
+    background-repeat: repeat;
 }
 
 .tabla {
@@ -217,37 +216,33 @@ a:hover {
     border-width: 3px !important
 }
 
-.previewEntrada>div>p
-{
-  opacity:0;
-  transition:opacity 1s;
-}
-.previewEntrada:hover>div>p
-{
-  opacity:1;
+.previewEntrada>div>p {
+    opacity: 0;
+    transition: opacity 1s;
 }
 
-.descripcionNoticia
-{
-  background-color:rgba(0,0,0,0.7)
-}
-.tituloEntradaIndex
-{
-  transition:transform 0.5s ease;
-  border-bottom: 7px solid #3962FF;
-  box-shadow: 7px -7px 0px #FF5277;
-  margin-top:-5rem
+.previewEntrada:hover>div>p {
+    opacity: 1;
 }
 
-.bordeAzul
-{
-  border-bottom: 7px solid #3962FF;
+.descripcionNoticia {
+    background-color: rgba(0, 0, 0, 0.7)
 }
 
-.tituloEntradaIndex:hover
-{
-  transform:translateY(-10px);
-  animation:sombrasYbordes 0.5s forwards;
+.tituloEntradaIndex {
+    transition: transform 0.5s ease;
+    border-bottom: 7px solid #3962FF;
+    box-shadow: 7px -7px 0px #FF5277;
+    margin-top: -5rem
+}
+
+.bordeAzul {
+    border-bottom: 7px solid #3962FF;
+}
+
+.tituloEntradaIndex:hover {
+    transform: translateY(-10px);
+    animation: sombrasYbordes 0.5s forwards;
 }
 
 @keyframes sombrasYbordes {
@@ -262,7 +257,7 @@ a:hover {
 
 @keyframes aparecer {
     from {
-        opacity:0;
+        opacity: 0;
     }
 
     to {
@@ -465,8 +460,9 @@ html, body {
 
     /*1rem = 16px*/
     h4 {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
+
     h5 {
         font-size: 1rem
     }
@@ -484,14 +480,14 @@ html, body {
     .headerFicha {
         height: 125px
     }
-    .contenedor
-    {
-      margin:0!important;
+
+    .contenedor {
+        margin: 0 !important;
     }
-    .tituloEntradaIndex
-    {
-      width:100%;
-      margin-left:0!important;
+
+    .tituloEntradaIndex {
+        width: 100%;
+        margin-left: 0 !important;
     }
 }
 
@@ -502,8 +498,9 @@ html, body {
 
     /*1rem = 16px*/
     h4 {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
+
     h5 {
         font-size: 1.1rem
     }
@@ -521,10 +518,10 @@ html, body {
     .headerFicha {
         height: 175px
     }
-    .tituloEntradaIndex
-    {
-      width:100%;
-      margin-left:0!important;
+
+    .tituloEntradaIndex {
+        width: 100%;
+        margin-left: 0 !important;
     }
 }
 
@@ -592,9 +589,8 @@ html, body {
         1px 1px 0 #000;
 }
 
-.progress
-{
-  height:30px;
+.progress {
+    height: 30px;
 }
 
 .porcentaje {

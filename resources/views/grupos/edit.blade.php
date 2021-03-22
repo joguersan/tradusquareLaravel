@@ -3,41 +3,41 @@
 EDITAR GRUPO
 @endsection
 @section('method')
-  @method('PATCH')
+@method('PATCH')
 @endsection
 
 @section('action')
-  {{route('grupos.update', $grupo)}}
+{{route('grupos.update', $grupo)}}
 @endsection
 @section('campoTitulo')
-  {{$grupo->nombre}}
+{{$grupo->nombre}}
 @endsection
 @section('campoContenido')
-  {{$grupo->descripcion}}
+{{$grupo->descripcion}}
 @endsection
 @section('campoImagen')
-  {{$grupo->logo}}
+{{$grupo->logo}}
 @endsection
 @section('campoFichas')
-  @foreach($fichas as $ficha)
-  <option value="{{$ficha->id}}" {{ in_array($ficha->id, $selected_categories ) == 1 ? 'selected' : '' }}>{{$ficha->nombre}}</option>
-  @endforeach
+@foreach($fichas as $ficha)
+<option value="{{$ficha->id}}" {{ in_array($ficha->id, $selected_categories ) == 1 ? 'selected' : '' }}>{{$ficha->nombre}}</option>
+@endforeach
 @endsection
 @section('web')
-  {{$grupo->web}}
+{{$grupo->web}}
 @endsection
 @section('correo')
-  {{$grupo->correo}}
+{{$grupo->correo}}
 @endsection
 @section('twitter')
-  {{$grupo->twitter}}
+{{$grupo->twitter}}
 @endsection
 @section('facebook')
-  {{$grupo->facebook}}
+{{$grupo->facebook}}
 @endsection
 @section('youtube')
-  {{$grupo->youtube}}
+{{$grupo->youtube}}
 @endsection
 @section('discord')
-  {{$grupo->discord}}
+{{$grupo->discord}}
 @endsection

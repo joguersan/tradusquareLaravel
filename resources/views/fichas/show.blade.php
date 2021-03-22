@@ -29,10 +29,10 @@
 			<br>
 			<strong>Plataforma: </strong>
 			@foreach ($ficha->plataformas as $plataforma)
-			<span title="{{$plataforma->nombre}}" class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1"><img src="{{$plataforma->imagen}}"  alt="{{$plataforma->nombre}}"> {{$plataforma->pivot->estado}}</span>
+			<span title="{{$plataforma->nombre}}" class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1"><img src="{{$plataforma->imagen}}" alt="{{$plataforma->nombre}}"> {{$plataforma->pivot->estado}}</span>
 			@endforeach
 		</div>
-		</div>
+	</div>
 	@if ($ficha->equipo!=NULL)
 	<div class="col-md-5 ficha p-3 mt-3">
 		<div class="fichaTitulo bg-primary tituloHeader p-3 flex">
@@ -77,12 +77,13 @@
 		</div>
 		<div class="fichaTituloTriangulo"></div>
 		<div class="pl-2 pb-2 pr-2 pt-0 fichaContenido">
-		@foreach ($ficha->porcentajes as $porcentaje)
+			@foreach ($ficha->porcentajes as $porcentaje)
 			<div class="progress position-relative mb-1 {{hideBars($porcentaje->titulo_porcentaje)}}">
-			  <div class="progress-bar {{ratingColor($porcentaje->valor_porcentaje)}}" role="progressbar" style="width:{{$porcentaje->valor_porcentaje}}%" aria-valuenow="{{$porcentaje->valor_porcentaje}}" aria-valuemin="0" aria-valuemax="100"></div>
+				<div class="progress-bar {{ratingColor($porcentaje->valor_porcentaje)}}" role="progressbar" style="width:{{$porcentaje->valor_porcentaje}}%" aria-valuenow="{{$porcentaje->valor_porcentaje}}" aria-valuemin="0" aria-valuemax="100">
+				</div>
 				<small class="porcentaje justify-content-center align-self-center d-flex position-absolute w-100">{{$porcentaje->titulo_porcentaje}}: {{$porcentaje->valor_porcentaje}}%</small>
 			</div>
-		@endforeach
+			@endforeach
 		</div>
 	</div>
 	@if ($ficha->descarga!=NULL)

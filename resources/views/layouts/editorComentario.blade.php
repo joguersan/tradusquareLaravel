@@ -20,7 +20,7 @@
                             @csrf
                             @yield('method')
                             <div class="form-row">
-                              <textarea name="mensaje" id="mensaje" class="summernote" class"col w-75">
+                                <textarea name="mensaje" id="mensaje" class="summernote" class"col w-75">
                                 @yield('campoComentario')
                               </textarea>
                             </div>
@@ -33,10 +33,10 @@
         </div>
     </div>
     <script>
-    $('.summernote').summernote({
-        height: 300,
-        focus: true
-    });
+        $('.summernote').summernote({
+            height: 300,
+            focus: true
+        });
     </script>
     <script>
         $('.juegos').select2();

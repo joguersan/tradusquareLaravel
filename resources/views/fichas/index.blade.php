@@ -69,10 +69,10 @@ $(document).ready(function() {
 			language: {
 					search: "Buscar:",
 					paginate: {
-            first:      "<<",
+            first:      "«",
             previous:   "<",
             next:       ">",
-            last:       ">>"
+            last:       "»"
         },
 					searchPanes: {
 						"clearMessage": "Borrar todo",

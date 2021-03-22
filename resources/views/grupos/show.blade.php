@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @section('contenido')
 
-	<img src="{{$grupo->logo}}"/>
-		<h1>{{$grupo->nombre}}</h1>
+<img src="{{$grupo->logo}}" />
+<h1>{{$grupo->nombre}}</h1>
 
 <div class="row p-3">
 	<div class="col-md-6 p-0 border border-primary">
@@ -10,8 +10,8 @@
 			<i class="fas fa-user-friends"></i> Integrantes
 		</div>
 		<div class="col m-0 p-0">
-				@foreach($grupo->usuarios as $usr)
-					<div class="p-2 bg-light border">{{$usr->nombre}}</div>
+			@foreach($grupo->usuarios as $usr)
+				<div class="p-2 bg-light border">{{$usr->nombre}}</div>
 				@endforeach
 		</div>
 	</div>
@@ -20,52 +20,52 @@
 			<i class="large material-icons mr-2">library_books</i>Descripción
 		</div>
 		<div class=" p-3">
-			{{$grupo->descripcion}}
+			{!!$grupo->descripcion!!}
 		</div>
 	</div>
 </div>
 <div class="border p-0 mt-3" style="border-color:purple">
-		<div class="col font-weight-bold d-flex p-2 text-white  justify-content-center" style="background-color:purple">
-			<i class="large material-icons mr-2">contacts</i>Últimas noticias
-		</div>
+	<div class="col font-weight-bold d-flex p-2 text-white  justify-content-center" style="background-color:purple">
+		<i class="large material-icons mr-2">contacts</i>Últimas noticias
+	</div>
 	<div class="d-grid gap-3">
 		@foreach($grupo->fichas as $ficha)
 			@foreach($ficha->noticias as $noticia)
 				<div class="p-2 bg-light border"><a href="{{route('noticia.show',$noticia->url)}}">{{$noticia->titulo}}</a></div>
-			@endforeach
-		@endforeach
+				@endforeach
+				@endforeach
 	</div>
 </div>
 <div class="border border-success p-0 mt-3">
 	<div class="col font-weight-bold d-flex p-2 bg-success text-white justify-content-center">
 		<i class="large material-icons mr-2">save_alt</i>Proyectos
 	</div>
-		<table class="table text-left table-hover">
-			@foreach ($grupo->fichas as $ficha)
-				@foreach($ficha->plataformas as $plataforma)
-          <tr>
-          @if($loop->first)
-          <td rowspan="{{count($ficha->plataformas)}}" class="align-middle p-3">
-            <a href="{{route('ficha.show', $ficha->url)}}">
-              {{$ficha->nombre}}
-            </a>
-          </td>
-          @endif
-          <td class="p-2">
-              <img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
-          </td>
-          <td class="p-2 text-center">
-            <span class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1">{{$plataforma->pivot->estado}}</span>
-          </td>
-          @if($loop->first)
-          <td rowspan="{{count($ficha->plataformas)}}" class="p-3 text-center">
-              Actualizada el {{getUpdatedAtAttribute($ficha->updated_at)}}
-          </td>
-        @endif
-        </tr>
-          @endforeach
+	<table class="table text-left table-hover">
+		@foreach ($grupo->fichas as $ficha)
+		@foreach($ficha->plataformas as $plataforma)
+			<tr>
+				@if($loop->first)
+					<td rowspan="{{count($ficha->plataformas)}}" class="align-middle p-3">
+						<a href="{{route('ficha.show', $ficha->url)}}">
+							{{$ficha->nombre}}
+						</a>
+					</td>
+					@endif
+					<td class="p-2">
+						<img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
+					</td>
+					<td class="p-2 text-center">
+						<span class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1">{{$plataforma->pivot->estado}}</span>
+					</td>
+					@if($loop->first)
+						<td rowspan="{{count($ficha->plataformas)}}" class="p-3 text-center">
+							Actualizada el {{getUpdatedAtAttribute($ficha->updated_at)}}
+						</td>
+						@endif
+			</tr>
 			@endforeach
-		</table>
+			@endforeach
+	</table>
 </div>
 
 @endsection
