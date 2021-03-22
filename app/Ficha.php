@@ -22,6 +22,9 @@ class Ficha extends Model
     public function grupos(){
       return $this->belongsToMany('App\Grupo', 'ficha_grupo');
     }
+    public function banderas(){
+      return $this->belongsToMany('App\Bandera', 'bandera_ficha')->withPivot('usage');
+    }
 
     /**
     * Obtiene las Noticias

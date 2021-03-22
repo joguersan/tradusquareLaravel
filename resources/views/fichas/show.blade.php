@@ -22,6 +22,24 @@
 		<div class="text-black fichaContenido pl-2 pb-2 pr-2 pt-0">
 			{!!$ficha->ficha!!}
 			<br>
+			<strong>Idiomas: </strong>
+			@forelse ($ficha->banderas as $bandera)
+			@if ($bandera->pivot->usage == 0)
+			{{$bandera->name}}
+			@endif
+			@empty
+			No
+			@endforelse
+			<br>
+			<strong>Doblaje: </strong>
+			@forelse ($ficha->banderas as $bandera)
+			@if ($bandera->pivot->usage == 1)
+			{{$bandera->name}}
+			@endif
+			@empty
+			No
+			@endforelse
+			<br>
 			<strong>Traducido por: </strong>
 			@foreach ($ficha->grupos as $grupo)
 			<a href="{{route('grupos.show', $grupo)}}">{{$grupo->nombre}}</a>
