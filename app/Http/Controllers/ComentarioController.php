@@ -36,9 +36,16 @@ class ComentarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Noticia $noticia)
     {
-        //
+        $comentario = new Comentario;
+        $comentario->create([
+          'user_id'=> '1',
+          'contenido' => request('mensaje'),
+          'noticia_id' => $noticia->id
+        ]);
+        return redirect()->route('noticia.show', $noticia);
+
     }
 
     /**
@@ -75,9 +82,9 @@ class ComentarioController extends Controller
     public function update(Comentario $comentario)
     {
       $comentario->update([
-        'mensaje' => request('mensaje'),
+        'contenido' => request('mensaje'),
       ]);
-      return redirect()->route('inicio');
+      return redirect()->route('noticia.show', $comentario->noticias);
     }
 
     /**
@@ -89,7 +96,7 @@ class ComentarioController extends Controller
     public function destroy(Comentario $comentario)
     {
       $comentario -> delete();
-      return redirect()->route('inicio');
+      return redirect()->route('noticia.show', $comentario->noticias);
     }
 
     public function back()

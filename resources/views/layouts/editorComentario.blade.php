@@ -25,7 +25,7 @@
                               </textarea>
                             </div>
                             <input class="btn btn-danger text-white" type="submit" value="Enviar"></input>
-                            <a href="{{route('inicio')}}"><input style="cursor:pointer" class="btn btn-warning text-white" value="Salir" /></a>
+                            <a href="{{route('noticia.show', $comentario->noticias)}}"><input style="cursor:pointer" class="btn btn-warning text-white" value="Salir" /></a>
                         </form>
                     </div>
                 </div>

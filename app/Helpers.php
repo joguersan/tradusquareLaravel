@@ -4,6 +4,11 @@ function setActive($ruta)
   return request()->routeIs($ruta) ? 'active' : '';
 }
 
+function setSelected($valor1, $valor2, $retorno)
+{
+  return $valor1 == $valor2 ? $retorno : '';
+}
+
 function ratingColor($valor)
 {
   $color = "white";

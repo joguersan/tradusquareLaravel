@@ -55,7 +55,7 @@
                                 <span class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1">{{$plataforma->pivot->estado}}</span>
                             </td>
                             @if($loop->first)
-                                <td rowspan="{{count($ficha->plataformas)}}" class="p-3 text-center">
+                                <td rowspan="{{count($ficha->plataformas)}}" class="p-3 text-center align-middle">
                                     Actualizada {{$ficha->updated_at->diffForHumans()}}
                                 </td>
                                 @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EntradaTablon;
+use App\Ficha;
 use Illuminate\Http\Request;
 use View;
 
@@ -27,7 +28,10 @@ class EntradaTablonController extends Controller
      */
     public function create()
     {
-        //
+      $fichas = Ficha::all();
+      return view('tablon.create', [
+        'fichas' => $fichas
+      ]);
     }
 
     /**
@@ -38,7 +42,22 @@ class EntradaTablonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      request()->validate([
+        'titulo' => 'required|min:10',
+        'contenido' => 'required|min:10',
+        'imagen' => 'required',
+      ]);
+      $tablon = new EntradaTablon;
+      $tablon->create([
+        'titulo'=> request('titulo'),
+        'contenido' => request('contenido'),
+        'contacto' => request('contacto'),
+        'imagen' => request('imagen'),
+        'visible' => request('estado'),
+        'ficha_id' => request('fichas')
+      ]);
+      //$tablon -> fichas() -> sync(request('fichas'));
+      return redirect()->route('tablon-de-misiones.index');
     }
 
     /**
@@ -49,6 +68,7 @@ class EntradaTablonController extends Controller
      */
     public function show($entrada_Tablon)
     {
+
       $entrada = EntradaTablon::find($entrada_Tablon);
 
       return $entrada;
@@ -60,9 +80,14 @@ class EntradaTablonController extends Controller
      * @param  \App\EntradaTablon  $entrada_Tablon
      * @return \Illuminate\Http\Response
      */
-    public function edit(EntradaTablon $entrada_Tablon)
+    public function edit($id)
     {
-        //
+      $entrada = EntradaTablon::findOrFail($id);
+      $fichas = Ficha::all();
+      return view('tablon.edit', [
+        'entrada' => $entrada,
+        'fichas' => $fichas
+      ]);
     }
 
     /**
@@ -72,9 +97,18 @@ class EntradaTablonController extends Controller
      * @param  \App\EntradaTablon  $entrada_Tablon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EntradaTablon $entrada_Tablon)
+    public function update($entrada_Tablon)
     {
-        //
+      $entrada = EntradaTablon::find($entrada_Tablon);
+      $entrada->update([
+        'titulo'=> request('titulo'),
+        'imagen'=> request('imagen'),
+        'contenido' => request('contenido'),
+        'contacto' => request('contacto'),
+        'visible' => request('estado'),
+        'ficha_id' => request('fichas')
+      ]);
+      return redirect()->route('tablon-de-misiones.index');
     }
 
     /**

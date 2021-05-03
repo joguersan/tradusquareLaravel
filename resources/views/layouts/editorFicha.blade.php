@@ -92,13 +92,6 @@
                                         @yield('campoEstado')
                                     </select>
                                 </div>
-                                <div class="input-group">
-                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
-                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
-                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
-                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
-                                    <input type="range" min="-1" max="100" value="-1" class="slider" id="myRange">
-                                </div>
                             </div>
                             <input class="btn btn-danger text-white" type="submit" value="Enviar"></input>
                             <a href="/"><input style="cursor:pointer" class="btn btn-warning text-white" value="Salir" /></a>

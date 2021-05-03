@@ -32,6 +32,7 @@
                             @method('DELETE')
                             <input type="submit" class="btn btn-danger" value="Eliminar">
                         </form>
+                        <a class="btn btn-primary" href="{{route('tablon-de-misiones.edit', $entrada->id)}}">Editar</a>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No, gracias...</button>
                         <a href="mailto:{{$entrada-> contacto }}"><button type="button" class="btn btn-warning text-white">¡Quiero participar!</button></a>
                     </div>

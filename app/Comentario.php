@@ -13,10 +13,10 @@ class Comentario extends Model
       return $this->belongsTo('App\Noticia', 'noticia_id');
     }
     public function users(){
-      return $this->belongsTo('App\User');
+      return $this->belongsTo('App\User', 'user_id');
     }
 
     protected $fillable = [
-        'id', 'users_id','mensaje', 'respuesta', 'noticia_id'
+        'id', 'user_id','contenido', 'respuesta', 'noticia_id'
     ];
 }
