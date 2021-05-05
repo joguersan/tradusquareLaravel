@@ -30,13 +30,13 @@
 				</td>
 				<td class="text-center">
 					@if ($plataforma->pivot->estado_id == 1)
-					<span class="badge badge-success p-1">Completado</span>
+					<span class="badge bg-success p-1">Completado</span>
 					@elseif ($plataforma->pivot->estado_id == 2)
-					<span class="badge badge-primary p-1">En proceso</span>
+					<span class="badge bg-primary p-1">En proceso</span>
 					@elseif ($plataforma->pivot->estado_id == 3)
-					<span class="badge badge-warning p-1">Pausado</span>
+					<span class="badge bg-warning text-dark p-1">Pausado</span>
 					@elseif ($plataforma->pivot->estado_id == 4)
-					<span class="badge badge-danger p-1">Cancelado</span>
+					<span class="badge bg-danger text-dark p-1">Cancelado</span>
 					@endif
 				</td>
 				<td class="align-middle">

@@ -63,14 +63,18 @@
 							<div class="col-md-12 p-3">
 								{!! $comentario -> contenido !!}
 							</div>
-							<div class="row p-0 m-2">
-								<a class="btn btn-primary mr-2" href="{{route('comentarios.edit', $comentario)}}">Editar</a>
-								<form method="POST" action="{{route('comentarios.destroy', $comentario)}}">
-									@csrf
-									@method('DELETE')
-									<button class="btn btn-primary">Eliminar</button>
-								</form>
-							</div>
+							<ul class="list-group list-group-horizontal">
+								<li class="list-group-item">
+									<a class="btn btn-primary" href="{{route('comentarios.edit', $comentario)}}">Editar</a>
+								</li>
+								<li class="list-group-item">
+									<form method="POST" action="{{route('comentarios.destroy', $comentario)}}">
+										@csrf
+										@method('DELETE')
+										<button class="btn btn-primary">Eliminar</button>
+									</form>
+								</li>
+							</ul>
 						</div>
 					</div>
 					@endforeach
@@ -87,7 +91,7 @@
 				<form method="POST" action="{{route('noticias.destroy', $noticia)}}">
 					@csrf
 					@method('DELETE')
-					<button class="btn bt-primary">Eliminar noticia</button>
+					<button class="btn btn-primary">Eliminar noticia</button>
 				</form>
 			</div>
 		</div>

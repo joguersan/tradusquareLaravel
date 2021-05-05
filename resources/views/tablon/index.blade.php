@@ -12,10 +12,10 @@
 <div class="row m-3 p-0">
     @forelse($entradas as $entrada)
     @if ($entrada->visible == 1)
-    <div class="col-md-3 elementoTablon" data-toggle="modal" data-target="#tablon{{$entrada->id}}">
+    <div class="col-md-3 elementoTablon" data-bs-toggle="modal" data-bs-target="#tablon{{$entrada->id}}">
         <img src="{{$entrada->imagen}}" alt="Anuncio para {{$entrada->titulo}}" />
         <div class="modal fade sebusca" id="tablon{{$entrada->id}}" tabindex="-1" role="dialog" aria-labelledby="Anuncio {{$entrada -> titulo}}" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content pergamino">
                     <div class="modal-header">
                         <h5 class="modal-title text-center" id="exampleModalLongTitle">{{$entrada -> titulo}}</h5>

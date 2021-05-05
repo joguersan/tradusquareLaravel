@@ -4,7 +4,7 @@
 <meta name="description" content="Comunidad hispana de fantraducción de videojuegos que aúna a decenas de equipos de la scene hispana para ofrecer parches de traducción de calidad en español y otros idiomas peninsulares como el catalán." />
 @endsection
 @section('contenido')
-<div class="col p-4 text-center rounded border m-2 m-lg-5 bg-white">
+<div class="col p-4 text-center rounded border mx-lg-5 mt-lg-5 bg-white">
     <img src="images/noticiasMini.webp" alt="Últimas noticias" class="mb-2">
     <div class="row">
         @foreach($noticias as $noticia)
@@ -33,8 +33,9 @@
     </div>
     <a href="{{route('noticias.index')}}"><button class="btn btn-primary">Ver todas las noticias</button></a>
 </div>
-<div class="row mx-lg-5 mb-2 w-100 m-0">
-    <div class="col-md-8 text-center rounded border bg-white mb-2">
+</div>
+<div class="row mx-lg-5 mb-2 m-0">
+    <div class="col-md-8 text-center rounded border bg-white">
         <img src="images/estilo/fichaTitleMini.webp" alt="Proyectos actualizados" class="w-md-75 mb-2">
         <div class="d-flex justify-content-center align-content-center flex-wrap table-responsive w-100">
             <table class="table text-left table-hover">
@@ -66,7 +67,7 @@
         </div>
         <a href="{{route('fichas.index')}}"><button class="btn btn-primary">Ver todos los proyectos</button></a>
     </div>
-    <div class="col-md-4 pl-lg-5 p-2 p-lg-0">
+    <div class="col-md-4 pe-0">
         <div class="col rounded border mb-3 bg-white p-3">
             <img src="images/estilo/tablonTitleMini.webp" alt="Tablón de misiones" class="w-md-100 mb-5" />
             <div class="d-flex justify-content-center ">
@@ -87,10 +88,10 @@
             <div class="tarjeta border bg-white rounded mb-3 p-1">
                 <div class="row font-weight-bold">
                     <div class="col">
-                        <img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{$comentario->users->imagen}}" title="Avatar de {{$comentario->users->nick}}" alt="Avatar de {{$comentario->users->nick}}" />
+                        <img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{$comentario -> users -> imagen}}" title="Avatar de {{$comentario -> users -> nombre}}" alt="Avatar de {{$comentario -> users -> nombre}}" />
                     </div>
                     <div class="col">
-                        {{$comentario->users->nick}}
+                        {{$comentario -> users -> nombre}}
                     </div>
                     <div class="col">
                         {{getUpdatedAtAttribute($comentario->created_at)}}
@@ -99,7 +100,7 @@
                 <hr>
                 <div class="col pb-2">
                     <a href="{{route('noticia.show', $comentario->noticias->url . '#' . $comentario->id)}}">
-                        {{$comentario->noticias->titulo}}
+                        {{$comentario -> noticias -> titulo}}
                     </a>
                 </div>
             </div>
@@ -107,9 +108,8 @@
             <a href="{{route('comentarios.index')}}"><button class="btn btn-primary">Ver todos los comentarios</button></a>
         </div>
     </div>
-</div>
-@endsection
-@section('JSextra')
-<script type="module" src="/pwabuilder-sw-register.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-@endsection
+    @endsection
+    @section('JSextra')
+    <script type="module" src="/pwabuilder-sw-register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    @endsection

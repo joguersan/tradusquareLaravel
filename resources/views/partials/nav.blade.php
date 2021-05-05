@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light navbar-primary border pb-0 m-0">
+<nav class="navbar navbar-expand-lg bg-light navbar-primary border pb-0 m-0 px-2">
     <a class="navbar-brand imagenCabecera" href="{{route('inicio')}}">
         <img src="/images/logoMini.webp" alt="Logo de TraduSquare" />
     </a>
@@ -23,7 +23,7 @@
                 <a class="nav-link {{ setActive('amala') }}" href="{{route('tablon-de-misiones.index')}}"><i class="bi bi-stickies-fill"></i> Tablón de misiones</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 @guest
                 <a class="nav-link" href="/"><i class="bi-person-bounding-box"></i> Acceder</a>
