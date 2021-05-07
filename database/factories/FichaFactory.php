@@ -11,6 +11,6 @@ $factory->define(App\Ficha::class, function (Faker $faker) {
         'equipo' => $faker->text($maxNbChars = 200),
         'descarga' => $faker->text($maxNbChars = 200),
         'info_adicional' => $faker->text($maxNbChars = 200),
-        'url' => $faker->randomNumber($nbDigits = NULL, $strict = false)
+        'url' => $faker->unique()->url()
     ];
 });

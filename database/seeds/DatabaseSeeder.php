@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     /*$this->call([
       PlataformaSeeder::class
     ]);*/
-    Ficha::factory() ->count(50)->has(Post::factory()->count(3)
-            ->estado(1)->create();
+
+    factory(App\Ficha::class, 30)->create();
     factory(App\Plataforma::class, 10)->create();
     factory(App\User::class, 10)->create();
     factory(App\Noticia::class, 10)->create();
@@ -27,15 +27,18 @@ class DatabaseSeeder extends Seeder
     // ************************* //
     // Populate the pivot tables
     // ************************* //
+      $fichas = App\Ficha::all();
+    // Ficha-Plataforma (Falta Modelo y Factory para Estado)
+    /*
 
-    // Ficha-Plataforma
-    $fichas = App\Ficha::all();
     App\Plataforma::all()->each(function ($plataforma) use ($fichas) {
       $plataforma->fichas()->attach(
         $plataforma->id, [
-          'ficha_id'   => $plataforma->id
+          'plataforma_id'   => $plataforma->id,
         ]);
       });
+    */
+
     // Ficha-Noticia
     App\Noticia::all()->each(function ($noticia) use ($fichas) {
       $noticia->fichas()->attach(
