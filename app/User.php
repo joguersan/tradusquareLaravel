@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +17,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nick', 'privilegios', 'contrasenya', 'imagen'
+        'nombre',
+        'privilegios',
+        'contrasenya',
+        'imagen',
+        'rol'
     ];
 
     /**
@@ -46,4 +51,52 @@ class User extends Authenticatable
     public function grupos(){
       return $this->belongsToMany('App\Grupo', 'user_grupo')->withPivot('user_id', 'grupo_id');
     }
+
+
+    public static function crearUsuario($data){
+
+        $user = new User;
+        if(User::find($data->email)){
+                //usa otro email
+        }
+
+        if(User::find($data->nombre)){
+
+            //usa otro nombre.
+
+        }
+
+            $user->nombre = $data->nombre;
+            $user->email = $data->email;
+            $data->contraseña = self::encryptPass($data->contraseña);
+            $user->contraseña = $data->contraseña;
+            $user->imagen = "SASAAS";
+            $user->rol = 0;
+            $user->save();
+           // $user->create();
+
+
+
+    }
+
+
+    public static function updateUserData($data){
+
+        $user = new User();
+
+//TODO, meter lógica.
+        if ( $data->nombre ) $user->nombre = $data->nombre;
+        if ( $data->email ) $user->email = $data->email;
+        // TO DO: encoding password
+        if ( $data->contraseña ) $user->contraseña = $data->contraseña;
+        $user->save();
+
+    }
+
+    public static function encryptPass($pass){
+        return $pass = Hash::make($pass);
+    }
+
+
+
 }

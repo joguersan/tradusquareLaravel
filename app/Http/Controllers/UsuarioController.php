@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use View;
+//use View;
+use Illuminate\Support\Facades\View;
 
-class UsuarioController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,12 +28,12 @@ class UsuarioController extends Controller
      */
     public function create( Request $request )
     {
+       // dd($request);
         $user = new User;
-        $user->nombre = $request->nombre;
-        $user->email = $request->email;
-        // TO DO: encoding password
-        $user->contraseña = $request->contraseña;
-        $user->save();
+        $user::crearUsuario($request);
+
+        return view('iniciar-sesion');
+
         return response()->json([
             'msg' => 'El usuario ha sido creado correctamente'
         ]);
@@ -46,7 +47,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "testerino";
     }
 
     /**
@@ -83,13 +84,17 @@ class UsuarioController extends Controller
     public function update( Request $request )
     {
         $user = User::find($request->id);
-        if ( $request->nombre ) $user->nombre = $request->nombre;
-        if ( $request->email ) $user->email = $request->email;
-        // TO DO: encoding password
-        if ( $request->contraseña ) $user->contraseña = $request->contraseña;
-        $user->save();
+
+        if($user){
+                $user::updateUser($request);
+                $user->save();
+                return response()->json([
+                    'msg' => 'El usuario ha sido actualizado correctamente'
+                ]);
+        }
+
         return response()->json([
-            'msg' => 'El usuario ha sido actualizado correctamente'
+            'msg' => 'Error la actualizar el usuario'
         ]);
     }
 

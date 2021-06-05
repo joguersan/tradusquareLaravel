@@ -27,14 +27,28 @@ Route::post('/noticias/{noticia}', 'NoticiaController@show')->name('noticia.show
 Route::get('/proyecto/{ficha}', 'FichaController@show')->name('ficha.show');
 Route::get('/proyectos', 'FichaController@index')->name('proyectos');
 Route::get('/proyectos/{id_plat}', 'FichaController@listaPlataforma')->name('proyectoplataforma');
+
+
 Route::resources([
-  'noticias' => 'NoticiaController',
-  'plataformas' => 'PlataformaController',
-  'fichas' => 'FichaController',
-  'grupos' => 'GrupoController',
-  'comentarios' => 'ComentarioController',
-  'usuarios' => 'UsuarioController',
-  'tablon-de-misiones' => 'EntradaTablonController'
+    'noticias' => 'NoticiaController',
+    'plataformas' => 'PlataformaController',
+    'fichas' => 'FichaController',
+    'grupos' => 'GrupoController',
+    'comentarios' => 'ComentarioController',
+    'usuarios' => 'UsuarioController',
+    'tablon-de-misiones' => 'EntradaTablonController'
 ]);
 Route::view('/informacion', 'informacion')->name('informacion');
 Route::view('/amala', 'amala')->name('amala');
+
+
+//login y registro
+
+//vistas
+Route::view('/iniciar-sesion','login')->name('iniciar-sesion');
+Route::view('/registro','registro')->name('registro');
+//
+//Route::post('register','UsuarioController@store');
+//Route::post('login','UsuarioController@login')->name('login');
+Route::post('register','AuthController@registro')->name('register');
+Route::post('login','AuthController@login')->name('login');
