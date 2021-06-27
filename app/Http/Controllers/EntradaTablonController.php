@@ -69,7 +69,7 @@ class EntradaTablonController extends Controller
     public function show($entrada_Tablon)
     {
 
-      $entrada = EntradaTablon::find($entrada_Tablon);
+      $entrada = EntradaTablon::findOrFail($entrada_Tablon);
 
       return $entrada;
     }
@@ -99,7 +99,7 @@ class EntradaTablonController extends Controller
      */
     public function update($entrada_Tablon)
     {
-      $entrada = EntradaTablon::find($entrada_Tablon);
+      $entrada = EntradaTablon::findOrFail($entrada_Tablon);
       $entrada->update([
         'titulo'=> request('titulo'),
         'imagen'=> request('imagen'),
@@ -107,6 +107,15 @@ class EntradaTablonController extends Controller
         'contacto' => request('contacto'),
         'visible' => request('estado'),
         'ficha_id' => request('fichas')
+      ]);
+      return redirect()->route('tablon-de-misiones.index');
+    }
+
+    public function delete($entrada_Tablon)
+    {
+      $entrada = EntradaTablon::find($entrada_Tablon);
+      $entrada->update([
+        'visible'=> '0'
       ]);
       return redirect()->route('tablon-de-misiones.index');
     }

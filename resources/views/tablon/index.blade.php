@@ -27,9 +27,9 @@
                         <h3 class="text-center">¡Se busca!</h3>{!!$entrada -> contenido!!}
                     </div>
                     <div class="modal-footer">
-                        <form method="post" action="{{route('tablon-de-misiones.destroy', $entrada)}}" class="p-0 m-0">
+                        <form method="post" action="{{route('tablon-de-misiones.delete', $entrada)}}" class="p-0 m-0">
                             @csrf
-                            @method('DELETE')
+                            @method('PATCH')
                             <input type="submit" class="btn btn-danger" value="Eliminar">
                         </form>
                         <a class="btn btn-primary" href="{{route('tablon-de-misiones.edit', $entrada->id)}}">Editar</a>

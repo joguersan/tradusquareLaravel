@@ -145,8 +145,7 @@ class FichaController extends Controller
         'equipo' => request('equipo'),
         'imagen' => request('imagen'),
         'descarga' => request('links'),
-        'info_adicional' => request('info_adicional'),
-        'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        'info_adicional' => request('info_adicional')
       ]);
       $plataformas=request('plataformas');
       $estados=request('estados');

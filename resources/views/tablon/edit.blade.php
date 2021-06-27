@@ -28,8 +28,9 @@ Editando anuncio para ̣{{$entrada->titulo}}
 @endsection
 
 @section('campoFichas')
+
 @foreach($fichas as $ficha)
-<option value="{{$ficha->id}}" {{setSelected($ficha->id, $entrada->fichas->id, "selected")}}>{{$ficha->nombre}}
+<option value="{{$ficha['id']}}" {{setSelected($ficha['id'], $entrada->fichas['id'], "selected")}}>{{$ficha->nombre}}
 </option>
 @endforeach
 @endsection
