@@ -16,6 +16,9 @@ class AddDeletedAt extends Migration
         Schema::table('comentarios', function (Blueprint $table) {
           $table->timestamp('deleted_at')->after('updated_at');
         });
+        Schema::table('grupos', function (Blueprint $table) {
+          $table->timestamp('deleted_at')->after('updated_at');
+        });
     }
 
     /**
@@ -26,6 +29,9 @@ class AddDeletedAt extends Migration
     public function down()
     {
         Schema::table('comentarios', function (Blueprint $table) {
+          $table->dropcolumn('deleted_at');
+        });
+        Schema::table('grupos', function (Blueprint $table) {
           $table->dropcolumn('deleted_at');
         });
     }

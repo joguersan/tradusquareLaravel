@@ -25,6 +25,7 @@ Route::post('/comentarios/create/{noticia}', 'ComentarioController@store')->name
 Route::patch('/fichas/{ficha}/update', 'FichaController@update')->name('ficha.update');
 Route::post('/noticias/{noticia}', 'NoticiaController@destroy')->name('noticia.destroy');
 Route::patch('/tablon-de-misiones/{post}/delete', 'EntradaTablonController@delete')->name('tablon-de-misiones.delete');
+Route::patch('/grupos/{grupo}/delete', 'GrupoController@delete')->name('grupos.delete');
 Route::patch('/comentarios/{comentario}/delete', 'ComentarioController@delete')->name('comentarios.delete');
 Route::post('/noticias/{noticia}', 'NoticiaController@show')->name('noticia.show');
 Route::get('/proyecto/{ficha}', 'FichaController@show')->name('ficha.show');

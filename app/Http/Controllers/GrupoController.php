@@ -130,6 +130,15 @@ class GrupoController extends Controller
      */
     public function destroy(Grupo $grupo)
     {
+      $grupo->delete();
+      return redirect()->route('grupos.index');
+    }
+    public function delete(Grupo $grupo)
+    {
+        $Grupo->update([
+            'deleted_at' => new DateTime(),
+        ]);
+        return redirect()->route('grupos.index');
     }
     #########################
     # AUXILIAR FUNCTIONS
@@ -143,6 +152,6 @@ class GrupoController extends Controller
         $url = str_replace($char_raros, '', $url);
         $url = str_replace($a, $b, $url);
         return strtolower($url);
-    
+
     }
 }
