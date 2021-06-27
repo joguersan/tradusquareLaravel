@@ -23,11 +23,13 @@ class Browsershot
     protected $proxyServer = '';
     protected $showBackground = false;
     protected $showScreenshotBackground = true;
+    protected $scale = null;
     protected $screenshotType = 'png';
     protected $screenshotQuality = null;
     protected $temporaryHtmlDirectory;
     protected $timeout = 60;
     protected $url = '';
+    protected $postParams = [];
     protected $additionalOptions = [];
     protected $temporaryOptionsDirectory;
     protected $writeOptionsToFile = false;
@@ -108,6 +110,13 @@ class Browsershot
     public function setChromePath(string $executablePath)
     {
         $this->setOption('executablePath', $executablePath);
+
+        return $this;
+    }
+
+    public function post(array $postParams = [])
+    {
+        $this->postParams = $postParams;
 
         return $this;
     }
@@ -237,9 +246,16 @@ class Browsershot
         return $this->setOption('clip', compact('x', 'y', 'width', 'height'));
     }
 
-    public function select($selector)
+    public function select($selector, $index = 0)
     {
+        $this->selectorIndex($index);
+
         return $this->setOption('selector', $selector);
+    }
+
+    public function selectorIndex(int $index)
+    {
+        return $this->setOption('selectorIndex', $index);
     }
 
     public function showBrowserHeaderAndFooter()
@@ -388,6 +404,13 @@ class Browsershot
     public function format(string $format)
     {
         return $this->setOption('format', $format);
+    }
+
+    public function scale(float $scale)
+    {
+        $this->scale = $scale;
+
+        return $this;
     }
 
     public function timeout(int $timeout)
@@ -556,6 +579,14 @@ class Browsershot
         }
     }
 
+    public function base64pdf(): string
+    {
+        $command = $this->createPdfCommand();
+
+        return $this->callBrowser($command);
+    }
+
+
     public function evaluate(string $pageFunction): string
     {
         $command = $this->createEvaluateCommand($pageFunction);
@@ -613,6 +644,7 @@ class Browsershot
         $url = $this->html ? $this->createTemporaryHtmlFile() : $this->url;
 
         $options = [];
+
         if ($targetPath) {
             $options['path'] = $targetPath;
         }
@@ -621,6 +653,10 @@ class Browsershot
 
         if ($this->showBackground) {
             $command['options']['printBackground'] = true;
+        }
+
+        if ($this->scale) {
+            $command['options']['scale'] = $this->scale;
         }
 
         return $command;
@@ -670,6 +706,11 @@ class Browsershot
         return $this;
     }
 
+    public function setEnvironmentOptions(array $options = []): self
+    {
+        return $this->setOption('env', $options);
+    }
+
     protected function getOptionArgs(): array
     {
         $args = $this->chromiumArguments;
@@ -690,6 +731,10 @@ class Browsershot
         $command = compact('url', 'action', 'options');
 
         $command['options']['args'] = $this->getOptionArgs();
+
+        if (! empty($this->postParams)) {
+            $command['postParams'] = $this->postParams;
+        }
 
         if (! empty($this->additionalOptions)) {
             $command['options'] = array_merge_recursive($command['options'], $this->additionalOptions);

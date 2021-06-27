@@ -227,11 +227,11 @@ Browsershot::url('https://example.com')
     ->save($pathToImage);
 ```
 
-You can take a screenshot of an element matching a selector using `select`.
+You can take a screenshot of an element matching a selector using `select` and an optional `$selectorIndex` which is used to select the nth element (e.g. use `$selectorIndex = 3` to get the fourth element like `div:eq(3)`). By default `$selectorIndex` is `0` which represents the first matching element.
 
 ```php
 Browsershot::url('https://example.com')
-    ->select('.some-selector')
+    ->select('.some-selector', $selectorIndex)
     ->save($pathToImage);
 ```
 
@@ -447,6 +447,12 @@ You can also pass some html which will be converted to a pdf.
 Browsershot::html($someHtml)->savePdf('example.pdf');
 ```
 
+If you need the base64 version of a PDF you can use the `base64pdf` method. This can come in handy when you don't want to save the screenshot on disk in environments like Heroku that don't allow you to save a file. You can then proceed to create the file and upload it directly as a base64 string using a package like [Laravel Media Library](https://spatie.be/docs/laravel-medialibrary/v9/api/adding-files#addmediafrombase64).
+
+```php
+$base64Data = Browsershot::url('https://example.com')
+    ->base64pdf();
+```
 #### Sizing the pdf
 
 You can specify the width and the height.
@@ -535,6 +541,16 @@ Call `landscape` if you want to resulting pdf to be landscape oriented.
 Browsershot::html($someHtml)
    ->landscape()
    ->save('example.pdf');
+```
+
+#### Scale
+
+Scale can be set. Defaults to 1. Scale amount must be between 0.1 and 2.
+
+```php
+Browsershot::html($someHtml)
+    ->scale(0.5)
+    ->save('example.pdf');
 ```
 
 #### Only export specific pages
@@ -626,6 +642,8 @@ Browsershot::url('https://example.com')
     ->savePdf($pathToPdf);
 ```
 
+#### Setting the timeout
+
 The default timeout of Browsershot is set to 60 seconds. Of course, you can modify this timeout:
 
 ```php
@@ -699,6 +717,17 @@ You can specify the domain to register cookies to, if necessary:
 ```php
 Browsershot::url('https://example.com')
     ->useCookies(['Cookie-Key' => 'Cookie-Value'], 'ui.example.com')
+   ...
+```
+
+#### Sending POST requests
+
+By default, all requests sent using GET method. You can make POST request to the given url by using the `post` method.
+Note: POST request sent using `application/x-www-form-urlencoded` content type.
+
+```php
+Browsershot::url('https://example.com')
+    ->post(['foo' => 'bar'])
    ...
 ```
 
@@ -782,6 +811,17 @@ Browsershot::url('https://example.com')
    ->usePipe()
    ...
 ```
+
+#### Passing environment variables to the browser
+
+If you want to set custom environment variables which affect the browser instance you can use:
+
+```php
+Browsershot::url('https://example.com')
+   ->setEnvironmentOptions(['TZ' => 'Pacific/Auckland'])
+   ...
+```
+
 
 ## Related packages
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Crawler\CrawlQueue;
+namespace Spatie\Crawler\CrawlQueues;
 
 use Psr\Http\Message\UriInterface;
 use Spatie\Crawler\CrawlUrl;
-use Spatie\Crawler\Exception\InvalidUrl;
-use Spatie\Crawler\Exception\UrlNotFoundByIndex;
+use Spatie\Crawler\Exceptions\InvalidUrl;
+use Spatie\Crawler\Exceptions\UrlNotFoundByIndex;
 
 class ArrayCrawlQueue implements CrawlQueue
 {
@@ -14,24 +14,24 @@ class ArrayCrawlQueue implements CrawlQueue
      *
      * @var CrawlUrl[]
      */
-    protected $urls = [];
+    protected array $urls = [];
 
     /**
      * Pending URLs, indexed by URL string.
      *
      * @var CrawlUrl[]
      */
-    protected $pendingUrls = [];
+    protected array $pendingUrls = [];
 
-    public function add(CrawlUrl $url): CrawlQueue
+    public function add(CrawlUrl $crawlUrl): CrawlQueue
     {
-        $urlString = (string) $url->url;
+        $urlString = (string) $crawlUrl->url;
 
         if (! isset($this->urls[$urlString])) {
-            $url->setId($urlString);
+            $crawlUrl->setId($urlString);
 
-            $this->urls[$urlString] = $url;
-            $this->pendingUrls[$urlString] = $url;
+            $this->urls[$urlString] = $crawlUrl;
+            $this->pendingUrls[$urlString] = $crawlUrl;
         }
 
         return $this;
@@ -51,26 +51,31 @@ class ArrayCrawlQueue implements CrawlQueue
         return $this->urls[$id];
     }
 
-    public function hasAlreadyBeenProcessed(CrawlUrl $url): bool
+    public function hasAlreadyBeenProcessed(CrawlUrl $crawlUrl): bool
     {
-        $url = (string) $url->url;
+        $urlString = (string) $crawlUrl->url;
 
-        if (isset($this->pendingUrls[$url])) {
+        if (isset($this->pendingUrls[$urlString])) {
             return false;
         }
 
-        if (isset($this->urls[$url])) {
+        if (isset($this->urls[$urlString])) {
             return true;
         }
 
         return false;
     }
 
-    public function markAsProcessed(CrawlUrl $crawlUrl)
+    public function markAsProcessed(CrawlUrl $crawlUrl): void
     {
-        $url = (string) $crawlUrl->url;
+        $urlString = (string) $crawlUrl->url;
 
-        unset($this->pendingUrls[$url]);
+        unset($this->pendingUrls[$urlString]);
+    }
+
+    public function getProcessedUrlCount(): int
+    {
+        return count($this->urls) - count($this->pendingUrls);
     }
 
     /**
@@ -81,17 +86,17 @@ class ArrayCrawlQueue implements CrawlQueue
     public function has($crawlUrl): bool
     {
         if ($crawlUrl instanceof CrawlUrl) {
-            $url = (string) $crawlUrl->url;
+            $urlString = (string) $crawlUrl->url;
         } elseif ($crawlUrl instanceof UriInterface) {
-            $url = (string) $crawlUrl;
+            $urlString = (string) $crawlUrl;
         } else {
             throw InvalidUrl::unexpectedType($crawlUrl);
         }
 
-        return isset($this->urls[$url]);
+        return isset($this->urls[$urlString]);
     }
 
-    public function getFirstPendingUrl(): ?CrawlUrl
+    public function getPendingUrl(): ?CrawlUrl
     {
         foreach ($this->pendingUrls as $pendingUrl) {
             return $pendingUrl;

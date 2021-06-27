@@ -3,7 +3,7 @@
 $finder = Symfony\Component\Finder\Finder::create()
     ->notPath('bootstrap/*')
     ->notPath('storage/*')
-    ->notPath('resources/view/mail/*')
+    ->notPath('vendor')
     ->in([
         __DIR__ . '/src',
         __DIR__ . '/tests',
@@ -29,6 +29,11 @@ return PhpCsFixer\Config::create()
         ],
         'phpdoc_single_line_var_spacing' => true,
         'phpdoc_var_without_name' => true,
+        'class_attributes_separation' => [
+            'elements' => [
+                'method', 'property',
+            ],
+        ],
         'method_argument_space' => [
             'on_multiline' => 'ensure_fully_multiline',
             'keep_multiple_spaces_after_comma' => true,

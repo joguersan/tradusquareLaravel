@@ -6555,30 +6555,30 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.40.2",
-            "version_normalized": "3.40.2.0",
+            "version": "3.47.0",
+            "version_normalized": "3.47.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "3e55eaf5ab8cee65d1661a567e89b3374afb9116"
+                "reference": "4975143f1e5bd0bcb023f00c05d8c6b24e788f2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/3e55eaf5ab8cee65d1661a567e89b3374afb9116",
-                "reference": "3e55eaf5ab8cee65d1661a567e89b3374afb9116",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/4975143f1e5bd0bcb023f00c05d8c6b24e788f2d",
+                "reference": "4975143f1e5bd0bcb023f00c05d8c6b24e788f2d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1",
+                "php": "^7.4|^8.0",
                 "spatie/image": "^1.5.3",
-                "spatie/temporary-directory": "^1.1",
+                "spatie/temporary-directory": "^1.1|^2.0",
                 "symfony/process": "^4.2|^5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.1|^7.5",
-                "spatie/phpunit-snapshot-assertions": "^1.0"
+                "phpunit/phpunit": "^9.0",
+                "spatie/phpunit-snapshot-assertions": "^4.2.3"
             },
-            "time": "2020-11-11T22:18:15+00:00",
+            "time": "2021-06-10T22:10:51+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -6612,7 +6612,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/browsershot/issues",
-                "source": "https://github.com/spatie/browsershot/tree/3.40.2"
+                "source": "https://github.com/spatie/browsershot/tree/3.47.0"
             },
             "funding": [
                 {
@@ -6624,34 +6624,33 @@
         },
         {
             "name": "spatie/crawler",
-            "version": "4.7.6",
-            "version_normalized": "4.7.6.0",
+            "version": "6.0.2",
+            "version_normalized": "6.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "fe6e428b8ceaec561b9819bb948242ad0cfd40bb"
+                "reference": "276ecb429a770474695a1278a9ad3e719fbef259"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/fe6e428b8ceaec561b9819bb948242ad0cfd40bb",
-                "reference": "fe6e428b8ceaec561b9819bb948242ad0cfd40bb",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/276ecb429a770474695a1278a9ad3e719fbef259",
+                "reference": "276ecb429a770474695a1278a9ad3e719fbef259",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.3 || ^7.0",
-                "guzzlehttp/psr7": "^1.4",
+                "guzzlehttp/guzzle": "^7.2",
+                "guzzlehttp/psr7": "^1.7",
+                "illuminate/collections": "^8.17",
                 "nicmart/tree": "^0.3.0",
-                "php": "^7.3|^8.0",
+                "php": "^7.4|^8.0",
                 "spatie/browsershot": "^3.14",
-                "spatie/robots-txt": "^1.0.1",
-                "symfony/dom-crawler": "^4.0 || ^5.0",
-                "tightenco/collect": "^5.6 || ^6.0 || ^7.0"
+                "spatie/robots-txt": "^1.0.9|^2.0",
+                "symfony/dom-crawler": "^5.2"
             },
             "require-dev": {
-                "larapack/dd": "^1.1",
-                "phpunit/phpunit": "^9.0"
+                "phpunit/phpunit": "^9.4"
             },
-            "time": "2020-12-01T20:55:10+00:00",
+            "time": "2021-04-14T13:50:22+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -6679,7 +6678,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/crawler/issues",
-                "source": "https://github.com/spatie/crawler/tree/4.7.6"
+                "source": "https://github.com/spatie/crawler/tree/6.0.2"
             },
             "funding": [
                 {
@@ -6895,33 +6894,35 @@
         },
         {
             "name": "spatie/laravel-sitemap",
-            "version": "5.8.0",
-            "version_normalized": "5.8.0.0",
+            "version": "5.9.2",
+            "version_normalized": "5.9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sitemap.git",
-                "reference": "90c4dd061ba251c2bff9edf83d5e1d38d17f1529"
+                "reference": "df5c3db511e08a8e64a3d7e28613ab018a99e95d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/90c4dd061ba251c2bff9edf83d5e1d38d17f1529",
-                "reference": "90c4dd061ba251c2bff9edf83d5e1d38d17f1529",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/df5c3db511e08a8e64a3d7e28613ab018a99e95d",
+                "reference": "df5c3db511e08a8e64a3d7e28613ab018a99e95d",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0",
-                "nesbot/carbon": "^1.21|^2.0",
-                "php": "^7.2",
-                "spatie/crawler": "^4.1.0"
+                "guzzlehttp/guzzle": "^7.2",
+                "illuminate/support": "^8.0",
+                "nesbot/carbon": "^2.0",
+                "php": "^7.4|^8.0",
+                "spatie/crawler": "^5.0|^6.0",
+                "symfony/dom-crawler": "^5.1.14"
             },
             "require-dev": {
-                "mockery/mockery": "^1.3.1",
-                "orchestra/testbench": "~3.8.8|^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.3|^9.0|^9.3",
-                "spatie/phpunit-snapshot-assertions": "^3.0.0",
+                "mockery/mockery": "^1.3.3",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.3",
+                "spatie/phpunit-snapshot-assertions": "^4.0",
                 "spatie/temporary-directory": "^1.1"
             },
-            "time": "2020-09-09T09:29:31+00:00",
+            "time": "2021-03-04T22:57:48+00:00",
             "type": "library",
             "extra": {
                 "laravel": {
@@ -6953,6 +6954,16 @@
             "keywords": [
                 "laravel-sitemap",
                 "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-sitemap/issues",
+                "source": "https://github.com/spatie/laravel-sitemap/tree/5.9.2"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
             ],
             "install-path": "../spatie/laravel-sitemap"
         },
@@ -10125,59 +10136,6 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "install-path": "../theseer/tokenizer"
-        },
-        {
-            "name": "tightenco/collect",
-            "version": "v7.26.1",
-            "version_normalized": "7.26.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tighten/collect.git",
-                "reference": "5e460929279ad806e59fc731e649e9b25fc8774a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tighten/collect/zipball/5e460929279ad806e59fc731e649e9b25fc8774a",
-                "reference": "5e460929279ad806e59fc731e649e9b25fc8774a",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.3",
-                "symfony/var-dumper": "^3.4 || ^4.0 || ^5.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "nesbot/carbon": "^2.23.0",
-                "phpunit/phpunit": "^7.0"
-            },
-            "time": "2020-09-05T00:05:48+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "files": [
-                    "src/Collect/Support/helpers.php",
-                    "src/Collect/Support/alias.php"
-                ],
-                "psr-4": {
-                    "Tightenco\\Collect\\": "src/Collect"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "Collect - Illuminate Collections as a separate package.",
-            "keywords": [
-                "collection",
-                "laravel"
-            ],
-            "install-path": "../tightenco/collect"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

@@ -11,8 +11,7 @@ use Tree\Node\Node;
 
 class LinkAdder
 {
-    /** @var \Spatie\Crawler\Crawler */
-    protected $crawler;
+    protected Crawler $crawler;
 
     public function __construct(Crawler $crawler)
     {
@@ -41,10 +40,6 @@ class LinkAdder
                 return strpos($url->getPath(), '/tel:') === false;
             })
             ->each(function (UriInterface $url) use ($foundOnUrl) {
-                if ($this->crawler->maximumCrawlCountReached()) {
-                    return;
-                }
-
                 $crawlUrl = CrawlUrl::create($url, $foundOnUrl);
 
                 $this->crawler->addToCrawlQueue($crawlUrl);
@@ -55,7 +50,7 @@ class LinkAdder
      * @param string $html
      * @param \Psr\Http\Message\UriInterface $foundOnUrl
      *
-     * @return \Illuminate\Support\Collection|\Tightenco\Collect\Support\Collection|null
+     * @return \Illuminate\Support\Collection|null
      */
     protected function extractLinksFromHtml(string $html, UriInterface $foundOnUrl)
     {
