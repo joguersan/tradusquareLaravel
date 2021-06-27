@@ -48,6 +48,7 @@
 					<div class="col-md-6" id={{$comentario->id}}>
 						<div class="row card tarjeta mb-3 bg-white">
 							<div class="col-md-12">
+								@if ($comentario -> deleted_at == null)
 								<div class="row card-header p-1">
 									<div class="col-md-6">
 										<img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}" title="Avatar de {{ $comentario -> users -> nombre }}"
@@ -59,7 +60,9 @@
 										<b><a href="{{route('noticia.show', $noticia)}}#{{ $comentario -> id }}">#{{ $comentario -> id }}</a></b>
 									</div>
 								</div>
+								@endif
 							</div>
+							@if ($comentario -> deleted_at == null)
 							<div class="col-md-12 p-3">
 								{!! $comentario -> contenido !!}
 							</div>
@@ -68,13 +71,18 @@
 									<a class="btn btn-primary" href="{{route('comentarios.edit', $comentario)}}">Editar</a>
 								</li>
 								<li class="list-group-item">
-									<form method="POST" action="{{route('comentarios.destroy', $comentario)}}">
+									<form method="POST" action="{{route('comentarios.delete', $comentario)}}">
 										@csrf
-										@method('DELETE')
+										@method('PATCH')
 										<button class="btn btn-primary">Eliminar</button>
 									</form>
 								</li>
 							</ul>
+							@else
+							<div class="col-md-12 p-3">
+								Este comentario ha sido eliminado por su autor
+							</div>
+							@endif
 						</div>
 					</div>
 					@endforeach

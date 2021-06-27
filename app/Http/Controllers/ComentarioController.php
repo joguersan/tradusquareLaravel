@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comentario;
 use App\Noticia;
+use DateTime;
 
 class ComentarioController extends Controller
 {
@@ -35,8 +36,7 @@ class ComentarioController extends Controller
      */
     public function store(Noticia $noticia)
     {
-        $comentario = new Comentario();
-        $comentario->create([
+        Comentario.create([
             'user_id' => '1',
             'contenido' => request('mensaje'),
             'noticia_id' => $noticia->id,
@@ -102,5 +102,13 @@ class ComentarioController extends Controller
     public function back()
     {
         return redirect()->back()->with('error', 'Something went wrong.');
+    }
+
+    public function delete(Comentario $comentario)
+    {
+        $comentario->update([
+            'deleted_at' => new DateTime(),
+        ]);
+        return redirect()->route('noticia.show', $comentario->noticias);
     }
 }
