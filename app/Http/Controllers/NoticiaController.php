@@ -1,14 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use App\Noticia;
-use App\Comentario;
+
 use App\Ficha;
+use App\Noticia;
 use App\User;
-use Illuminate\Http\Request;
-use View;
 
 class NoticiaController extends Controller
 {
@@ -19,8 +15,8 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-      $noticias = Noticia::where('estado', '=', 1)->orderBy('updated_at', 'desc')->paginate(6);
-      return view('noticias.index', ['noticias' => $noticias]);
+        $noticias = Noticia::where('estado', '=', 1)->orderBy('updated_at', 'desc')->paginate(6);
+        return view('noticias.index', ['noticias' => $noticias]);
     }
 
     /**
@@ -30,7 +26,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-		    $fichas = Ficha::all();
+        $fichas = Ficha::all();
         /*if ( !isset ( \Auth::user()->id ) || !$this->hasPermission( \Auth::user()->id ) ) {
             return response()->json([
                     'msg' => 'No tiene permisos para editar esta noticia'
@@ -38,7 +34,7 @@ class NoticiaController extends Controller
             );
         }*/
         return view('noticias.create', [
-          'fichas' => $fichas
+            'fichas' => $fichas,
         ]);
     }
 
@@ -46,29 +42,30 @@ class NoticiaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
         request()->validate([
-          'titulo' => 'required|min:10',
-          'contenido' => 'required|min:10',
-          'imagen' => 'required',
+            'titulo' => 'required|min:10',
+            'contenido' => 'required|min:10',
+            'imagen' => 'required',
         ]);
-        $noticia = new Noticia;
-        $char_raros=array("\"","+","*","'","#","?","¿","!","¡","/", "[","]","(",")","[",":",",",".",";","%");
-        $a=['á','é','í','ó','ú','ñ'];
-        $b=['a','e','i','o','u','n'];
-        $url=str_replace(" ", "-", request('titulo'));
-        $url=str_replace($a, $b, $url);
+        $noticia = new Noticia();
+        $char_raros = ['"','+','*',"'",'#','?','¿','!','¡','/', '[',']','(',')','[',':',',','.',';','%'];
+        $a = ['á','é','í','ó','ú','ñ'];
+        $b = ['a','e','i','o','u','n'];
+        $url = str_replace(' ', '-', request('titulo'));
+        $url = str_replace($a, $b, $url);
         $noticia->create([
-          'titulo'=> request('titulo'),
-          'url'=> $url,
-          'contenido' => request('contenido'),
-          'imagen' => request('imagen'),
-          'estado' => request('estado')
+            'titulo' => request('titulo'),
+            'url' => $url,
+            'contenido' => request('contenido'),
+            'imagen' => request('imagen'),
+            'estado' => request('estado'),
         ]);
-        $noticia -> fichas() -> sync(request('fichas'));
+        $noticia->fichas()->sync(request('fichas'));
         return redirect()->route('noticia.show', $url);
         //return $this->edit($noticia);
     }
@@ -77,21 +74,23 @@ class NoticiaController extends Controller
      * Display the specified resource.
      *
      * @param  int $noticia ID
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Noticia $noticia)
     {
-      $comentarios = $noticia->comentarios;
-      return view('noticias.show', [
-        'noticia' => $noticia,
-        'comentarios' => $comentarios
-      ]);
+        $comentarios = $noticia->comentarios;
+        return view('noticias.show', [
+            'noticia' => $noticia,
+            'comentarios' => $comentarios,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Noticia $noticia)
@@ -103,14 +102,14 @@ class NoticiaController extends Controller
             );
         }*/
         $selected_categories = [];
-        foreach($noticia->fichas as $ficha){
+        foreach ($noticia->fichas as $ficha) {
             array_push($selected_categories, $ficha->id);
         }
         $fichas = Ficha::all();
         return view('noticias.edit', [
-          'noticia' => $noticia,
-          'fichas' => $fichas,
-          'selected_categories' => $selected_categories
+            'noticia' => $noticia,
+            'fichas' => $fichas,
+            'selected_categories' => $selected_categories,
         ]);
     }
 
@@ -118,29 +117,30 @@ class NoticiaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Noticia $noticia)
     {
-      request()->validate([
-        'titulo' => 'required|min:10',
-        'contenido' => 'required|min:10',
-        'imagen' => 'required',
-      ]);
-        $char_raros=array("\"","+","*", "'", "#", "?", "¿", "!", "¡", "\\", "/", "[","]","(",")","[",":",",",".",";","%");
-        $a=['á','é','í','ó','ú','ñ'];
-		    $b=['a','e','i','o','u','n'];
-        $url=str_replace(" ", "-", request('titulo'));
-        $url=str_replace($char_raros, "", $url);
-        $url=str_replace($a, $b, $url);
-        $noticia->update([
-          'titulo'=> request('titulo'),
-          'url'=> $url,
-          'contenido' => request('contenido'),
-          'imagen' => request('imagen'),
-          'estado' => request('estado')
+        request()->validate([
+            'titulo' => 'required|min:10',
+            'contenido' => 'required|min:10',
+            'imagen' => 'required',
         ]);
-        $noticia -> fichas() -> sync(request('fichas'));
+        $char_raros = ['"','+','*', "'", '#', '?', '¿', '!', '¡', '\\', '/', '[',']','(',')','[',':',',','.',';','%'];
+        $a = ['á','é','í','ó','ú','ñ'];
+        $b = ['a','e','i','o','u','n'];
+        $url = str_replace(' ', '-', request('titulo'));
+        $url = str_replace($char_raros, '', $url);
+        $url = str_replace($a, $b, $url);
+        $noticia->update([
+            'titulo' => request('titulo'),
+            'url' => $url,
+            'contenido' => request('contenido'),
+            'imagen' => request('imagen'),
+            'estado' => request('estado'),
+        ]);
+        $noticia->fichas()->sync(request('fichas'));
         return redirect()->route('noticia.show', $noticia);
         /*if ( !isset ( \Auth::user()->$id ) || !$this->hasPermission( $request->id ) ) {
             return response()->json([
@@ -167,16 +167,16 @@ class NoticiaController extends Controller
                 ], 400
             );
         }*/
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Noticia $noticia )
+    public function destroy(Noticia $noticia)
     {
         /*if ( !$this->hasPermission( $request->id ) ) {
             return response()->json([
@@ -184,13 +184,14 @@ class NoticiaController extends Controller
                 ], 403
             );
         }*/
-        $noticia -> delete();
+        $noticia->delete();
         return redirect()->route('noticias.index');
     }
 
-    protected function hasPermission( int $id = null ) {
+    protected function hasPermission(?int $id = null)
+    {
         $user = \Auth::user();
         // TO DO: check if user is in the translator team group of the game thats on the article
-        return in_array( $user->rol, [ User::ROL_EDITOR, User::ROL_ADMIN ] );
+        return in_array($user->rol, [ User::ROL_EDITOR, User::ROL_ADMIN ]);
     }
 }
