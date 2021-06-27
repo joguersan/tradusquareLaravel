@@ -1,6 +1,7 @@
 <?php
-use Spatie\Sitemap\SitemapGenerator;
+
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('sitemap', function(){
-  SitemapGenerator::create('http://localhost/tradusquare/public/')->writeToFile('sitemap.xml');
-  return 'Se ha creado el sitemap';
+Route::get('sitemap', function () {
+    SitemapGenerator::create('http://localhost/tradusquare/public/')->writeToFile('sitemap.xml');
+    return 'Se ha creado el sitemap';
 });
 Route::get('/', 'InicioController@index')->name('inicio');
 Route::post('/noticias/store', 'NoticiaController@store')->name('noticia.store');
@@ -29,13 +30,13 @@ Route::get('/proyecto/{ficha}', 'FichaController@show')->name('ficha.show');
 Route::get('/proyectos', 'FichaController@index')->name('proyectos');
 Route::get('/proyectos/{id_plat}', 'FichaController@listaPlataforma')->name('proyectoplataforma');
 Route::resources([
-  'noticias' => 'NoticiaController',
-  'plataformas' => 'PlataformaController',
-  'fichas' => 'FichaController',
-  'grupos' => 'GrupoController',
-  'comentarios' => 'ComentarioController',
-  'usuarios' => 'UsuarioController',
-  'tablon-de-misiones' => 'EntradaTablonController'
+    'noticias' => 'NoticiaController',
+    'plataformas' => 'PlataformaController',
+    'fichas' => 'FichaController',
+    'grupos' => 'GrupoController',
+    'comentarios' => 'ComentarioController',
+    'usuarios' => 'UsuarioController',
+    'tablon-de-misiones' => 'EntradaTablonController',
 ]);
 Route::view('/informacion', 'informacion')->name('informacion');
 Route::view('/amala', 'amala')->name('amala');
