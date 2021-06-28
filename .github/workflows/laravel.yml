@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-   runs-on: debian-latest
+   runs-on: ubuntu-latest
    if: github.ref == 'refs/heads/master'
    steps:
 
