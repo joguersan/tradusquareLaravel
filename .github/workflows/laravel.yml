@@ -21,4 +21,4 @@ jobs:
          FOLDER: "./"
          SERVER_IP: ${{ secrets.HOST }}
          USERNAME: ${{ secrets.USERNAME }}
-         SERVER_DESTINATION: "SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}"
+         SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
