@@ -36,7 +36,8 @@ class ComentarioController extends Controller
      */
     public function store(Noticia $noticia)
     {
-        Comentario.create([
+        $comentario = new Comentario();
+        $comentario->create([
             'user_id' => '1',
             'contenido' => request('mensaje'),
             'noticia_id' => $noticia->id,

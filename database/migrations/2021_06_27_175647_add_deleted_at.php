@@ -14,10 +14,10 @@ class AddDeletedAt extends Migration
     public function up()
     {
         Schema::table('comentarios', function (Blueprint $table) {
-          $table->timestamp('deleted_at')->after('updated_at');
+          $table->timestamp('deleted_at')->after('updated_at')->nullable();
         });
         Schema::table('grupos', function (Blueprint $table) {
-          $table->timestamp('deleted_at')->after('updated_at');
+          $table->timestamp('deleted_at')->after('updated_at')->nullable();
         });
     }
 
