@@ -2,25 +2,31 @@ name: Laravel
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy:
-   runs-on: ubuntu-latest
-   if: github.ref == 'refs/heads/master'
-   steps:
-     - name: Checkout code
-       uses: actions/checkout@v2
- 
-     - name: Deploy
-       uses: easingthemes/ssh-deploy@main
-       env:
-         SSH_PRIVATE_KEY: ${{ secrets.KEY }}
-         ARGS: "-rltgoDzvO"
-         SOURCE: "/"
-         REMOTE_HOST: ${{ secrets.HOST }}
-         REMOTE_USER: ${{ secrets.USERNAME }}
-         TARGET: ${{ secrets.SERVER_DESTINATION }}
-         EXCLUDE: "/vendor"
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - name: Install npm dependencies
+        run: npm install
+      - name: Run build task
+        run: npm run build --if-present
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+          ARGS: "-rltgoDzvO"
+          REMOTE_HOST: "88.99.35.196"
+          REMOTE_USER: "admin"
+          TARGET: "/home/admin"
+          EXCLUDE: "/vendor"
