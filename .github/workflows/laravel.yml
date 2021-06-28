@@ -26,7 +26,6 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
           ARGS: "-rltgoDzvO"
-          SOURCE: "./"
           REMOTE_HOST: "88.99.35.196"
           REMOTE_USER: "admin"
           TARGET: "/home/admin"
