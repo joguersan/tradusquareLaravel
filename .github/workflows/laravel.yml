@@ -20,7 +20,7 @@ jobs:
          DEPLOY_KEY: ${{ secrets.KEY }}
          ARGS: '-avzh --exclude=".*"'
          SERVER_PORT: ${{ secrets.PORT }}
-         FOLDER: "/home/admin/tradusquareLaravel"
+         FOLDER: "./"
          SERVER_IP: ${{ secrets.HOST }}
          USERNAME: ${{ secrets.USERNAME }}
-         SERVER_DESTINATION: "/var/www/html"
+         SERVER_DESTINATION: "SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}"
