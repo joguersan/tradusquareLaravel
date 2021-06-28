@@ -2,9 +2,9 @@
 <html>
 
 <head>
-  @include('partials.estilo')
-  @include('partials/javascript')
-  @include('partials.estiloEditor')
+    @include('partials.estilo')
+    @include('partials/javascript')
+    @include('partials.estiloEditor')
 </head>
 
 <body>
@@ -46,7 +46,7 @@
                                         <label class="btn btn-dark">Juegos relacionados</label>
                                     </div>
                                     <select class="juegos w-75" name="fichas[]" class="form-control" multiple>
-                                      @yield('campoFichas')
+                                        @yield('campoFichas')
                                     </select>
                                 </div>
                                 <div class="input-group mt-3 w-25">

@@ -20,12 +20,12 @@
                             @csrf
                             @yield('method')
                             <div class="form-row">
-                              <textarea name="mensaje" id="mensaje" class="summernote" class"col w-75">
+                                <textarea name="mensaje" id="mensaje" class="summernote" class"col w-75">
                                 @yield('campoComentario')
                               </textarea>
                             </div>
                             <input class="btn btn-danger text-white" type="submit" value="Enviar"></input>
-                            <a href="{{route('inicio')}}"><input style="cursor:pointer" class="btn btn-warning text-white" value="Salir" /></a>
+                            <a href="{{route('noticia.show', $comentario->noticias)}}"><input style="cursor:pointer" class="btn btn-warning text-white" value="Salir" /></a>
                         </form>
                     </div>
                 </div>
@@ -33,10 +33,10 @@
         </div>
     </div>
     <script>
-    $('.summernote').summernote({
-        height: 300,
-        focus: true
-    });
+        $('.summernote').summernote({
+            height: 300,
+            focus: true
+        });
     </script>
     <script>
         $('.juegos').select2();

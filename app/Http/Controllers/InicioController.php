@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comentario;
-use App\Noticia;
-use App\Ficha;
 use App\EntradaTablon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use App\Ficha;
+use App\Noticia;
 
 class InicioController extends Controller
 {
@@ -18,11 +16,11 @@ class InicioController extends Controller
      */
     public function index()
     {
-      $noticias = Noticia::where('estado', '=', 'Publicada')->orderBy('updated_at', 'desc')->take(6)->get();
-      $comentarios = Comentario::orderBy('updated_at', 'desc')->take(5)->get();
-      $fichas = Ficha::orderBy('updated_at', 'desc')->take(5)->get();
-      $tablon = EntradaTablon::orderBy('updated_at', 'desc')->take(3)->get();
-      return view('inicio.index', ['noticias'=> $noticias, 'comentarios' => $comentarios, 'fichas' => $fichas, 'tablon' => $tablon]);
+        $noticias = Noticia::where('estado', '=', 1)->orderBy('updated_at', 'desc')->take(6)->get();
+        $comentarios = Comentario::orderBy('updated_at', 'desc')->take(5)->get();
+        $fichas = Ficha::orderBy('updated_at', 'desc')->take(5)->get();
+        $tablon = EntradaTablon::orderBy('updated_at', 'desc')->take(3)->get();
+        return view('inicio.index', ['noticias' => $noticias, 'comentarios' => $comentarios, 'fichas' => $fichas, 'tablon' => $tablon]);
     }
 
     /**
@@ -32,40 +30,40 @@ class InicioController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
-        //
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int $comentario ID
+     *
      * @return \Illuminate\Http\Response
      */
     public function show()
     {
-      return $comentario;
+        return $comentario;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Comentario  $comentario
+     *
      * @return \Illuminate\Http\Response
      */
-      public function edit()
+    public function edit()
     {
-
     }
 
     /**
@@ -73,6 +71,7 @@ class InicioController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Comentario  $comentario
+     *
      * @return \Illuminate\Http\Response
      */
     public function update()
@@ -83,6 +82,7 @@ class InicioController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Comentario  $comentario
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy()

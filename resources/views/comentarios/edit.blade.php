@@ -3,12 +3,12 @@
 EDITAR COMENTARIO
 @endsection
 @section('method')
-  @method('PATCH')
+@method('PATCH')
 @endsection
 
 @section('action')
-  {{route('comentario.update', $comentario)}}
+{{route('comentarios.update', $comentario)}}
 @endsection
 @section('campoComentario')
-  {{$comentario->mensaje}}
+{{$comentario->contenido}}
 @endsection

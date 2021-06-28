@@ -7,17 +7,16 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-
-    -webkit-transition: box-shadow 0.5s; /* For Safari 3.1 to 6.0 */
+    -webkit-transition: box-shadow 0.5s;
+    /* For Safari 3.1 to 6.0 */
     transition: box-shadow 0.5s;
 }
 
-.objeto:hover
-{
+.objeto:hover {
     -webkit-box-shadow: inset 0px 0px 20px 0px #ffffff;
     -moz-box-shadow: inset 0px 0px 20px 0px #ffffff;
     box-shadow: inset 0px 0px 20px 0px #ffffff;
-	cursor:pointer;
+    cursor: pointer;
 }
 
 .titulo {
@@ -29,22 +28,22 @@
     font-size: 1rem;
 }
 
-.objeto > span {
+.objeto>span {
     color: #fff;
     text-shadow: 2px 0 0 #000,
-    -2px 0 0 #000, 0 2px 0 #000,
-    0 -2px 0 #000, 1px 1px #000,
-    -1px -1px 0 #000, 1px -1px 0 #000,
-    -1px 1px 0 #000;
+        -2px 0 0 #000, 0 2px 0 #000,
+        0 -2px 0 #000, 1px 1px #000,
+        -1px -1px 0 #000, 1px -1px 0 #000,
+        -1px 1px 0 #000;
     position: relative;
     top: 25%;
     transform: translateY(-25%);
 }
 
 .noTraducido {
-    filter:grayscale(100%);
+    filter: grayscale(100%);
 }
-.objeto
-{
-	background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20));
+
+.objeto {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(245, 236, 255, 0.20));
 }

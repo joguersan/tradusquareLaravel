@@ -11,7 +11,7 @@
 	</thead>
 	@php ($i = 0)
 	@endphp
-	@foreach ($grupos as $grupo)
+	@foreach ($grupos->sortBy('nombre') as $grupo)
 	@if ($i == 0)
 	<tr>
 		@endif

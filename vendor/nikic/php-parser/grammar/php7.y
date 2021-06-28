@@ -28,7 +28,7 @@ reserved_non_modifiers:
     | T_FUNCTION | T_CONST | T_RETURN | T_PRINT | T_YIELD | T_LIST | T_SWITCH | T_ENDSWITCH | T_CASE | T_DEFAULT
     | T_BREAK | T_ARRAY | T_CALLABLE | T_EXTENDS | T_IMPLEMENTS | T_NAMESPACE | T_TRAIT | T_INTERFACE | T_CLASS
     | T_CLASS_C | T_TRAIT_C | T_FUNC_C | T_METHOD_C | T_LINE | T_FILE | T_DIR | T_NS_C | T_HALT_COMPILER | T_FN
-    | T_MATCH
+    | T_MATCH | T_ENUM
 ;
 
 semi_reserved:
@@ -348,10 +348,7 @@ function_declaration_statement:
 ;
 
 class_declaration_statement:
-      class_entry_type identifier extends_from implements_list '{' class_statement_list '}'
-          { $$ = Stmt\Class_[$2, ['type' => $1, 'extends' => $3, 'implements' => $4, 'stmts' => $6, 'attrGroups' => []]];
-            $this->checkClass($$, #2); }
-    | attributes class_entry_type identifier extends_from implements_list '{' class_statement_list '}'
+      optional_attributes class_entry_type identifier extends_from implements_list '{' class_statement_list '}'
           { $$ = Stmt\Class_[$3, ['type' => $2, 'extends' => $4, 'implements' => $5, 'stmts' => $7, 'attrGroups' => $1]];
             $this->checkClass($$, #3); }
     | optional_attributes T_INTERFACE identifier interface_extends_list '{' class_statement_list '}'
@@ -359,6 +356,18 @@ class_declaration_statement:
             $this->checkInterface($$, #3); }
     | optional_attributes T_TRAIT identifier '{' class_statement_list '}'
           { $$ = Stmt\Trait_[$3, ['stmts' => $5, 'attrGroups' => $1]]; }
+    | optional_attributes T_ENUM identifier enum_scalar_type implements_list '{' class_statement_list '}'
+          { $$ = Stmt\Enum_[$3, ['scalarType' => $4, 'implements' => $5, 'stmts' => $7, 'attrGroups' => $1]];
+            $this->checkEnum($$, #3); }
+;
+
+enum_scalar_type:
+      /* empty */                                           { $$ = null; }
+    | ':' type                                              { $$ = $2; }
+
+enum_case_expr:
+      /* empty */                                           { $$ = null; }
+    | '=' expr                                              { $$ = $2; }
 ;
 
 class_entry_type:
@@ -601,7 +610,7 @@ non_empty_global_var_list:
 ;
 
 global_var:
-      simple_variable                                       { $$ = Expr\Variable[$1]; }
+      simple_variable                                       { $$ = $1; }
 ;
 
 static_var_list:
@@ -640,6 +649,8 @@ class_statement:
           { $$ = Stmt\ClassMethod[$5, ['type' => $2, 'byRef' => $4, 'params' => $7, 'returnType' => $9, 'stmts' => $10, 'attrGroups' => $1]];
             $this->checkClassMethod($$, #2); }
     | T_USE class_name_list trait_adaptations               { $$ = Stmt\TraitUse[$2, $3]; }
+    | optional_attributes T_CASE identifier enum_case_expr semi
+         { $$ = Stmt\EnumCase[$3, $4, $1]; }
     | error                                                 { $$ = null; /* will be skipped */ }
 ;
 
@@ -832,18 +843,18 @@ expr:
     | T_YIELD_FROM expr                                     { $$ = Expr\YieldFrom[$2]; }
     | T_THROW expr                                          { $$ = Expr\Throw_[$2]; }
 
-    | T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr
+    | T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr %prec T_THROW
           { $$ = Expr\ArrowFunction[['static' => false, 'byRef' => $2, 'params' => $4, 'returnType' => $6, 'expr' => $8, 'attrGroups' => []]]; }
-    | T_STATIC T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr
+    | T_STATIC T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr %prec T_THROW
           { $$ = Expr\ArrowFunction[['static' => true, 'byRef' => $3, 'params' => $5, 'returnType' => $7, 'expr' => $9, 'attrGroups' => []]]; }
     | T_FUNCTION optional_ref '(' parameter_list ')' lexical_vars optional_return_type block_or_error
           { $$ = Expr\Closure[['static' => false, 'byRef' => $2, 'params' => $4, 'uses' => $6, 'returnType' => $7, 'stmts' => $8, 'attrGroups' => []]]; }
     | T_STATIC T_FUNCTION optional_ref '(' parameter_list ')' lexical_vars optional_return_type       block_or_error
           { $$ = Expr\Closure[['static' => true, 'byRef' => $3, 'params' => $5, 'uses' => $7, 'returnType' => $8, 'stmts' => $9, 'attrGroups' => []]]; }
 
-    | attributes T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr
+    | attributes T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr %prec T_THROW
           { $$ = Expr\ArrowFunction[['static' => false, 'byRef' => $3, 'params' => $5, 'returnType' => $7, 'expr' => $9, 'attrGroups' => $1]]; }
-    | attributes T_STATIC T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr
+    | attributes T_STATIC T_FN optional_ref '(' parameter_list ')' optional_return_type T_DOUBLE_ARROW expr %prec T_THROW
           { $$ = Expr\ArrowFunction[['static' => true, 'byRef' => $4, 'params' => $6, 'returnType' => $8, 'expr' => $10, 'attrGroups' => $1]]; }
     | attributes T_FUNCTION optional_ref '(' parameter_list ')' lexical_vars optional_return_type block_or_error
           { $$ = Expr\Closure[['static' => false, 'byRef' => $3, 'params' => $5, 'uses' => $7, 'returnType' => $8, 'stmts' => $9, 'attrGroups' => $1]]; }
@@ -1007,7 +1018,7 @@ callable_expr:
 ;
 
 callable_variable:
-      simple_variable                                       { $$ = Expr\Variable[$1]; }
+      simple_variable                                       { $$ = $1; }
     | array_object_dereferencable '[' optional_expr ']'     { $$ = Expr\ArrayDimFetch[$1, $3]; }
     | array_object_dereferencable '{' expr '}'              { $$ = Expr\ArrayDimFetch[$1, $3]; }
     | function_call                                         { $$ = $1; }
@@ -1032,15 +1043,15 @@ variable:
 ;
 
 simple_variable:
-      T_VARIABLE                                            { $$ = parseVar($1); }
-    | '$' '{' expr '}'                                      { $$ = $3; }
+      plain_variable                                        { $$ = $1; }
+    | '$' '{' expr '}'                                      { $$ = Expr\Variable[$3]; }
     | '$' simple_variable                                   { $$ = Expr\Variable[$2]; }
-    | '$' error                                             { $$ = Expr\Error[]; $this->errorState = 2; }
+    | '$' error                                             { $$ = Expr\Variable[Expr\Error[]]; $this->errorState = 2; }
 ;
 
 static_member_prop_name:
       simple_variable
-          { $var = $1; $$ = \is_string($var) ? Node\VarLikeIdentifier[$var] : $var; }
+          { $var = $1->name; $$ = \is_string($var) ? Node\VarLikeIdentifier[$var] : $var; }
 ;
 
 static_member:
@@ -1049,7 +1060,7 @@ static_member:
 ;
 
 new_variable:
-      simple_variable                                       { $$ = Expr\Variable[$1]; }
+      simple_variable                                       { $$ = $1; }
     | new_variable '[' optional_expr ']'                    { $$ = Expr\ArrayDimFetch[$1, $3]; }
     | new_variable '{' expr '}'                             { $$ = Expr\ArrayDimFetch[$1, $3]; }
     | new_variable T_OBJECT_OPERATOR property_name          { $$ = Expr\PropertyFetch[$1, $3]; }
@@ -1063,13 +1074,13 @@ new_variable:
 member_name:
       identifier_ex                                         { $$ = $1; }
     | '{' expr '}'                                          { $$ = $2; }
-    | simple_variable                                       { $$ = Expr\Variable[$1]; }
+    | simple_variable                                       { $$ = $1; }
 ;
 
 property_name:
       identifier                                            { $$ = $1; }
     | '{' expr '}'                                          { $$ = $2; }
-    | simple_variable                                       { $$ = Expr\Variable[$1]; }
+    | simple_variable                                       { $$ = $1; }
     | error                                                 { $$ = Expr\Error[]; $this->errorState = 2; }
 ;
 

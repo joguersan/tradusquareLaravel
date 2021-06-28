@@ -2,7 +2,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 <meta name="theme-color" content="#3962FF">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> --}}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
 <!--<script src="{{asset('js/lazyload.js')}}"></script>-->
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -11,4 +13,4 @@
 <link rel="manifest" href="{{ asset('manifest.json') }}">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2196F3">
 <meta name="msapplication-TileColor" content="#2196F3">
-<script src="https://kit.fontawesome.com/21c8413929.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">

@@ -19,6 +19,8 @@ class ComentarioTable extends Migration
             $table->date('fecha');
             $table->integer('noticia_id')->unsigned();
             $table->foreign('noticia_id')->references('id')->on('noticias')->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             // Usuario
             $table->timestamps();
         });

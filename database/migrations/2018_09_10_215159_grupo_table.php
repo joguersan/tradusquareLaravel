@@ -15,11 +15,12 @@ class GrupoTable extends Migration
     {
         Schema::create('grupos', function (Blueprint $table) {
             $table->increments('id')->unsigned()->unique();
-            $table->string('nombre');
-            $table->string('web_externa');
+            $table->string('nombre')->unique();
+            $table->string('url', 255)->unique();
+            $table->string('web')->nullable();
             //$table->string('historia');
             //$table->string('integrantes');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

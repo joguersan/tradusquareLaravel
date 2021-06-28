@@ -85,7 +85,6 @@ class Lexer
 
         $scream = ini_set('xdebug.scream', '0');
 
-        error_clear_last();
         $this->tokens = @token_get_all($code);
         $this->postprocessTokens($errorHandler);
 
@@ -323,7 +322,8 @@ class Lexer
                 $value = $token[1];
                 $id = $this->tokenMap[$token[0]];
                 if (\T_CLOSE_TAG === $token[0]) {
-                    $this->prevCloseTagHasNewline = false !== strpos($token[1], "\n");
+                    $this->prevCloseTagHasNewline = false !== strpos($token[1], "\n")
+                        || false !== strpos($token[1], "\r");
                 } elseif (\T_INLINE_HTML === $token[0]) {
                     $startAttributes['hasLeadingNewline'] = $this->prevCloseTagHasNewline;
                 }
@@ -422,6 +422,8 @@ class Lexer
             'T_MATCH',
             'T_NULLSAFE_OBJECT_OPERATOR',
             'T_ATTRIBUTE',
+            // PHP 8.1
+            'T_ENUM',
         ];
 
         // PHP-Parser might be used together with another library that also emulates some or all
@@ -439,7 +441,7 @@ class Lexer
                         $token, $clashingToken
                     ));
                 }
-                $usedTokenIds[$token] = $tokenId;
+                $usedTokenIds[$tokenId] = $token;
             }
         }
 
@@ -512,6 +514,7 @@ class Lexer
         $tokenMap[\T_MATCH] = Tokens::T_MATCH;
         $tokenMap[\T_NULLSAFE_OBJECT_OPERATOR] = Tokens::T_NULLSAFE_OBJECT_OPERATOR;
         $tokenMap[\T_ATTRIBUTE] = Tokens::T_ATTRIBUTE;
+        $tokenMap[\T_ENUM] = Tokens::T_ENUM;
 
         return $tokenMap;
     }

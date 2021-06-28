@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nick', 'privilegios', 'contrasenya', 'imagen'
+        'nick', 'privilegios', 'contrasenya', 'imagen',
     ];
 
     /**
@@ -36,7 +35,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function comentarios(){
-      return $this->hasMany('App\Comentario');
+    public function comentarios()
+    {
+        return $this->hasMany('App\Comentario');
+    }
+
+    public function news()
+    {
+        return $this->hasMany('App\Noticia', 'autor', 'nick')->orderBy('updated_at', 'desc')->limit(10);
+    }
+    public function grupos()
+    {
+        return $this->belongsToMany('App\Grupo', 'user_grupo')->withPivot('user_id', 'grupo_id');
     }
 }
