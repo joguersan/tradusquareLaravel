@@ -2,9 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/image.svg?style=flat-square)](https://packagist.org/packages/spatie/image)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/spatie/image/master.svg?style=flat-square)](https://travis-ci.org/spatie/image)
-[![Quality Score](https://img.shields.io/scrutinizer/g/spatie/image.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/image)
-[![StyleCI](https://styleci.io/repos/80513668/shield?branch=master)](https://styleci.io/repos/80513668)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/spatie/image/run-tests?label=tests)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/image.svg?style=flat-square)](https://packagist.org/packages/spatie/image)
 
 Image manipulation doesn't have to be hard. Here are a few examples on how this package makes it very easy to manipulate images.
@@ -40,6 +38,14 @@ You'll find more examples in [the full documentation](https://docs.spatie.be/ima
 
 Under the hood [Glide](http://glide.thephpleague.com/) by [Jonathan Reinink](https://twitter.com/reinink) is used.
 
+## Support us
+
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/image.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/image)
+
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+
 ## Installation
 
 You can install the package via composer:
@@ -66,7 +72,7 @@ composer test
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security
 
@@ -76,7 +82,7 @@ If you discover any security related issues, please email freek@spatie.be instea
 
 You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
 
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+Our address is: Spatie, Kruikstraat 22, 2018 Antwerp, Belgium.
 
 We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
 
@@ -86,13 +92,6 @@ We publish all received postcards [on our company website](https://spatie.be/en/
 - [All Contributors](../../contributors)
 
 Under the hood [Glide](http://glide.thephpleague.com/) by [Jonathan Reinink](https://twitter.com/reinink) is used. We've based our documentation and docblocks on text found in [the Glide documentation](http://glide.thephpleague.com/)
-
-## Support us
-
-Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
-
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
-All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 

@@ -1,3 +1,5 @@
+<p align="center"><img src="/art/socialcard.png" alt="Social Card of Spatie's Browsershot"></p>
+
 # Convert a webpage to an image or pdf using headless Chrome
 
 [![Latest Version](https://img.shields.io/github/release/spatie/browsershot.svg?style=flat-square)](https://github.com/spatie/browsershot/releases)
@@ -50,9 +52,7 @@ foreach ($requests as $request) {
 
 ## Support us
 
-Learn how to create a package like this one, by watching our premium video course:
-
-[![Laravel Package training](https://spatie.be/github/package-training.jpg)](https://laravelpackage.training)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/browsershot.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/browsershot)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
@@ -227,12 +227,21 @@ Browsershot::url('https://example.com')
     ->save($pathToImage);
 ```
 
-You can take a screenshot of an element matching a selector using `select`.
+You can take a screenshot of an element matching a selector using `select` and an optional `$selectorIndex` which is used to select the nth element (e.g. use `$selectorIndex = 3` to get the fourth element like `div:eq(3)`). By default `$selectorIndex` is `0` which represents the first matching element.
 
 ```php
 Browsershot::url('https://example.com')
-    ->select('.some-selector')
+    ->select('.some-selector', $selectorIndex)
     ->save($pathToImage);
+```
+
+### Getting a screenshot as base64
+
+If you need the base64 version of a screenshot you can use the `base64Screenshot` method. This can come in handy when you don't want to save the screenshot on disk.
+
+```php
+$base64Data = Browsershot::url('https://example.com')
+    ->base64Screenshot();
 ```
 
 #### Manipulating the image
@@ -351,7 +360,7 @@ Browsershot::url('https://example.com')
     ->blockUrls($urlsList)
     ->save($pathToImage);
 ```
-    
+
 #### Block Domains
 You can completely block connections to specific domains using the `blockDomains()` method.
 Useful to block advertisements and trackers to make screenshot creation faster.
@@ -438,6 +447,12 @@ You can also pass some html which will be converted to a pdf.
 Browsershot::html($someHtml)->savePdf('example.pdf');
 ```
 
+If you need the base64 version of a PDF you can use the `base64pdf` method. This can come in handy when you don't want to save the screenshot on disk in environments like Heroku that don't allow you to save a file. You can then proceed to create the file and upload it directly as a base64 string using a package like [Laravel Media Library](https://spatie.be/docs/laravel-medialibrary/v9/api/adding-files#addmediafrombase64).
+
+```php
+$base64Data = Browsershot::url('https://example.com')
+    ->base64pdf();
+```
 #### Sizing the pdf
 
 You can specify the width and the height.
@@ -526,6 +541,16 @@ Call `landscape` if you want to resulting pdf to be landscape oriented.
 Browsershot::html($someHtml)
    ->landscape()
    ->save('example.pdf');
+```
+
+#### Scale
+
+Scale can be set. Defaults to 1. Scale amount must be between 0.1 and 2.
+
+```php
+Browsershot::html($someHtml)
+    ->scale(0.5)
+    ->save('example.pdf');
 ```
 
 #### Only export specific pages
@@ -617,6 +642,8 @@ Browsershot::url('https://example.com')
     ->savePdf($pathToPdf);
 ```
 
+#### Setting the timeout
+
 The default timeout of Browsershot is set to 60 seconds. Of course, you can modify this timeout:
 
 ```php
@@ -693,6 +720,17 @@ Browsershot::url('https://example.com')
    ...
 ```
 
+#### Sending POST requests
+
+By default, all requests sent using GET method. You can make POST request to the given url by using the `post` method.
+Note: POST request sent using `application/x-www-form-urlencoded` content type.
+
+```php
+Browsershot::url('https://example.com')
+    ->post(['foo' => 'bar'])
+   ...
+```
+
 #### Clicking on the page
 
 You can specify clicks on the page.
@@ -766,13 +804,24 @@ Browsershot::url('https://example.com')
 
 #### Using a pipe instead of a WebSocket
 
-If you want to connects to the browser over a pipe instead of a WebSocket, you can use:
+If you want to connect to the browser over a pipe instead of a WebSocket, you can use:
 
 ```php
 Browsershot::url('https://example.com')
    ->usePipe()
    ...
 ```
+
+#### Passing environment variables to the browser
+
+If you want to set custom environment variables which affect the browser instance you can use:
+
+```php
+Browsershot::url('https://example.com')
+   ->setEnvironmentOptions(['TZ' => 'Pacific/Auckland'])
+   ...
+```
+
 
 ## Related packages
 
@@ -790,12 +839,14 @@ If you discover any security related issues, please email freek@spatie.be instea
 
 If you're not able to install Node and Puppeteer, take a look at [v2 of browsershot](https://github.com/spatie/browsershot/tree/2.4.1), which uses Chrome headless CLI to take a screenshot. `v2` is not maintained anymore, but should work pretty well.
 
-If using headless Chrome does not work for you take a lookat at `v1` of this package which uses the abandoned `PhantomJS` binary.
+If using headless Chrome does not work for you take a look at at `v1` of this package which uses the abandoned `PhantomJS` binary.
 
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
+
+And a special thanks to [Caneco](https://twitter.com/caneco) for the logo ✨
 
 ## License
 

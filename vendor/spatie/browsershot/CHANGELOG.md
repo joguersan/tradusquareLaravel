@@ -2,6 +2,62 @@
 
 All notable changes to `Browsershot` will be documented in this file
 
+## 3.47.0 - 2021-06-10
+
+- re-add support for symfony/process:^4.2
+
+## 3.46.0 - 2021-05-24
+
+- add `base64pdf` method (#512)
+
+## 3.45.0 - 2021-04-20
+
+- add ability to make POST requests (#496)
+
+## 3.44.1. - 2021-04-09
+
+- bump temporary-directory to version 2.0 (#495)
+
+## 3.44.0 - 2021-02-05
+
+- add scale option (#478)
+
+## 3.43.0 - 2021-01-29
+
+- add support for scale option in PDF (#478)
+
+## 3.42.0 - 2021-01-11
+
+- introduce a selectorIndex to bypass querySelector restrictions (#468)
+
+## 3.41.2 - 2020-12-27
+
+- improve local require for puppeteer (#461)
+
+## 3.41.1 - 2020-12-08
+
+- replace `waitFor` with `waitForTimeout` (#452)
+
+## 3.41.0 - 2020-19-11
+
+- adding ability to pass envars to browser instance (#448)
+
+## 3.40.3 - 2020-11-12
+
+- add support for PHP 8
+
+## 3.40.2 - 2020-11-11
+
+- revert changes from previous version
+
+## 3.40.1 - 2020-11-06
+
+- prevent local files from being rendered
+
+## 3.40.0 - 2020-10-07
+
+- added `base64Screenshot`
+
 ## 3.39.0 - 2020-09-24
 
 - add `usePipe` to use pipe instead of WebSocket (#423)

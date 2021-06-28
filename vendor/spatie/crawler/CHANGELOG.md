@@ -2,6 +2,32 @@
 
 All notable changes to `spatie/crawler` will be documented in this file.
 
+## 6.0.1 - 2021-02-26
+
+- bugfix: infinite loops when a CrawlProfile prevents crawling (#358)
+
+## 6.0.0 - 2020-12-02
+
+- add `setCurrentCrawlLimit` and `setTotalCrawlLimit`
+- internal refactors
+
+## 5.0.2 - 2020-11-27
+
+- add support for PHP 8.0
+
+## 5.0.1 - 2020-10-09
+
+- tweak variable naming in `ArrayCrawlQueue` (#326)
+
+## 5.0.0 - 2020-09-29
+
+- improve chucked reading of response
+- move observer / profiles / queues to separate namespaces
+- typehint all the things
+- use laravel/collections instead of tightenco package
+- remove support for anything below PHP 7.4
+- remove all deprecated functions and classes 
+
 ## 4.7.5 - 2020-09-12
 
 - treat connection exceptions as request exceptions

@@ -18,10 +18,10 @@ final class GlideConversion
     private $imageDriver = 'gd';
 
     /** @var string */
-    private $conversionResult = null;
+    private $conversionResult;
 
     /** @var string */
-    private $temporaryDirectory = null;
+    private $temporaryDirectory;
 
     public static function create(string $inputImage): self
     {
@@ -30,10 +30,6 @@ final class GlideConversion
 
     public function setTemporaryDirectory(string $temporaryDirectory)
     {
-        if (! isset($temporaryDirectory)) {
-            return $this;
-        }
-
         if (! is_dir($temporaryDirectory)) {
             try {
                 mkdir($temporaryDirectory);
@@ -82,9 +78,9 @@ final class GlideConversion
             $glideServer->setGroupCacheInFolders(false);
 
             $manipulatedImage = $this->temporaryDirectory.DIRECTORY_SEPARATOR.$glideServer->makeImage(
-                    pathinfo($inputFile, PATHINFO_BASENAME),
-                    $this->prepareManipulations($manipulationGroup)
-                );
+                pathinfo($inputFile, PATHINFO_BASENAME),
+                $this->prepareManipulations($manipulationGroup)
+            );
 
             if ($this->conversionResult) {
                 unlink($this->conversionResult);
@@ -144,7 +140,7 @@ final class GlideConversion
 
         unlink($this->conversionResult);
 
-        if ($this->directoryIsEmpty($conversionResultDirectory) && $conversionResultDirectory !== '/tmp') {
+        if ($this->directoryIsEmpty($conversionResultDirectory) && $conversionResultDirectory !== sys_get_temp_dir()) {
             rmdir($conversionResultDirectory);
         }
     }

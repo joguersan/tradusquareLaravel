@@ -2,21 +2,17 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/crawler.svg?style=flat-square)](https://packagist.org/packages/spatie/crawler)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-![run-tests](https://github.com/spatie/crawler/workflows/run-tests/badge.svg)
-[![StyleCI](https://styleci.io/repos/45406338/shield)](https://styleci.io/repos/45406338)
+![Tests](https://github.com/spatie/crawler/workflows/Tests/badge.svg)
+![Check & fix styling](https://github.com/spatie/crawler/workflows/Code%20style/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/crawler.svg?style=flat-square)](https://packagist.org/packages/spatie/crawler)
 
 This package provides a class to crawl links on a website. Under the hood Guzzle promises are used to [crawl multiple urls concurrently](http://docs.guzzlephp.org/en/latest/quickstart.html?highlight=pool#concurrent-requests).
 
 Because the crawler can execute JavaScript, it can crawl JavaScript rendered sites. Under the hood [Chrome and Puppeteer](https://github.com/spatie/browsershot) are used to power this feature.
 
-Spatie is a webdesign agency in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
-
 ## Support us
 
-Learn how to create a package like this one, by watching our premium video course:
-
-[![Laravel Package training](https://spatie.be/github/package-training.jpg)](https://laravelpackage.training)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/crawler.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/crawler)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
@@ -38,11 +34,11 @@ The crawler can be instantiated like this
 use Spatie\Crawler\Crawler;
 
 Crawler::create()
-    ->setCrawlObserver(<class that extends \Spatie\Crawler\CrawlObserver>)
+    ->setCrawlObserver(<class that extends \Spatie\Crawler\CrawlObservers\CrawlObserver>)
     ->startCrawling($url);
 ```
 
-The argument passed to `setCrawlObserver` must be an object that extends the `\Spatie\Crawler\CrawlObserver` abstract class:
+The argument passed to `setCrawlObserver` must be an object that extends the `\Spatie\Crawler\CrawlObservers\CrawlObserver` abstract class:
 
 ```php
 namespace Spatie\Crawler;
@@ -92,7 +88,8 @@ abstract class CrawlObserver
     /**
      * Called when the crawl has ended.
      */
-    public function finishedCrawling() {
+    public function finishedCrawling()
+    {
 
     }
 }
@@ -105,8 +102,8 @@ You can set multiple observers with `setCrawlObservers`:
 ```php
 Crawler::create()
     ->setCrawlObservers([
-        <class that extends \Spatie\Crawler\CrawlObserver>,
-        <class that extends \Spatie\Crawler\CrawlObserver>,
+        <class that extends \Spatie\Crawler\CrawlObservers\CrawlObserver>,
+        <class that extends \Spatie\Crawler\CrawlObservers\CrawlObserver>,
         ...
      ])
     ->startCrawling($url);
@@ -116,9 +113,9 @@ Alternatively you can set multiple observers one by one with `addCrawlObserver`:
 
 ```php
 Crawler::create()
-    ->addCrawlObserver(<class that extends \Spatie\Crawler\CrawlObserver>)
-    ->addCrawlObserver(<class that extends \Spatie\Crawler\CrawlObserver>)
-    ->addCrawlObserver(<class that extends \Spatie\Crawler\CrawlObserver>)
+    ->addCrawlObserver(<class that extends \Spatie\Crawler\CrawlObservers\CrawlObserver>)
+    ->addCrawlObserver(<class that extends \Spatie\Crawler\CrawlObservers\CrawlObserver>)
+    ->addCrawlObserver(<class that extends \Spatie\Crawler\CrawlObservers\CrawlObserver>)
     ->startCrawling($url);
 ```
 
@@ -134,7 +131,7 @@ Crawler::create()
 
 In order to make it possible to get the body html after the javascript has been executed, this package depends on
 our [Browsershot](https://github.com/spatie/browsershot) package.
-This package uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) under the hood. Here are some pointers on [how to install it on your system](https://github.com/spatie/browsershot#requirements).
+This package uses [Puppeteer](https://github.com/puppeteer/puppeteer) under the hood. Here are some pointers on [how to install it on your system](https://github.com/spatie/browsershot#requirements).
 
 Browsershot will make an educated guess as to where its dependencies are installed on your system.
 By default, the Crawler will instantiate a new Browsershot instance. You may find the need to set a custom created instance using the `setBrowsershot(Browsershot $browsershot)` method.
@@ -152,7 +149,7 @@ These system dependencies are only required if you're calling `executeJavaScript
 ### Filtering certain urls
 
 You can tell the crawler not to visit certain urls by using the `setCrawlProfile`-function. That function expects
-an object that extends `Spatie\Crawler\CrawlProfile`:
+an object that extends `Spatie\Crawler\CrawlProfiles\CrawlProfile`:
 
 ```php
 /*
@@ -215,19 +212,132 @@ To improve the speed of the crawl the package concurrently crawls 10 urls by def
 
 ```php
 Crawler::create()
-    ->setConcurrency(1) //now all urls will be crawled one by one
+    ->setConcurrency(1) // now all urls will be crawled one by one
 ```
 
-## Setting the maximum crawl count
+## Defining Crawl Limits
 
-By default, the crawler continues until it has crawled every page of the supplied URL. If you want to limit the amount of urls the crawler should crawl you can use the `setMaximumCrawlCount` method.
+By default, the crawler continues until it has crawled every page it can find. This behavior might cause issues if you are working in an environment with limitations such as a serverless environment.
+
+The crawl behavior can be controlled with the following two options:
+
+ - **Total Crawl Limit** (`setTotalCrawlLimit`): This limit defines the maximal count of URLs to crawl.
+ - **Current Crawl Limit** (`setCurrentCrawlLimit`): This defines how many URLs are processed during the current crawl.
+
+Let's take a look at some examples to clarify the difference between these two methods.
+
+### Example 1: Using the total crawl limit
+
+The `setTotalCrawlLimit` method allows to limit the total number of URLs to crawl, no matter often you call the crawler.
 
 ```php
-// stop crawling after 5 urls
+$queue = <your selection/implementation of a queue>;
 
+// Crawls 5 URLs and ends.
 Crawler::create()
-    ->setMaximumCrawlCount(5)
+    ->setCrawlQueue($queue)
+    ->setTotalCrawlLimit(5)
+    ->startCrawling($url);
+
+// Doesn't crawl further as the total limit is reached.
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setTotalCrawlLimit(5)
+    ->startCrawling($url);
 ```
+
+### Example 2: Using the current crawl limit
+
+The `setCurrentCrawlLimit` will set a limit on how many URls will be crawled per execution. This piece of code will process 5 pages with each execution, without a total limit of pages to crawl.
+
+```php
+$queue = <your selection/implementation of a queue>;
+
+// Crawls 5 URLs and ends.
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setCurrentCrawlLimit(5)
+    ->startCrawling($url);
+
+// Crawls the next 5 URLs and ends.
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setCurrentCrawlLimit(5)
+    ->startCrawling($url);
+```
+
+### Example 3: Combining the total and crawl limit
+
+Both limits can be combined to control the crawler:
+
+```php
+$queue = <your selection/implementation of a queue>;
+
+// Crawls 5 URLs and ends.
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setTotalCrawlLimit(10)
+    ->setCurrentCrawlLimit(5)
+    ->startCrawling($url);
+
+// Crawls the next 5 URLs and ends.
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setTotalCrawlLimit(10)
+    ->setCurrentCrawlLimit(5)
+    ->startCrawling($url);
+
+// Doesn't crawl further as the total limit is reached.
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setTotalCrawlLimit(10)
+    ->setCurrentCrawlLimit(5)
+    ->startCrawling($url);
+```
+
+### Example 4: Crawling across requests
+
+You can use the `setCurrentCrawlLimit` to break up long running crawls. The following example demonstrates a (simplified) approach. It's made up of an initial request and any number of follow-up requests continuing the crawl.
+
+#### Initial Request
+
+To start crawling across different requests, you will need to create a new queue of your selected queue-driver. Start by passing the queue-instance to the crawler. The crawler will start filling the queue as pages are processed and new URLs are discovered. Serialize and store the queue reference after the crawler has finished (using the current crawl limit).
+
+```php
+// Create a queue using your queue-driver.
+$queue = <your selection/implementation of a queue>;
+
+// Crawl the first set of URLs
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setCurrentCrawlLimit(10)
+    ->startCrawling($url);
+
+// Serialize and store your queue
+$serializedQueue = serialize($queue);
+```
+
+#### Subsequent Requests
+
+For any following requests you will need to unserialize your original queue and pass it to the crawler:
+
+```php
+// Unserialize queue
+$queue = unserialize($serializedQueue);
+
+// Crawls the next set of URLs
+Crawler::create()
+    ->setCrawlQueue($queue)
+    ->setCurrentCrawlLimit(10)
+    ->startCrawling($url);
+
+// Serialize and store your queue
+$serialized_queue = serialize($queue);
+```
+
+The behavior is based on the information in the queue. Only if the same queue-instance is passed in the behavior works as described. When a completely new queue is passed in, the limits of previous crawls -even for the same website- won't apply.
+
+An example with more details can be found [here](https://github.com/spekulatius/spatie-crawler-cached-queue-example).
 
 ## Setting the maximum crawl depth
 
@@ -272,22 +382,22 @@ This will prevent downloading the body of pages that have different mime types, 
 
 ## Using a custom crawl queue
 
-When crawling a site the crawler will put urls to be crawled in a queue. By default, this queue is stored in memory using the built-in `CollectionCrawlQueue`.
+When crawling a site the crawler will put urls to be crawled in a queue. By default, this queue is stored in memory using the built-in `ArrayCrawlQueue`.
 
 When a site is very large you may want to store that queue elsewhere, maybe a database. In such cases, you can write your own crawl queue.
 
-A valid crawl queue is any class that implements the `Spatie\Crawler\CrawlQueue\CrawlQueue`-interface. You can pass your custom crawl queue via the `setCrawlQueue` method on the crawler.
+A valid crawl queue is any class that implements the `Spatie\Crawler\CrawlQueues\CrawlQueue`-interface. You can pass your custom crawl queue via the `setCrawlQueue` method on the crawler.
 
 ```php
 Crawler::create()
-    ->setCrawlQueue(<implementation of \Spatie\Crawler\CrawlQueue\CrawlQueue>)
+    ->setCrawlQueue(<implementation of \Spatie\Crawler\CrawlQueues\CrawlQueue>)
 ```
 
 Here
 
-- [ArrayCrawlQueue](https://github.com/spatie/crawler/blob/master/src/CrawlQueue/ArrayCrawlQueue.php)
-- [CollectionCrawlQueue](https://github.com/spatie/crawler/blob/master/src/CrawlQueue/CollectionCrawlQueue.php) (`Illuminate\Support\Collection` or `Tightenco\Collect\Support\Collection`)
-- [RedisCrawlQueue (third party package)](https://github.com/repat/spatie-crawler-redis)
+- [ArrayCrawlQueue](https://github.com/spatie/crawler/blob/master/src/CrawlQueues/ArrayCrawlQueue.php)
+- [RedisCrawlQueue (third-party package)](https://github.com/repat/spatie-crawler-redis)
+- [CacheCrawlQueue for Laravel (third-party package)](https://github.com/spekulatius/spatie-crawler-toolkit-for-laravel)
 
 ## Changelog
 
@@ -315,7 +425,7 @@ node server.js
 
 With the server running, you can start testing.
 ```bash
-vendor/bin/phpunit
+composer tests
 ```
 
 ## Security

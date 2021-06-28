@@ -2,6 +2,36 @@
 
 All notable changes to `image` will be documented in this file
 
+## 1.10.4 - 2021-04-07
+- Allow spatie/temporary-directory v2
+
+## 1.10.3 - 2021-03-10
+- Bump league/glide to 2.0 [#123](https://github.com/spatie/image/pull/123)
+
+## 1.10.2 - 2020-01-26
+
+- change condition to delete $conversionResultDirectory (#118)
+
+## 1.10.1 - 2020-12-27
+
+- adds zoom option to focalCrop (#112)
+
+## 1.9.0 - 2020-11-13
+
+- allow usage of a custom `OptimizerChain` #110
+
+## 1.8.1 - 2020-11-12
+
+- revert changes from 1.8.0
+
+## 1.8.0 - 2020-11-12
+
+- allow usage of a custom `OptimizerChain` (#108)
+
+## 1.7.7 - 2020-11-12
+
+- add support for PHP 8
+
 ## 1.7.6 - 2020-01-26
 
 - change uppercase function to mb_strtoupper instead of strtoupper (#99)

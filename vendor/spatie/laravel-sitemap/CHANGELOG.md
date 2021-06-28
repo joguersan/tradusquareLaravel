@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-sitemap` will be documented in this file
 
+## 5.9.2 - 2021-03-04
+
+- allow crawler v6 (#365)
+
+## 5.9.1 - 2020-12-30
+
+- add `filter()` method to tags before rendering (#347)
+
+## 5.9.0 - 2020-12-27
+
+- add support for PHP 8
+
 ## 5.8.0 - 2020-09-08
 
 - add support for Laravel 8
