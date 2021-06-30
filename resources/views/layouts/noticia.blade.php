@@ -71,9 +71,9 @@
 									<a class="btn btn-primary" href="{{route('comentarios.edit', $comentario)}}">Editar</a>
 								</li>
 								<li class="list-group-item">
-									<form method="POST" action="{{route('comentarios.delete', $comentario)}}">
+									<form method="POST" action="{{route('comentarios.destroy', $comentario)}}">
 										@csrf
-										@method('PATCH')
+										@method('DELETE')
 										<button class="btn btn-primary">Eliminar</button>
 									</form>
 								</li>

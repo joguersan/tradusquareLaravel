@@ -15,7 +15,8 @@ class PlataformaController extends Controller
      */
     public function index()
     {
-        return Plataforma::all();
+      $plataformas = Plataforma::all();
+      return view('plataformas.index', ['plataformas' => $plataformas]);
     }
 
     /**
@@ -93,5 +94,7 @@ class PlataformaController extends Controller
      */
     public function destroy(Plataforma $plataforma)
     {
+      $plataforma->delete();
+      return redirect()->route('plataformas.index');
     }
 }
