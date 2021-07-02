@@ -42,3 +42,8 @@ Route::resources([
 ]);
 Route::view('/informacion', 'informacion')->name('informacion');
 Route::view('/amala', 'amala')->name('amala');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
