@@ -26,7 +26,7 @@
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 @guest
-                <a class="nav-link" href="/"><i class="bi-person-bounding-box"></i> Acceder</a>
+                <a class="nav-link" href="{{ route('iniciar-sesion') }}"><i class="bi-person-bounding-box"></i> Acceder</a>
                 @endguest
                 @auth
                 <a class="nav-link" href="/"><i class="fas fa-user-circle"></i>{{Auth::user()->nombre}}</a>

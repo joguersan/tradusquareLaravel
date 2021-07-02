@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +25,14 @@ class DatabaseSeeder extends Seeder
     factory(App\Grupo::class, 10)->create();
     factory(App\EntradaTablon::class, 10)->create();
     //factory(App\Comentario::class, 1)->create();
+    //usaurio para pruebas
+    $user = new User();
+    $user->nombre                     =   'gerard';
+    $user->email                    =   'gerard@gerard.com';
+    $user->imagen                    =  'e.png';
+    $user->password                 =   Hash::make('12345678');
+    $user->rol                         =  0;
+    $user->save();
 
     // ************************* //
     // Populate the pivot tables

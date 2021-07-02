@@ -66,6 +66,9 @@
                             </div>
                         </div>
                     </form>
+                    @guest
+                ¿No tienes cuenta? tranqui, pincha <a href="{{ route('registro') }}">aquí</a>
+                @endguest
                 </div>
             </div>
         </div>

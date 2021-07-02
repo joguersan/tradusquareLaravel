@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -13,16 +16,37 @@ class AuthController extends Controller
 
     $user = new User;
     $user::crearUsuario($request);
+        if($user){
+            /*hacer algo al registrarse.-
 
-    return response()->json([
-        'msg' => 'El usuario ha sido creado correctamente'
-    ]);
+            $credentials = $request->validate([
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ]);
+            if (Auth::attempt($credentials)) {
+                return redirect('/')->withSuccess(
+                    response()->json([
+                    'msg' => 'El usuario ha sido creado correctamente'
+                ])
+            );
+        }*/
+    }
+
 
     }
 
-    public function login(Request $data){
+    public function login(Request $request){
 
+        $request = $request;
 
+        if (!Auth::attempt(['email' => $request->email, 'password' => $request-> password])) {
+            return redirect('iniciar-sesion');
+        }
+
+        return redirect('/')->withSuccess(
+            response()->json([
+            'msg' => 'Login correcto'
+            ]));
     }
 
     public function updateUser(Request $data){
@@ -35,7 +59,6 @@ class AuthController extends Controller
                     'msg' => 'El usuario ha sido actualizado correctamente'
                 ]);
         }
-
 
         return response()->json([
             'msg' => 'Error la actualizar el usuario'

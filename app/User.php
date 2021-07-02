@@ -68,8 +68,8 @@ class User extends Authenticatable
 
             $user->nombre = $data->nombre;
             $user->email = $data->email;
-            $data->contraseña = self::encryptPass($data->contraseña);
-            $user->contraseña = $data->contraseña;
+            $data->password = self::encryptPass($data->password);
+            $user->password = $data->password;
             $user->imagen = "SASAAS";
             $user->rol = 0;
             $user->save();
@@ -87,8 +87,8 @@ class User extends Authenticatable
 //TODO, meter lógica.
         if ( $data->nombre ) $user->nombre = $data->nombre;
         if ( $data->email ) $user->email = $data->email;
-        // TO DO: encoding password
-        if ( $data->contraseña ) $user->contraseña = $data->contraseña;
+        // TO DO: comprobar password vieja. Hash::check($data->password, $user->password)
+        if ( $data->password ) $user->password = self::encryptPass($data->password);
         $user->save();
 
     }
