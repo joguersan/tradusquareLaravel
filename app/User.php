@@ -55,26 +55,28 @@ class User extends Authenticatable
 
     public static function crearUsuario($data){
 
-        $user = new User;
         if(User::find($data->email)){
-                //usa otro email
+
+
+            return "usa otro email";
+
         }
 
         if(User::find($data->nombre)){
 
-            //usa otro nombre.
+            return "usa otro nombre";
 
         }
+
+            $user = new User;
 
             $user->nombre = $data->nombre;
             $user->email = $data->email;
             $data->password = self::encryptPass($data->password);
             $user->password = $data->password;
-            $user->imagen = "SASAAS";
+            $user->imagen = "S";
             $user->rol = 0;
             $user->save();
-           // $user->create();
-
 
 
     }

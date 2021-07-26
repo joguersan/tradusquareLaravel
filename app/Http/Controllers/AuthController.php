@@ -17,20 +17,18 @@ class AuthController extends Controller
     $user = new User;
     $user::crearUsuario($request);
         if($user){
-            /*hacer algo al registrarse.-
-
-            $credentials = $request->validate([
-                'email' => ['required', 'email'],
-                'password' => ['required'],
-            ]);
-            if (Auth::attempt($credentials)) {
+            if(Auth::attempt(['email' => $request->email, 'password' => $request-> password])){
                 return redirect('/')->withSuccess(
                     response()->json([
-                    'msg' => 'El usuario ha sido creado correctamente'
-                ])
-            );
-        }*/
+                    'msg' => 'Login correcto'
+                ]));
+            }
     }
+
+    return redirect('/registro')->
+        response()->json([
+        'msg' => 'Error al crear usuario, usa un email o nombre de usario diferente'
+        ]);
 
 
     }

@@ -23,7 +23,7 @@ Route::patch('/noticias/{noticia}/update', 'NoticiaController@update')->name('no
 Route::post('/comentarios/create/{noticia}', 'ComentarioController@store')->name('comentario.store');
 Route::patch('/fichas/{ficha}/update', 'FichaController@update')->name('ficha.update');
 Route::post('/noticias/{noticia}', 'NoticiaController@destroy')->name('noticia.destroy');
-Route::post('/noticias/{noticia}', 'NoticiaController@show')->name('noticia.show');
+Route::post('/noticias/{noticia}', 'NoticiaController@show')->name('noticia.show');//get???
 Route::get('/proyecto/{ficha}', 'FichaController@show')->name('ficha.show');
 Route::get('/proyectos', 'FichaController@index')->name('proyectos');
 Route::get('/proyectos/{id_plat}', 'FichaController@listaPlataforma')->name('proyectoplataforma');
@@ -35,7 +35,7 @@ Route::resources([
     'fichas' => 'FichaController',
     'grupos' => 'GrupoController',
     'comentarios' => 'ComentarioController',
-    'usuarios' => 'UsuarioController',
+    'usuarios' => 'UserController',
     'tablon-de-misiones' => 'EntradaTablonController'
 ]);
 Route::view('/informacion', 'informacion')->name('informacion');
