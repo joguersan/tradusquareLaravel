@@ -6,9 +6,9 @@
 	<ul class="flex-wrap pagination pagination-sm justify-content-left">
 		@foreach ($plataformas as $plataforma)
 		@if ($id == $plataforma->id)
-		<li class="page-item active"><a class="page-link" href="/proyectos/{{$plataforma->id}}"><img class="img-fluid mr-2" src="{{$plataforma->imagen}}" style="width:20px; height:20px">{{$plataforma->nombre}}</a></li>
+		<li class="page-item active"><a class="page-link" href="/proyectos/{{$plataforma->id}}"><img loading="lazy" class="img-fluid mr-2" src="{{$plataforma->imagen}}" style="width:20px; height:20px">{{$plataforma->nombre}}</a></li>
 		@else
-		<li class="page-item"><a class="page-link" href="/proyectos/{{$plataforma->id}}"><img class="img-fluid mr-2" src="{{$plataforma->imagen}}" style="width:20px; height:20px">{{$plataforma->nombre}}</a></li>
+		<li class="page-item"><a class="page-link" href="/proyectos/{{$plataforma->id}}"><img loading="lazy" class="img-fluid mr-2" src="{{$plataforma->imagen}}" style="width:20px; height:20px">{{$plataforma->nombre}}</a></li>
 		@endif
 		@endforeach
 		<li class="page-item"><a class="page-link" href="/proyectos">Todas</a></li>
@@ -25,7 +25,7 @@
 				</a>
 			</td>
 			<td class="text-center w-50">
-				<img class="img-fluid mr-2" style="width:20px; height:20px" src="{{$plat->platImagen}}"><span class="badge badge-success">Completado
+				<img loading="lazy" class="img-fluid mr-2" style="width:20px; height:20px" src="{{$plat->platImagen}}"><span class="badge badge-success">Completado
 </div>
 </td>
 </tr>

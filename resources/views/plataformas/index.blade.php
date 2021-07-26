@@ -12,7 +12,7 @@
         </tr>
         @foreach ($plataformas as $plataforma)
         <tr>
-            <td><img src="{{ $plataforma->imagen }}" /></td>
+            <td><img loading="lazy" src="{{ $plataforma->imagen }}" /></td>
             <td>{{ $plataforma->nombre }}</td>
             <td>
                 <a class="btn" href="{{ route('plataformas.show',$plataforma->id) }}"><i class="bi bi-eye-fill text-primary"></i></a>

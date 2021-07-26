@@ -10,7 +10,7 @@
                 </td>
                 @endif
                 <td class="p-2">
-                    <img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
+                    <img loading="lazy" src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
                 </td>
                 <td class="p-2 text-center">
                     <span class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1">{{$plataforma->pivot->estado}}</span>

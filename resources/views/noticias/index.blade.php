@@ -7,7 +7,7 @@
 
 @section('contenido')
 <div class="col text-center">
-    <img src="images/noticiasMini.webp" alt="Últimas noticias" class="w-50 mb-2">
+    <img loading="lazy" src="images/noticiasMini.webp" alt="Últimas noticias" class="w-50 mb-2">
     <div class="row">
         @foreach($noticias as $noticia)
         <div class="col-md-4 flex text-center mb-2 previewEntrada">

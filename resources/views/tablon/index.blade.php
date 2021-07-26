@@ -7,13 +7,13 @@
 </section>
 @section('contenido')
 <div class="text-center mb-2">
-    <img src="images/estilo/tablonTitle.jpg" class="w-md-50" title="Tablón de misiones" alt="Tablón de misiones">
+    <img loading="lazy" src="images/estilo/tablonTitle.jpg" class="w-md-50" title="Tablón de misiones" alt="Tablón de misiones">
 </div>
 <div class="row m-3 p-0">
     @forelse($entradas as $entrada)
     @if ($entrada->visible == 1)
     <div class="col-md-3 elementoTablon" data-bs-toggle="modal" data-bs-target="#tablon{{$entrada->id}}">
-        <img src="{{$entrada->imagen}}" alt="Anuncio para {{$entrada->titulo}}" />
+        <img loading="lazy" src="{{$entrada->imagen}}" alt="Anuncio para {{$entrada->titulo}}" />
         <div class="modal fade sebusca" id="tablon{{$entrada->id}}" tabindex="-1" role="dialog" aria-labelledby="Anuncio {{$entrada -> titulo}}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content pergamino">
@@ -47,7 +47,7 @@
 </div>
 <div class="row text-center">
     <div class="col-md-3 elementoTablon">
-        <a href="{{route('tablon-de-misiones.create')}}"><img src="https://tradusquare.es/tablon/nueva.png"></a>
+        <a href="{{route('tablon-de-misiones.create')}}"><img loading="lazy" src="https://tradusquare.es/tablon/nueva.png"></a>
     </div>
 </div>
 @endsection

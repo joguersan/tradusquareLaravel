@@ -5,7 +5,7 @@
 @endsection
 @section('contenido')
 <div class="col p-4 text-center rounded border mx-lg-5 mt-lg-5 bg-white">
-    <img src="images/noticiasMini.webp" alt="Últimas noticias" class="mb-2">
+    <img loading="lazy" src="images/noticiasMini.webp" alt="Últimas noticias" class="mb-2">
     <div class="row">
         @foreach($noticias as $noticia)
         <div class="col-md-4 flex text-center mb-2 previewEntrada">
@@ -36,7 +36,7 @@
 </div>
 <div class="row mx-lg-5 mb-2 m-0">
     <div class="col-md-8 text-center rounded border bg-white">
-        <img src="images/estilo/fichaTitleMini.webp" alt="Proyectos actualizados" class="w-md-75 mb-2">
+        <img loading="lazy" src="images/estilo/fichaTitleMini.webp" alt="Proyectos actualizados" class="w-md-75 mb-2">
         <div class="d-flex justify-content-center align-content-center flex-wrap table-responsive w-100">
             <table class="table text-left table-hover">
                 @foreach($fichas as $ficha)
@@ -50,7 +50,7 @@
                             </td>
                             @endif
                             <td class="p-2">
-                                <img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
+                                <img loading="lazy" src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
                             </td>
                             <td class="p-2 text-center">
                                 <span class="badge {{getStatusBadge($plataforma->pivot->estado)}} p-1">{{$plataforma->pivot->estado}}</span>
@@ -69,7 +69,7 @@
     </div>
     <div class="col-md-4 pe-0">
         <div class="col rounded border mb-3 bg-white p-3">
-            <img src="images/estilo/tablonTitleMini.webp" alt="Tablón de misiones" class="w-md-100 mb-5" />
+            <img loading="lazy" src="images/estilo/tablonTitleMini.webp" alt="Tablón de misiones" class="w-md-100 mb-5" />
             <div class="d-flex justify-content-center ">
                 <div class="p-3 text-dark bg-light tituloEntradaIndex font-weight-bold sombra mt-0">
                     @forelse($tablon as $entrada)
@@ -83,12 +83,12 @@
             </div>
         </div>
         <div class="col rounded border bg-white p-3 ">
-            <img src="images/estilo/commentTitleMini.webp" alt="Últimos comentarios" class="w-md-100 mb-2">
+            <img loading="lazy" src="images/estilo/commentTitleMini.webp" alt="Últimos comentarios" class="w-md-100 mb-2">
             @foreach($comentarios as $comentario)
             <div class="tarjeta border bg-white rounded mb-3 p-1">
                 <div class="row font-weight-bold">
                     <div class="col">
-                        <img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{$comentario -> users -> imagen}}" title="Avatar de {{$comentario -> users -> nombre}}" alt="Avatar de {{$comentario -> users -> nombre}}" />
+                        <img loading="lazy" class="rounded-circle imgcirculo" src="https://tradusquare.es/{{$comentario -> users -> imagen}}" title="Avatar de {{$comentario -> users -> nombre}}" alt="Avatar de {{$comentario -> users -> nombre}}" />
                     </div>
                     <div class="col">
                         {{$comentario -> users -> nombre}}

@@ -51,7 +51,7 @@
 								@if ($comentario -> deleted_at == null)
 								<div class="row card-header p-1">
 									<div class="col-md-6">
-										<img class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}" title="Avatar de {{ $comentario -> users -> nombre }}"
+										<img loading="lazy" class="rounded-circle imgcirculo" src="https://tradusquare.es/{{ $comentario -> users -> imagen }}" title="Avatar de {{ $comentario -> users -> nombre }}"
 										  alt="Avatar de {{ $comentario -> users -> nombre }}" />
 										<b>{{ $comentario -> users -> nombre }}</b>
 									</div>

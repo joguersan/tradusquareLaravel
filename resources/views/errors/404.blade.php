@@ -11,7 +11,7 @@
     }
 </style>
 <div id="apartado-derecho" class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
-    <img src="https://s3-us-west-2.amazonaws.com/en-samurai-gamers-images/wp-content/uploads/2017/03/23010758/jack-frost-persona-5-1.jpg"/>
+    <img loading="lazy" src="https://s3-us-west-2.amazonaws.com/en-samurai-gamers-images/wp-content/uploads/2017/03/23010758/jack-frost-persona-5-1.jpg"/>
 </div>
 @endsection
 

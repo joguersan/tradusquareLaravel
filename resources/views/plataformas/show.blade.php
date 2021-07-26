@@ -4,7 +4,7 @@
 <nav aria-label="Navegación por plataforma">
 	<ul class="flex-wrap pagination pagination-sm justify-content-left">
 		@foreach ($plataformas as $platform)
-		<li class="page-item {{ setActive('android') }}"><a class="page-link" href="/plataformas/{{$platform->url}}"><img class="img-fluid mr-2" src="{{$platform->imagen}}" style="width:20px; height:20px">{{$platform->nombre}}</a></li>
+		<li class="page-item {{ setActive('android') }}"><a class="page-link" href="/plataformas/{{$platform->url}}"><img loading="lazy" class="img-fluid mr-2" src="{{$platform->imagen}}" style="width:20px; height:20px">{{$platform->nombre}}</a></li>
 		@endforeach
 		<li class="page-item"><a class="page-link" href="/proyectos">Todas</a></li>
 	</ul>
@@ -20,7 +20,7 @@
 				</a>
 			</td>
 			<td class="text-center w-50">
-				<img class="img-fluid mr-2" style="width:20px; height:20px" src="{{$plat->platImagen}}"><span class="badge badge-success">Completado
+				<img loading="lazy" class="img-fluid mr-2" style="width:20px; height:20px" src="{{$plat->platImagen}}"><span class="badge badge-success">Completado
 </div>
 </td>
 </tr>

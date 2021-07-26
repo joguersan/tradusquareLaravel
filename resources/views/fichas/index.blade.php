@@ -26,7 +26,7 @@
 				</td>
 
 				<td>
-					<img src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
+					<img loading="lazy" src="{{$plataforma->imagen}}" style="width:20px; height:20px" title="{{$plataforma->nombre}}" /> {{$plataforma->nombre}}
 				</td>
 				<td class="text-center">
 					@if ($plataforma->pivot->estado_id == 1)
