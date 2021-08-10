@@ -55,18 +55,6 @@ class User extends Authenticatable
 
     public static function crearUsuario($data){
 
-        if(User::find($data->email)){
-
-
-            return "usa otro email";
-
-        }
-
-        if(User::find($data->nombre)){
-
-            return "usa otro nombre";
-
-        }
 
             $user = new User;
 
@@ -100,5 +88,13 @@ class User extends Authenticatable
     }
 
 
+
+    public static $newUserRules = [
+
+        'nombre' => 'required|min:3|unique',
+        'email' => 'required|string|email|unique:users',
+        'password'  => 'required|string|min:8'
+
+    ];
 
 }

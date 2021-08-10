@@ -13,17 +13,26 @@ class AuthController extends Controller
 {
 
     public function registro(Request $request){
+/*
+        $validated = $request->validate([
+
+            'nombre' => 'required|min:3|unique:users,nombre',
+            'email' => 'required|string|email|unique:users,email',
+            'password'  => 'required|string|min:8'
+
+        ]);*/
+
 
     $user = new User;
     $user::crearUsuario($request);
-        if($user){
+
             if(Auth::attempt(['email' => $request->email, 'password' => $request-> password])){
                 return redirect('/')->withSuccess(
                     response()->json([
                     'msg' => 'Login correcto'
                 ]));
             }
-    }
+
 
     return redirect('/registro')->
         response()->json([
@@ -34,8 +43,6 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-
-        $request = $request;
 
         if (!Auth::attempt(['email' => $request->email, 'password' => $request-> password])) {
             return redirect('iniciar-sesion');
@@ -62,6 +69,13 @@ class AuthController extends Controller
             'msg' => 'Error la actualizar el usuario'
         ]);
 
+    }
+
+    public function logout(Request $request){
+
+        Auth::logout();
+
+        return redirect('/');
     }
 
 }

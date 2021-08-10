@@ -42,7 +42,7 @@ Route::view('/informacion', 'informacion')->name('informacion');
 Route::view('/amala', 'amala')->name('amala');
 
 
-//login y registro
+//login ,registro, logout y otras cosas que faltarán
 
 //vistas
 Route::view('/iniciar-sesion','login')->name('iniciar-sesion');
@@ -52,3 +52,4 @@ Route::view('/registro','registro')->name('registro');
 //Route::post('login','UsuarioController@login')->name('login');
 Route::post('register','AuthController@registro')->name('register');
 Route::post('login','AuthController@login')->name('login');
+Route::post('logout','AuthController@logout')->name('logout');
