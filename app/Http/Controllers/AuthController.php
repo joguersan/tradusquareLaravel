@@ -13,31 +13,39 @@ class AuthController extends Controller
 {
 
     public function registro(Request $request){
-/*
+
         $validated = $request->validate([
 
             'nombre' => 'required|min:3|unique:users,nombre',
             'email' => 'required|string|email|unique:users,email',
             'password'  => 'required|string|min:8'
 
-        ]);*/
+        ]);
 
 
     $user = new User;
     $user::crearUsuario($request);
 
+        if(!$user){
+
+            return redirect('/registro'); //msg error al crear el usuario
+
+
+        }
+
+        return redirect('/'); //usuario creado correctamente, revisa el correo.
+
+
+
+    //mandar email de confirmación
+    /*
             if(Auth::attempt(['email' => $request->email, 'password' => $request-> password])){
                 return redirect('/')->withSuccess(
                     response()->json([
                     'msg' => 'Login correcto'
                 ]));
-            }
+            } */
 
-
-    return redirect('/registro')->
-        response()->json([
-        'msg' => 'Error al crear usuario, usa un email o nombre de usario diferente'
-        ]);
 
 
     }
