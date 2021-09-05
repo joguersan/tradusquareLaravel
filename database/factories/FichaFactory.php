@@ -14,3 +14,4 @@ $factory->define(App\Ficha::class, function (Faker $faker) {
         'url' => $faker->unique()->url()
     ];
 });
+

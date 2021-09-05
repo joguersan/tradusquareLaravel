@@ -8,3 +8,4 @@ $factory->define(App\Plataforma::class, function (Faker $faker) {
         'imagen' => $faker->imageUrl(64, 64),
     ];
 });
+

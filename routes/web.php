@@ -1,6 +1,9 @@
 <?php
 use Spatie\Sitemap\SitemapGenerator;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +56,26 @@ Route::view('/registro','registro')->name('registro');
 Route::post('register','AuthController@registro')->name('register');
 Route::post('login','AuthController@login')->name('login');
 Route::post('logout','AuthController@logout')->name('logout');
+
+//email
+//la ruta verification rompe todo por algún motivo.
+
+
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+

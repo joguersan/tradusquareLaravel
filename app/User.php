@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
+use Illuminate\Auth\Events\Registered;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
