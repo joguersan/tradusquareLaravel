@@ -19,9 +19,7 @@
                 <div class="modal-content pergamino">
                     <div class="modal-header">
                         <h5 class="modal-title text-center" id="exampleModalLongTitle">{{$entrada -> titulo}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h3 class="text-center">¡Se busca!</h3>{!!$entrada -> contenido!!}

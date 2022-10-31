@@ -7,7 +7,7 @@
 <div class="row p-3">
 	<div class="col-md-6 p-0 border border-primary">
 		<div class="font-weight-bold flex p-2 bg-primary text-white text-center">
-			<i class="fas fa-user-friends"></i> Integrantes
+			<i class="bi bi-people"></i> Integrantes
 		</div>
 		<div class="col m-0 p-0">
 			@foreach($grupo->usuarios as $usr)
@@ -17,7 +17,7 @@
 	</div>
 	<div class="col-md-6 border border-warning p-0">
 		<div class="col font-weight-bold d-flex p-2 bg-warning text-white justify-content-center">
-			<i class="large material-icons mr-2">library_books</i>Descripción
+			<i class="bi bi-chat-text me-2"></i>Descripción
 		</div>
 		<div class=" p-3">
 			{!!$grupo->descripcion!!}
@@ -26,7 +26,7 @@
 </div>
 <div class="border p-0 mt-3" style="border-color:purple">
 	<div class="col font-weight-bold d-flex p-2 text-white  justify-content-center" style="background-color:purple">
-		<i class="large material-icons mr-2">contacts</i>Últimas noticias
+		<i class="bi bi-newspaper me-2"></i>Últimas noticias
 	</div>
 	<div class="d-grid gap-3">
 		@foreach($grupo->fichas as $ficha)
@@ -38,7 +38,7 @@
 </div>
 <div class="border border-success p-0 mt-3">
 	<div class="col font-weight-bold d-flex p-2 bg-success text-white justify-content-center">
-		<i class="large material-icons mr-2">save_alt</i>Proyectos
+		<i class="bi bi-controller me-2"></i>Proyectos
 	</div>
 	<table class="table text-left table-hover">
 		@foreach ($grupo->fichas as $ficha)

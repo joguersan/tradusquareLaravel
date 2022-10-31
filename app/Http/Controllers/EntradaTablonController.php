@@ -63,19 +63,19 @@ class EntradaTablonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $entrada_Tablon ID
+     * @param int $entradaTablon ID
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($entrada_Tablon)
+    public function show($entradaTablon)
     {
-        return EntradaTablon::findOrFail($entrada_Tablon);
+        return EntradaTablon::findOrFail($entradaTablon);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\EntradaTablon  $entrada_Tablon
+     * @param  \App\EntradaTablon  $entradaTablon
      *
      * @return \Illuminate\Http\Response
      */
@@ -93,13 +93,13 @@ class EntradaTablonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\EntradaTablon  $entrada_Tablon
+     * @param  \App\EntradaTablon  $entradaTablon
      *
      * @return \Illuminate\Http\Response
      */
-    public function update($entrada_Tablon)
+    public function update($entradaTablon)
     {
-        $entrada = EntradaTablon::findOrFail($entrada_Tablon);
+        $entrada = EntradaTablon::findOrFail($entradaTablon);
         $entrada->update([
             'titulo' => request('titulo'),
             'imagen' => request('imagen'),
@@ -111,9 +111,9 @@ class EntradaTablonController extends Controller
         return redirect()->route('tablon-de-misiones.index');
     }
 
-    public function delete($entrada_Tablon)
+    public function delete($entradaTablon)
     {
-        $entrada = EntradaTablon::find($entrada_Tablon);
+        $entrada = EntradaTablon::find($entradaTablon);
         $entrada->update([
             'visible' => '0',
         ]);
@@ -123,13 +123,13 @@ class EntradaTablonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\EntradaTablon  $entrada_Tablon
+     * @param  \App\EntradaTablon  $entradaTablon
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EntradaTablon $entrada_Tablon)
+    public function destroy(EntradaTablon $entradaTablon)
     {
-        $entrada_Tablon->delete();
+        $entradaTablon->delete();
         return redirect()->route('tablon-de-misiones.index');
     }
 }
