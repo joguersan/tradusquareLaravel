@@ -6,6 +6,7 @@ use App\Ficha;
 use App\Grupo;
 use Illuminate\Http\Request;
 use View;
+use App\Http\Controllers\HelperController;
 
 class GrupoController extends Controller
 {
@@ -42,7 +43,8 @@ class GrupoController extends Controller
      */
     public function store(Grupo $grupo)
     {
-        $url = $this->setUrl(request('nombre'));
+        $helper = new HelperController();
+        $url = $helper->setUrl(request('nombre'));
         $grupo->create([
             'nombre' => request('nombre'),
             'url' => $url,
@@ -104,7 +106,8 @@ class GrupoController extends Controller
      */
     public function update(Request $request, Grupo $grupo)
     {
-        $url = $this->setUrl(request('nombre'));
+        $helper = new HelperController();
+        $url = $helper->setUrl(request('nombre'));
         $grupo->update([
             'nombre' => request('nombre'),
             'url' => $url,
@@ -139,19 +142,5 @@ class GrupoController extends Controller
             'deleted_at' => new DateTime(),
         ]);
         return redirect()->route('grupos.index');
-    }
-    #########################
-    # AUXILIAR FUNCTIONS
-    #########################
-    private function setUrl($nombre)
-    {
-        $char_raros = ['"','+','*',"'",'#','?','¿','!','¡','/', '[',']','(',')','[',':',',','.',';','%'];
-        $a = ['á','é','í','ó','ú','ñ'];
-        $b = ['a','e','i','o','u','n'];
-        $url = str_replace(' ', '-', $nombre);
-        $url = str_replace($char_raros, '', $url);
-        $url = str_replace($a, $b, $url);
-        return strtolower($url);
-
     }
 }

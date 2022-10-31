@@ -17,7 +17,7 @@ class Grupo extends Model
     }
 
     /**
-     * Obtiene las Usuarios
+     * Obtiene los Usuarios
      */
     public function usuarios()
     {

@@ -6,6 +6,7 @@ use App\Estado;
 use App\Ficha;
 use App\Grupo;
 use App\Plataforma;
+use App\Http\Controllers\HelperController;
 
 class FichaController extends Controller
 {
@@ -49,7 +50,8 @@ class FichaController extends Controller
      */
     public function store(Ficha $ficha)
     {
-        $url = setUrl(request('nombre'));
+        $helper = new HelperController();
+        $url = $helper->setUrl(request('nombre'));
 
         $ficha->create([
             'nombre' => request('nombre'),
@@ -127,9 +129,9 @@ class FichaController extends Controller
      */
     public function update(Ficha $ficha)
     {
-        $url = $this->setUrl(request('nombre'));
-
-        $ficha->update([
+        $helper = new HelperController();
+        $url = $helper->setUrl(request('nombre'));
+        $ficha -> update([
             'nombre' => request('nombre'),
             'url' => $url,
             'ficha' => request('ficha'),
@@ -137,7 +139,7 @@ class FichaController extends Controller
             'equipo' => request('equipo'),
             'imagen' => request('imagen'),
             'descarga' => request('links'),
-            'info_adicional' => request('info_adicional'),
+            'info_adicional' => request('info_adicional')
         ]);
         $plataformas = request('plataformas');
         $estados = request('estados');
@@ -164,20 +166,5 @@ class FichaController extends Controller
     {
         $ficha->delete();
         return redirect()->route('fichas.index');
-    }
-
-    #########################
-    # AUXILIAR FUNCTIONS
-    #########################
-    private function setUrl($nombre)
-    {
-        $char_raros = ['"','+','*',"'",'#','?','¿','!','¡','/', '[',']','(',')','[',':',',','.',';','%'];
-        $a = ['á','é','í','ó','ú','ñ'];
-        $b = ['a','e','i','o','u','n'];
-        $url = str_replace(' ', '-', $nombre);
-        $url = str_replace($char_raros, '', $url);
-        $url = str_replace($a, $b, $url);
-        return strtolower($url);
-    
     }
 }
