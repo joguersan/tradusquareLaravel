@@ -2,14 +2,14 @@ name: LaravelDeploy
 
 on:
   push:
-    branches: [deployment]
+    branches: [development]
   pull_request:
-    branches: [deployment]
+    branches: [development]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/deployment'
+    if: github.ref == 'refs/heads/development'
     steps:
       - name: Check the duplicate code in app directory
         run: ./vendor/bin/phpcpd app/ --min-lines=5 --min-tokens=10
