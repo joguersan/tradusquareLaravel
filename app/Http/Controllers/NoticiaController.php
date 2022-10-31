@@ -54,11 +54,8 @@ class NoticiaController extends Controller
             'imagen' => 'required',
         ]);
         $noticia = new Noticia();
-        $char_raros = ['"','+','*',"'",'#','?','¿','!','¡','/', '[',']','(',')','[',':',',','.',';','%'];
-        $a = ['á','é','í','ó','ú','ñ'];
-        $b = ['a','e','i','o','u','n'];
-        $url = str_replace(' ', '-', request('titulo'));
-        $url = str_replace($a, $b, $url);
+        $helper = new HelperController();
+        $url = $helper->setUrl(request('titulo'));
         $noticia->create([
             'titulo' => request('titulo'),
             'url' => $url,

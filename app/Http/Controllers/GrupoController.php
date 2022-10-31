@@ -138,7 +138,7 @@ class GrupoController extends Controller
     }
     public function delete(Grupo $grupo)
     {
-        $Grupo->update([
+        $grupo->update([
             'deleted_at' => new DateTime(),
         ]);
         return redirect()->route('grupos.index');

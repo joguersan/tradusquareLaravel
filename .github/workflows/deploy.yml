@@ -7,7 +7,7 @@ on:
     branches: [development]
 
 jobs:
-  deploy:
+  check_code:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/development'
     steps:
@@ -23,4 +23,4 @@ jobs:
       - name: Perform phpmd script
         run: ./vendor/bin/phpmd app/ github phpmdrules.xml
       - name: Check the duplicate code in app directory
-        run: php ./vendor/bin/phpcpd app/ --min-lines=5 --min-tokens=10
+        run: ./vendor/bin/phpcpd app/ --min-lines=5 --min-tokens=10
