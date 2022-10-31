@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
+!/vendor/bin/phpcd
+!/vendor/bin/phpcd.bat
 .env
 .env.backup
 .phpunit.result.cache
