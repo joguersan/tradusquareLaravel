@@ -16,6 +16,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "3.3",
+        "sebastian/phpcpd": "^6.0",
         "spatie/laravel-feed": "^4.0",
         "spatie/laravel-sitemap": "^5.8",
         "tcg/voyager": "^1.4"
