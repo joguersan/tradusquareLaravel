@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ficha;
 use App\Noticia;
 use App\User;
+use App\Http\Controllers\HelperController;
 
 class NoticiaController extends Controller
 {
@@ -127,12 +128,10 @@ class NoticiaController extends Controller
             'contenido' => 'required|min:10',
             'imagen' => 'required',
         ]);
-        $char_raros = ['"','+','*', "'", '#', '?', '¿', '!', '¡', '\\', '/', '[',']','(',')','[',':',',','.',';','%'];
-        $a = ['á','é','í','ó','ú','ñ'];
-        $b = ['a','e','i','o','u','n'];
-        $url = str_replace(' ', '-', request('titulo'));
-        $url = str_replace($char_raros, '', $url);
-        $url = str_replace($a, $b, $url);
+
+        $helper = new HelperController();
+        $url = $helper->setUrl(request('titulo'));
+
         $noticia->update([
             'titulo' => request('titulo'),
             'url' => $url,

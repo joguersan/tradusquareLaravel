@@ -8,7 +8,6 @@ class Ficha extends Model
 {
     public $incrementing = true;
     public $timestamps = true;
-
     protected $fillable = ['id', 'nombre', 'imagen', 'ficha', 'info_adicional', 'sinopsis', 'equipo', 'estado', 'url', 'descarga'];
     public function getRouteKeyName()
     {
